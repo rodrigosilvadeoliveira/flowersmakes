@@ -9,7 +9,7 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-25%);
     padding: 80px;
     border-radius: 15px;
     color: white;
@@ -91,7 +91,7 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,50%);
     border-radius: 15px;
     color: black;
     background-color: rgba(0, 0, 0, 0.8);
@@ -277,4 +277,38 @@ legend{
     width: 5vw;
     height: 5vh;
     fill: rgb(172, 16, 130);
+  }
+  @media  (max-width: 1500px){
+    #flowers{
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+        height: top;
+        line-height: 80px;
+        text-align: center;
+        color: rgb(172, 16, 130);
+        font-size: 65px;
+            
+    }
+    .tela-login{
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-25%);
+        padding: 65px;
+        border-radius: 15px;
+        color: white;
+        
+        }
+        .boxlogin{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-25%);
+            border-radius: 15px;
+            color: black;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 15px;
+            width: 13,5%;
+        }
   }

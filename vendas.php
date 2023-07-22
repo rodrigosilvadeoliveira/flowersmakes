@@ -1,4 +1,26 @@
 <?php include("cabecalho.php")?>
+<?php
+session_start();
+include_once('config.php');
+   // print_r($_SESSION);
+    if((!isset($_SESSION['usuario'])== true) and ($_SESSION['senha']) == true)
+    {
+      unset($_SESSION['usuario']);
+      unset($_SESSION['senha']);
+      header('Location: login.php');
+      
+    }$logado = $_SESSION['usuario'];
+    if(!empty($_GET['search']))
+    {
+        $data = $_GET['search'];
+        $sql = "SELECT * FROM formulariocadastro WHERE id LIKE '%$data%' or nome LIKE '%$data%' or email LIKE '%$data%' ORDER BY id DESC";
+    }
+    else
+    {
+        $sql = "SELECT * FROM formulariocadastro ORDER BY id DESC";
+    }
+    $result = $conexao->query($sql);
+?>
     
 <html lang="en">
 <head>
@@ -11,12 +33,13 @@
     <script src="bootstrap.min.js"></script>
     </head>
 <body>
-    
-<?php
-    echo "<h1 id='BemVindo'>Catalogo de Produtos e Estoque</h1>";
-?>
+<br><br><br>
+   
+   <?php
+       echo "<h1 id='BemVindo'>Vendedor(a) <U>$logado</u></h1>";
+   ?>
 <br>
-<form method="POST" action="vendas.php">
+<form id="meuForm" method="POST" action="vendas.php">
         <label for="codigo_barras">Código de Barras:</label>
         <input type="text" name="codigo_barras" id="codigo_barras" />
         <input type="submit" value="Consultar" />
@@ -37,7 +60,6 @@
   <tbody>
   <?php
 include_once('config.php');
-session_start();
 
 // Verifique se a lista de produtos já existe na sessão
 if (!isset($_SESSION['produtos'])) {
@@ -91,17 +113,21 @@ if (isset($_POST['confirmar_compra'])) {
         die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
     }
 
+    $logado = $_SESSION['usuario'];
     // Insira as informações da compra no banco de dados
     $dataHora = date('Y-m-d H:i:s'); // Data e hora atual
+    print_r($dataHora);
     foreach ($_SESSION['produtos'] as $produto) {
         $barra = $produto['barra'];
         $nomeProduto = $produto['produto'];
         $marca = $produto['marca'];
         $caracteristicas = $produto['caracteristicas'];
         $valordevenda = $produto['valordevenda'];
+        $valordecompra = $produto['valordecompra'];
+        
 
         // Query de inserção
-        $query = "INSERT INTO vendas (barra, produto, marca, caracteristicas, valordevenda, data_hora) VALUES ('$barra', '$nomeProduto', '$marca', '$caracteristicas', '$valordevenda', '$dataHora')";
+        $query = "INSERT INTO vendas (barra, produto, marca, caracteristicas, valordevenda, valordecompra, logado, data_hora) VALUES ('$barra', '$nomeProduto', '$marca', '$caracteristicas', '$valordevenda', '$valordecompra', '$logado', '$dataHora')";
         mysqli_query($conexao, $query);
     }
 
@@ -204,4 +230,19 @@ echo "</tr>";
         </div>
     </div>
 </div>
+<script>
+    function manterCursor() {
+        var codigoBarras = document.getElementById('codigo_barras').value;
+
+        // Restante do seu código de envio e manipulação do formulário
+
+        // Coloca o foco de volta no campo de entrada após o envio do formulário
+        document.getElementById('codigo_barras').focus();
+    }
+
+    // Chama a função manterCursor() após o carregamento completo do DOM
+    document.addEventListener("DOMContentLoaded", manterCursor);
+</script>
+</table>
+    </body>
 </html>

@@ -32,6 +32,7 @@ include_once('config.php');
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<br><br><br>
    
 <?php
     echo "<h1 id='BemVindo'>Bem vindo <U>$logado</u></h1>";

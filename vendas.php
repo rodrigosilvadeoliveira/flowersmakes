@@ -1,6 +1,9 @@
 <?php include("cabecalho.php")?>
 <?php
 session_start();
+ini_set('display_errors', 1); // Exibir erros no navegador (para fins de desenvolvimento)
+error_reporting(E_ALL); // Relatar todos os tipos de erro (para fins de desenvolvimento)
+date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Brasil/Brasília
 include_once('config.php');
    // print_r($_SESSION);
     if((!isset($_SESSION['usuario'])== true) and ($_SESSION['senha']) == true)
@@ -127,7 +130,7 @@ if (isset($_POST['confirmar_compra'])) {
         
 
         // Query de inserção
-        $query = "INSERT INTO vendas (barra, produto, marca, caracteristicas, valordevenda, valordecompra, logado, data_hora) VALUES ('$barra', '$nomeProduto', '$marca', '$caracteristicas', '$valordevenda', '$valordecompra', '$logado', '$dataHora')";
+        $query = "INSERT INTO vendas (barra, produto, marca, caracteristicas, valordevenda, valordecompra, usuario, data_hora) VALUES ('$barra', '$nomeProduto', '$marca', '$caracteristicas', '$valordevenda', '$valordecompra', '$logado', '$dataHora')";
         mysqli_query($conexao, $query);
     }
 
@@ -163,9 +166,6 @@ if (isset($_GET['id'])) {
 if (!isset($_SESSION['produtos'])) {
     $_SESSION['produtos'] = array();
 }
-
-
-
 
    // Se o produto for encontrado, remova-o da lista
     if ($indiceProduto != -1) {

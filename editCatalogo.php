@@ -75,7 +75,7 @@
 
                  <div>
                  <label>Valor de Venda por Unidade: *</label><br>
-                     <input type="decimal" size="306" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
+                     <input type="decimal" size="50" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
                  </div><br>
                 
                  <div>
@@ -93,12 +93,12 @@
 <div>
                      <label>Código de Barras: *</label><br>
                      <input type="number" size="15" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" value="<?php echo $barra ?>">
-                 
+                     <br>
                      <input type="hidden" name="id" value="<?php echo $id ?>">
+                     <br>
                      <input type="submit" name="update" id="submit">
                      
-                     
-
+                   
                  </div><br>
 
              </form>   

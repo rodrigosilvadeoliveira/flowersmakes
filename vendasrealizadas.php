@@ -35,7 +35,7 @@ include_once('config.php');
 <br><br><br>
    
 <?php
-    echo "<h1 id='BemVindo'>Bem vindo <U>$logado</u></h1>";
+    echo "<h1 id='BemVindo'>Vendas realizadas</h1>";
 ?>
 <br>
 <a id="vendasrealizadas" value="Vendas Realizadas" href="vendas.php">Novo Cadastro</a>

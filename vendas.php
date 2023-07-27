@@ -128,11 +128,47 @@ if (isset($_POST['confirmar_compra'])) {
         $valordevenda = $produto['valordevenda'];
         $valordecompra = $produto['valordecompra'];
         
+        // Verifique se o produto está na tabela de compra e se há quantidade suficiente para vender
+        $query_compra = "SELECT * FROM novos WHERE barra = '$barra'";
+        $resultado_compra = mysqli_query($conexao, $query_compra);
+
+        if (mysqli_num_rows($resultado_compra) > 0) {
+            $compra = mysqli_fetch_assoc($resultado_compra);
+            $qtdcomprada = $compra['qtdcomprada'];
+
+            if ($qtdcomprada >= 1) {
+                // O produto está na tabela de compra e há quantidade suficiente para vender
+                // Atualize a quantidade comprada na tabela de compra
+                $nova_qtdcomprada = $qtdcomprada - 1;
+                $query_update_compra = "UPDATE novos SET qtdcomprada = $nova_qtdcomprada WHERE barra = '$barra'";
+                mysqli_query($conexao, $query_update_compra);
+
+                // Registre a venda na tabela de vendas
+                $query_venda = "INSERT INTO vendas (barra, produto, marca, caracteristicas, valordevenda, valordecompra, usuario, data_hora) VALUES ('$barra', '$nomeProduto', '$marca', '$caracteristicas', '$valordevenda', '$valordecompra', '$logado', '$dataHora')";
+                mysqli_query($conexao, $query_venda);
+            } else {
+                echo "Quantidade insuficiente para vender o produto com o código de barras: $barra";
+            }
+        } else {
+            echo "Produto com o código de barras $barra não está na tabela de compra.";
+        }
+    }
+
+    // Feche a conexão com o banco de dados (se você já está conectado, essa parte não é necessária)
+    mysqli_close($conexao);
+
+    // Limpe a lista de produtos na sessão
+    $_SESSION['produtos'] = array();
+
+    // Redirecione para a mesma página para atualizar a exibição
+    header("Location: vendas.php");
+    exit();
+
 
         // Query de inserção
         $query = "INSERT INTO vendas (barra, produto, marca, caracteristicas, valordevenda, valordecompra, usuario, data_hora) VALUES ('$barra', '$nomeProduto', '$marca', '$caracteristicas', '$valordevenda', '$valordecompra', '$logado', '$dataHora')";
         mysqli_query($conexao, $query);
-    }
+    
 
     // Feche a conexão com o banco de dados
     mysqli_close($conexao);

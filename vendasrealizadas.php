@@ -53,6 +53,7 @@ include_once('config.php');
       <th scope="col">usuario</th>
       <th scope="col">data_hora</th>
       <th scope="col">......</th>
+      <th scope="col">Observação</th>
     </tr>
   </thead>
   <tbody>
@@ -88,6 +89,7 @@ include_once('config.php');
                 </svg>
             </a>
 </td>";
+            echo "<td>" .$user_data['obs']. "</td>";
             echo "</tr>";
 
         }

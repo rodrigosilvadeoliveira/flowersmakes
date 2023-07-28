@@ -50,6 +50,7 @@ include_once('config.php');
       <th scope="col">Valor de Venda</th>
       <th scope="col">Qtd Comprada</th>
       <th scope="col">Valor de Compra</th>
+      <th scope="col">Data e Hora</th>
       <th scope="col">......</th>
     </tr>
   </thead>
@@ -73,6 +74,8 @@ include_once('config.php');
             echo "<td>" .$user_data['qtdcomprada']. "</td>";
             
             echo "<td>" .$user_data['valordecompra']. "</td>";
+            
+            echo "<td>" .$user_data['data_hora']. "</td>";
             
             echo "<td> 
             <a class='btn btn-sm btn-primary' href='editCatalogo.php?id=$user_data[id]' title='Editar'>

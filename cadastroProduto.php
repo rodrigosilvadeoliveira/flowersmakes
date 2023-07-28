@@ -1,10 +1,17 @@
 <?php include("cabecalho.php")?>
 <?php
+session_start();
+ini_set('display_errors', 1); // Exibir erros no navegador (para fins de desenvolvimento)
+error_reporting(E_ALL); // Relatar todos os tipos de erro (para fins de desenvolvimento)
+date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Brasil/Brasília
+
 if(isset($_POST['submit']))
 {
 include_once("config.php");
 error_reporting(0);
-
+// Insira as informações da compra no banco de dados
+$dataHora = date('Y-m-d H:i:s'); // Data e hora atual
+print_r($dataHora);
 $barra = $_POST['barra'];
 $produto = $_POST['produto'];
 $marca = $_POST['marca'];
@@ -13,7 +20,7 @@ $valordevenda = $_POST['valordevenda'];
 $qtdcomprada =  $_POST['qtdcomprada'];
 $valordecompra = $_POST['valordecompra'];
 
-$result = mysqli_query($conexao, "INSERT INTO novos (barra,produto,marca,caracteristicas,valordevenda,qtdcomprada,valordecompra) values ('$barra','$produto','$marca','$caracteristicas','$valordevenda','$qtdcomprada', '$valordecompra')");
+$result = mysqli_query($conexao, "INSERT INTO novos (barra,produto,marca,caracteristicas,valordevenda,qtdcomprada,valordecompra, data_hora) values ('$barra','$produto','$marca','$caracteristicas','$valordevenda','$qtdcomprada', '$valordecompra', '$dataHora')");
 
 header('Location: cadastroProduto.php');
 }

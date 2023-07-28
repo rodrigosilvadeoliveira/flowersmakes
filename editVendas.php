@@ -17,7 +17,7 @@
                 $marca = $user_data['marca'];
                 $caracteristicas = $user_data['caracteristicas'];
                 $valordevenda = $user_data['valordevenda'];
-                
+                $obs = $user_data['obs'];
             }
         }
         else
@@ -76,7 +76,11 @@
                  <label>Valor de Venda por Unidade: *</label><br>
                      <input type="decimal" size="50" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
                  </div><br>
-                
+
+                 <div>
+                     <label>Observação: *</label><br>
+                     <input type="varchar" size="50" name="obs" placeholder="obs" id="obs" maxlength="50" value="<?php echo $obs ?>">
+                 </div><br>
                  
 <div>
                      <label>Código de Barras: *</label><br>

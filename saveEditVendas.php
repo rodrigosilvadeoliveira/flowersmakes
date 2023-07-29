@@ -9,9 +9,10 @@
         $marca = $_POST['marca'];
         $caracteristicas = $_POST['caracteristicas'];
         $valordevenda = $_POST['valordevenda'];
+        $obs = $_POST['obs'];
         
         $sqlInsert = "UPDATE vendas 
-        SET barra='$barra',produto='$produto',marca='$marca',caracteristicas='$caracteristicas',valordevenda='$valordevenda'
+        SET barra='$barra',produto='$produto',marca='$marca',caracteristicas='$caracteristicas',valordevenda='$valordevenda',obs='$obs'
         WHERE id=$id";
         $result = $conexao->query($sqlInsert);
         print_r($result);

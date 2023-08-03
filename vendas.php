@@ -37,7 +37,7 @@ include_once('config.php');
     </head>
 <body>
 <br><br><br>
-   
+<br>
    <?php
        echo "<h1 id='BemVindo'>Vendedor(a) <U>$logado</u></h1>";
    ?>
@@ -45,7 +45,7 @@ include_once('config.php');
 <form id="meuForm" method="POST" action="vendas.php">
         <label for="codigo_barras">Código de Barras:</label>
         <input type="text" name="codigo_barras" id="codigo_barras" />
-        <input type="submit" value="Consultar" />
+        <input type="submit" value="Consultar" id="consultar"/>
     </form>
 <table class="table" id="tabelaAtendimento">
   <thead>
@@ -242,7 +242,7 @@ echo "</tr>";
 
 ?>
 <br>
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmacaoModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#confirmacaoModal" id="confirmar">
     Confirmar Compra
 </button>
 

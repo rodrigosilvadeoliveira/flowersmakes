@@ -71,8 +71,16 @@ body{
 #BemVindo
 {
     text-align: center;
-    color: white;
+    
     color: rgb(172, 16, 130);
+
+}
+#exportar
+{
+    text-align: justify;
+    font-size: 20px;
+    
+    color:;
 
 }
 
@@ -218,6 +226,22 @@ legend{
 #incluirCadastro:hover{
     background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80,19,195));
 }
+#vendasrealizadas{
+    margin-left: 15px;
+    background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
+    width: 10%;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+    
+    
+}
+#vendasrealizadas:hover{
+    background-image: linear-gradient(to right, rgb(0, 80, 172), rgb(80,19,195));
+}
 #incluirProduto{
     margin-top: 15px;
     margin-left: 155px;
@@ -279,7 +303,17 @@ legend{
     height: 5vh;
     fill: rgb(172, 16, 130);
   }
-  @media  (max-width: 1500px){
+  #menu {
+    display: none;
+  }
+  #pular {
+    margin-top: 100%;
+}
+  @media (max-width: 400px){
+    #sair {
+        margin-top: 10%;
+        margin-left: 20%;
+    }
     #flowers{
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
         height: top;
@@ -311,5 +345,30 @@ legend{
             padding: 15px;
             border-radius: 15px;
             width: 13,5%;
+        }
+    .navbar-brand {
+            display: none;
+          }
+          #tabelaAtendimento{
+            margin-left: 15px;
+            margin-top: 20px;
+            background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
+            width: 50%;
+            border: none;
+            padding: 15px;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+            border-radius: 10px;
+        
+        }
+        #consultar{
+            margin-left: 4%;
+        }
+        #confirmar{
+            margin-left: 4%;
+            background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
+            width: 50%;
+            
         }
   }

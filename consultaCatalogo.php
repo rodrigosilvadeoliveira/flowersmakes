@@ -32,7 +32,7 @@ include_once('config.php');
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <br><br><br>
+    <br><br><br><br>
 <?php
     echo "<h1 id='BemVindo'>Catalogo de Produtos e Estoque</h1>";
 ?>
@@ -50,7 +50,7 @@ include_once('config.php');
       <th scope="col">Valor de Venda</th>
       <th scope="col">Qtd Comprada</th>
       <th scope="col">Valor de Compra</th>
-      <th scope="col">Data e Hora</th>
+      <th scope="col">Data e hora</th>
       <th scope="col">......</th>
     </tr>
   </thead>

@@ -35,8 +35,14 @@ include_once('config.php');
 <br><br><br>
    
 <?php
-    echo "<h1 id='BemVindo'>Vendas realizadas</h1>";
+    echo "<h3 id='BemVindo'>Vendas realizadas</h3>";
 ?>
+<div>
+    <!-- Botão para acionar a geração do arquivo Excel -->
+    <a href="criarArquivo.php" target="_blank">
+        <button>Exportar para Excel</button>
+    </a>
+</div>
 <br>
 <a id="vendasrealizadas" value="Vendas Realizadas" href="vendas.php">Novo Cadastro</a>
 <br>

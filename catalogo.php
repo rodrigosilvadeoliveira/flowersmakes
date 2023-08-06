@@ -61,23 +61,41 @@
 	white-space: nowrap;
 
 }
+.horizontal_slider::-webkit-scrollbar {
+	display: none;
+}
+	
+
+	.slider_container {
+		display: block;
+		white-space: nowrap;
+
+	}
 .item {
 
     display: inline-block;
     margin-right: 10px;
 }
-#imagens{
-    width: 250px;
-    height: 250%;
+.imagens{
+    width: 100px;
+    height: 100px;
     margin: 10px;
 
 }
 h2 {
-    text-align: center;
+    text-align: left;
+    font-size: 16px;font-size: 16px;
     color: #000;
+   
 }
 h3 {
-    text-align: center;
+    text-align: left;
+    font-size: 16px;
+}
+.preço{
+    font-size: 16px;
+    text-align: justify;
+    margin-top: 10px;
 }
 #informarcaoProdutos{
     font-size: 16px;
@@ -87,6 +105,39 @@ h3 {
 #ilustrativa{
     font-size: 16px;
 
+}
+#tabelaCatalogo{
+    margin-left: 15px;
+    margin-top: -120px;
+    background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
+    width: 98.5%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+@media (max-width: 400px) {
+  .horizontal_slider {
+	display: block;
+	width: 100%;
+	overflow-x: scroll;
+	margin-top: 20px;
+	padding: 5px;
+	box-sizing: border-box;
+	
+}
+.horizontal_slider::-webkit-scrollbar {
+	display: none;
+}
+
+.slider_container {
+	display: block;
+	white-space: nowrap;
+
+}
 }
   </style>
 </head>
@@ -112,79 +163,86 @@ h3 {
       </div>
     </nav>
   </header>
-<br><br><br><br><br><br><br><br>
+<table class="table" id="tabelaCatalogo">
   <section id="rosto">
-    <!-- Conteúdo da Seção 1 -->
-    <tr><td><img id="imagens" src="produtos/Trio_Sobrancelhas_uni_makeup1.jpeg" align="left" border=""><h3 id="ilustrativa">Imagens meramente ilustrativas.</h3>
-  <h2 id="nomeProduto">Uni makeup<br>Paleta Trio Sobrancelhas Eyebrow Pocket</h2><h4 id="sku">Nº 1713</h4><h3 id="informarcaoProdutos"><br>
+    <!-- Conteúdo da Seção rosto -->
+ <tr><td><img class="imagens" id="" src="produtos/1713_Trio_Sobrancelhas_uni_makeup.jpeg" align="left" border="">
+ <strong id="nomeProduto">Uni makeup<br>Paleta Trio Sobrancelhas Eyebrow Pocket </strong><strong id="sku">Nº 1713</strong><h3 class="preço">R$15,00</h3><h3 id="informarcaoProdutos">
  <b> INFORMAÇÕES DO PRODUTO:</b>
-O Trio de Sobrancelhas Eyebrow Pocket chegou para fazer a diferença e dar praticidade a sua maquiagem.
-<br> É um estojinho super fofo com 3 tons de sombras e 1 pincel aplicador.
- <br><b>CARACTERÍSTICAS DO PRODUTO:</b>
- Efeito matte,
-Preenchimento perfeito,
-Acabamento natural.
-<br>
-<b>Modo de usar:</b> aplicar o Trio de Sobrancelhas Eyebrow Pocket Colors delineando e corrigindo possíveis falhas com o pincel aplicador.
-  </h3></td></tr>
-  </section>
-  <!-- Outras seções ... -->
-  <section id="section2">
-    <!-- Conteúdo da Seção 1 -->
-    <tr><td><img id="imagens" src="produtos/1664_Po_de_Banana_da_Amar_Make.jpeg" align="left" border=""><h3 id="ilustrativa">Imagens meramente ilustrativas.</h3>
-  <h2 id="nomeProduto">Uni makeup<br>Paleta Trio Sobrancelhas Eyebrow Pocket</h2><h3 id="informarcaoProdutos"><br>
+  O Trio de Sobrancelhas Eyebrow Pocket chegou para fazer a diferença e dar praticidade a sua maquiagem.
+  É um estojinho super fofo com 3 tons de sombras e 1 pincel aplicador.
+ </h3></td></tr><br>
+
+ <tr><td><img class="imagens" id="" src="produtos/1664_Po_de_Banana_da_Amar_Make.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Pó de Banana Amar Make </strong><strong id="sku">Nº 1664</strong><h3 class="preço">R$10,00</h3><h3 id="informarcaoProdutos">
  <b> INFORMAÇÕES DO PRODUTO:</b>
-O Trio de Sobrancelhas Eyebrow Pocket chegou para fazer a diferença e dar praticidade a sua maquiagem.
-<br> É um estojinho super fofo com 3 tons de sombras e 1 pincel aplicador.
- <br><b>CARACTERÍSTICAS DO PRODUTO:</b>
- Efeito matte,
-Preenchimento perfeito,
-Acabamento natural.
-<br>
-<b>Modo de usar:</b> aplicar o Trio de Sobrancelhas Eyebrow Pocket Colors delineando e corrigindo possíveis falhas com o pincel aplicador.
-  </h3></td></tr>
-    </section>
-    <section id="section3">
-    <!-- Conteúdo da Seção 1 -->
-    <tr><td><img id="imagens" src="produtos/Trio_Sobrancelhas_uni_makeup1.jpeg" align="left" border=""><h3 id="ilustrativa">Imagens meramente ilustrativas.</h3>
-  <h2 id="nomeProduto">Uni makeup<br>Paleta Trio Sobrancelhas Eyebrow Pocket</h2><h3 id="informarcaoProdutos"><br>
+  O Pó de Banana da Amar Make é ideal para a finalização da maquiagem.<br>
+  Deixa a pele sequinha, fazendo a maquiagem durar muito mais tempo e diminuindo a oleosidade da pele.<br>
+  O Pó de Banana não adiciona cor e dá o chamado disfarce óptico em fotos e vídeos (não estoura no flash).
+ </h3></td></tr><br>
+ 
+ <tr><td><img class="imagens" id="" src="produtos/1775_Pó_Banana_Even.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Pó de Banana<br>EVEN </strong><strong id="sku">Nº 1775</strong><h3 class="preço">R$12,00</h3><h3 id="informarcaoProdutos">
  <b> INFORMAÇÕES DO PRODUTO:</b>
-O Trio de Sobrancelhas Eyebrow Pocket chegou para fazer a diferença e dar praticidade a sua maquiagem.
-<br> É um estojinho super fofo com 3 tons de sombras e 1 pincel aplicador.
- <br><b>CARACTERÍSTICAS DO PRODUTO:</b>
- Efeito matte,
-Preenchimento perfeito,
-Acabamento natural.
-<br>
-<b>Modo de usar:</b> aplicar o Trio de Sobrancelhas Eyebrow Pocket Colors delineando e corrigindo possíveis falhas com o pincel aplicador.
-  </h3></td></tr>
-    </section>
-    <section id="section4">
-    <!-- Conteúdo da Seção 1 -->
-    <tr><td><img id="imagens" src="produtos/Trio_Sobrancelhas_uni_makeup1.jpeg" align="left" border=""><h3 id="ilustrativa">Imagens meramente ilustrativas.</h3>
-  <h2 id="nomeProduto">Uni makeup<br>Paleta Trio Sobrancelhas Eyebrow Pocket</h2><h3 id="informarcaoProdutos"><br>
+ O pó banana é solto e fininho, desenvolvido para todos os tipos de pele, perfeito para aquelas foto sem estourar no flash, seu tom amarelado se adapta a maquiagem deixando mais homogênea e uniforme
+</h3></td></tr><br>
+
+<tr><td><img class="imagens" id="" src="produtos/1651_Contorno_Facial_Dia_a_Dia_Mahav.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Contorno Facial<br>Dia a Dia Mahav </strong><strong id="sku">Nº 1651</strong><h3 class="preço">R$10,00</h3><h3 id="informarcaoProdutos">
  <b> INFORMAÇÕES DO PRODUTO:</b>
-O Trio de Sobrancelhas Eyebrow Pocket chegou para fazer a diferença e dar praticidade a sua maquiagem.
-<br> É um estojinho super fofo com 3 tons de sombras e 1 pincel aplicador.
- <br><b>CARACTERÍSTICAS DO PRODUTO:</b>
- Efeito matte,
-Preenchimento perfeito,
-Acabamento natural.
-<br>
-<b>Modo de usar:</b> aplicar o Trio de Sobrancelhas Eyebrow Pocket Colors delineando e corrigindo possíveis falhas com o pincel aplicador.
-  </h3></td></tr>
-    </section>
-    <section id="acessorios">
-    <!-- Conteúdo da Seção 1 -->
-    <tr><td><img id="imagens" src="produtos/pre_make_perfect_face.jpg" border="">
-<h2>Perfect Face</h2><h3 id="informarcaoProdutos"><b> INFORMAÇÕES DO PRODUTO:</b>O Hidratante Belle Angel hidrata profundamente a pele após a remoção da maquiagem e pode ser usado como hidratante facial comum.<br>
-creme pra hidratar a pele do rosto de marca referência em cuidados da pele, e uma das principais do mercado em produção de cremes faciais ideal pra firmar a pele e ajuda a produzir colágeno ele combate o envelhecimento precoce diminui rugas e diminui linhas de expressões pele iluminada e livres de toxinas protege a pele
-<br><b>Dica:</b> E pra finalizar a sua rotina de Skin Care Pós-Make, aplique o hidratante no rosto e massageie em movimentos circulares até sua completa absorção. A diquinha é usar todos os dias.</h3></td></tr>
-  <tr><td><a href="pagina_igrejas.html"><img id="imagens" src="produtos/escova_magica.jpeg" border=""><h2>Escova Magica</h2><h3>Escova para cabelo</h3></a></td></tr>
-  <section id="section3">
-  <tr><td><img id="imagens" src="produtos/Cute_Gloss_da_Vivai.jpg" border=""><h2>Cute Gloss da Vivai</h2><h3>Hidratante Labial</h3></td></tr>
-</tr>
-    </section>
+ O Contorno Facial Dia a Dia Mahav é um pó compacto fino, macio e delicado! A pigmentação é perfeita para criar os efeitos de luz e sombra de forma natural, fácil de aplicar e esfumar, sem marcar.
+</h3></td></tr><br>
+
+<tr><td><img class="imagens" id="" src="produtos/1666_Double_Shadows.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Double Shadows Duo<br>Para sobrancelhas </strong><strong id="sku">Nº 1666</strong><h3 class="preço">R$12,00</h3><h3 id="informarcaoProdutos">
+ <b> INFORMAÇÕES DO PRODUTO:</b>
+ O Contorno Facial Dia a Dia Mahav é um pó compacto fino, macio e delicado! A pigmentação é perfeita para criar os efeitos de luz e sombra de forma natural, fácil de aplicar e esfumar, sem marcar.
+</h3></td></tr><br>
+
+<tr><td><img class="imagens" id="" src="produtos/1743_Base antioxidante.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Base antioxidante<br>mia make </strong><strong id="sku">Nº 1743</strong><h3 class="preço">R$12,00</h3><h3 id="informarcaoProdutos">
+ <b> INFORMAÇÕES DO PRODUTO:</b>
+ Nossa nova base conta com ativos sofisticados que garantem hidratação em uma textura matte confortável. <br>
+ Com pigmentos que evitam a oxidação da cor, sua fórmula é enriquecida com Ácido Hialurônico e Rosa Mosqueta, que juntos trazem ação multifuncional para a pele, melhorando a textura e sedosidade.
+ Sua cobertura é media e permite camadas com acabamento natural.<br>
+</h3></td></tr><br>
+
+<tr><td><img class="imagens" id="" src="produtos/1724_Corretivo alta cobertura.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Corretivo alta cobertura<br>Ruby rose Flawless </strong><strong id="sku">Nº 1724</strong><h3 class="preço">R$10,00</h3><h3 id="informarcaoProdutos">
+ <b> INFORMAÇÕES DO PRODUTO:</b>
+ Possui textura líquida, acabamento matte, alta cobertura e longa duração, deixando a pele bem sequinha sem craquelar. Indicado para todos os tipos de pele, sua fórmula é capaz de corrigir imperfeições, olheiras, marcas de expressão, espinhas e até cicatrizes.<br>
+</h3></td></tr><br>
+
+<tr><td><img class="imagens" id="" src="produtos/1746_Corretivo_lua_e_neve.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Corretivo<br>lua & neve </strong><strong id="sku">Nº 1746</strong><h3 class="preço">R$10,00</h3><h3 id="informarcaoProdutos">
+ <b> INFORMAÇÕES DO PRODUTO:</b>
+ Possui textura líquida, alta cobertura e longa duração.<br>
+</h3></td></tr><br>
+
+<tr><td><img class="imagens" id="" src="produtos/1642_Corretivo líquido.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Corretivo líquido<br>Isis Rezende make UP </strong><strong id="sku">Nº 1642</strong><h3 class="preço">R$12,00</h3><h3 id="informarcaoProdutos">
+ <b> INFORMAÇÕES DO PRODUTO:</b>
+ Alta cobertura, possui vitamina E Não craquela<br>
+</h3></td></tr><br>
+
+<tr><td><img class="imagens" id="" src="produtos/1768_Multifuncional 3 em 1 Batom Blush e Sombra.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Multifuncional 3 em 1 Batom, Blush e Sombra <br>Mia Make Meu Astral
+  </strong><strong id="sku">Nº 1768</strong><h3 class="preço">R$13,00</h3><h3 id="informarcaoProdutos">
+ <b> INFORMAÇÕES DO PRODUTO:</b>
+ O Multifuncional Meu Astral é a escolha perfeita para quem procura praticidade e diversão na hora da maquiagem. 
+Sua fórmula tem secagem rápida e é fácil de esfumar. Utilize nos lábios, bochechas e pálpebras e se divirta.<br>
+</h3></td></tr><br>
+
+<tr><td><img class="imagens" id="" src="produtos/1698_Blush Líquido Dely Dely Produto 3 em 1 Blush Batom e Sombra Intense Colors.jpeg" align="left" border="">
+ <strong class="nomeProduto" id="nomeProduto">Blush Líquido Dely Dely Produto 3 em 1 Blush Batom e Sombra Intense Colors <br>Dely Dely 
+  </strong><strong id="sku">Nº 1698</strong><h3 class="preço">R$13,00</h3><h3 id="informarcaoProdutos">
+ <b> INFORMAÇÕES DO PRODUTO:</b>
+ Produtinho maravilhoso super prático para facilitar a sua maquiagem: você pode utilizá-lo como batom, blush e sombra!
+Super pigmentado e não transfere.<br>
+</h3></td></tr><br>
+
+</section>
+</table>
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       const links = document.querySelectorAll(".sobre a");

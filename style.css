@@ -77,9 +77,13 @@ body{
 }
 #exportar
 {
+    margin-left: 5px;
+   
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
     text-align: justify;
-    font-size: 20px;
-    
+    font-size: 15px;
     color:;
 
 }
@@ -228,6 +232,7 @@ legend{
 }
 #vendasrealizadas{
     margin-left: 15px;
+    margin-right: 30px;
     background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
     width: 10%;
     border: none;
@@ -309,10 +314,24 @@ legend{
   #pular {
     margin-top: 100%;
 }
+
+.d-flex {
+    margin-top: ;
+    margin-left: 2% ;
+    
+}
+#sair {
+    margin-top: ;
+    margin-left: -15% ;
+    
+}
+
+
   @media (max-width: 400px){
     #sair {
         margin-top: 10%;
-        margin-left: 20%;
+        margin-left: 10%;
+        
     }
     #flowers{
         font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;

@@ -8,6 +8,25 @@ date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Br
 if(isset($_POST['submit']))
 {
 include_once("config.php");
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $barra = $_POST["barra"];
+
+    // Consulta para verificar se o código de barras já existe
+    $sql = "SELECT * FROM novos WHERE barra = '$barra'";
+    $result = $conexao->query($sql);
+
+    if ($result->num_rows > 0) {
+        // Código de barras já existe, apresentar mensagem de alerta
+        echo "<script>alert('Código de barras já registrado no banco de dados.');</script>";
+        
+    } else {
+        // Código de barras não existe, prosseguir com o cadastro
+        // ... (código para inserir o registro no banco de dados)
+    }
+    
+}
+// Redirecionar para o formulário após exibir a mensagem de alerta
+echo "<script>window.location.href = 'cadastroProduto.php';</script>";
 error_reporting(0);
 // Insira as informações da compra no banco de dados
 $dataHora = date('Y-m-d H:i:s'); // Data e hora atual

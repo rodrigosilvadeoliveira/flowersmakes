@@ -13,11 +13,11 @@ include_once('config.php');
     if(!empty($_GET['search']))
     {
         $data = $_GET['search'];
-        $sql = "SELECT * FROM vendas WHERE barra LIKE '%$data%' or produto LIKE '%$data%' or data_hora LIKE '%$data%' ORDER BY id DESC";
+        $sql = "SELECT * FROM vendas WHERE barra LIKE '%$data%' or produto LIKE '%$data%' or datas LIKE '%$data%' ORDER BY id DESC";
     }
     else
     {
-        $sql = "SELECT * FROM vendas ORDER BY data_hora DESC";
+        $sql = "SELECT * FROM vendas ORDER BY datas DESC";
     }
     $result = $conexao->query($sql);
 ?>
@@ -39,7 +39,7 @@ include_once('config.php');
 ?>
 <div>
     <!-- Botão para acionar a geração do arquivo Excel -->
-    <a href="criarArquivo.php" target="_blank">
+    <a id="exportar" href="criarArquivo.php" target="_blank">
         <button>Exportar para Excel</button>
     </a>
 </div>
@@ -57,7 +57,8 @@ include_once('config.php');
       <th scope="col">Caracteristicas</th>
       <th scope="col">Preço</th>
       <th scope="col">usuario</th>
-      <th scope="col">data_hora</th>
+      <th scope="col">data</th>
+      <th scope="col">hora</th>
       <th scope="col">......</th>
       <th scope="col">Observação</th>
     </tr>
@@ -81,7 +82,8 @@ include_once('config.php');
             
             echo "<td>" .$user_data['usuario']. "</td>";
 
-            echo "<td>" .$user_data['data_hora']. "</td>";
+            echo "<td>" .$user_data['datas']. "</td>";
+            echo "<td>" .$user_data['hora']. "</td>";
 
             echo "<td> 
             <a class='btn btn-sm btn-primary' href='editVendas.php?id=$user_data[id]' title='Editar'>

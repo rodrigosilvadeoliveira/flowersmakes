@@ -118,8 +118,10 @@ if (isset($_POST['confirmar_compra'])) {
 
     $logado = $_SESSION['usuario'];
     // Insira as informações da compra no banco de dados
-    $dataHora = date('Y-m-d H:i:s'); // Data e hora atual
+    $datas = date('Y-m-d'); // Data e hora atual
+    $hora = date('H:i:s'); // Data e hora atual
     print_r($dataHora);
+    print_r($hora);
     foreach ($_SESSION['produtos'] as $produto) {
         $barra = $produto['barra'];
         $nomeProduto = $produto['produto'];
@@ -144,15 +146,18 @@ if (isset($_POST['confirmar_compra'])) {
                 mysqli_query($conexao, $query_update_compra);
 
                 // Registre a venda na tabela de vendas
-                $query_venda = "INSERT INTO vendas (barra, produto, marca, caracteristicas, valordevenda, valordecompra, usuario, data_hora) VALUES ('$barra', '$nomeProduto', '$marca', '$caracteristicas', '$valordevenda', '$valordecompra', '$logado', '$dataHora')";
+                $query_venda = "INSERT INTO vendas (barra, produto, marca, caracteristicas, valordevenda, valordecompra, usuario, datas, hora) VALUES ('$barra', '$nomeProduto', '$marca', '$caracteristicas', '$valordevenda', '$valordecompra', '$logado', '$datas', '$hora')";
                 mysqli_query($conexao, $query_venda);
             } else {
-                echo "Quantidade insuficiente para vender o produto com o código de barras: $barra";
+              //  echo "Quantidade insuficiente para vender o produto com o código de barras: $barra";
+                echo "<script>alert('Quantidade insuficiente para vender o produto com o código de barras: $barra');</script>";
             }
         } else {
             echo "Produto com o código de barras $barra não está na tabela de compra.";
         }
     }
+    // Redirecionar para o formulário após exibir a mensagem de alerta
+echo "<script>window.location.href = 'vendas.php';</script>";
 
     // Feche a conexão com o banco de dados (se você já está conectado, essa parte não é necessária)
     mysqli_close($conexao);

@@ -1,5 +1,7 @@
 <?php include("cabecalho.php")?>
 <?php
+include('verificarLogin.php');
+verificarLogin();
     include_once('config.php');
 
     if(!empty($_GET['id']))

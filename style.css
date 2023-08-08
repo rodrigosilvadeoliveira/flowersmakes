@@ -78,14 +78,11 @@ body{
 #exportar
 {
     margin-left: 5px;
-   
     border: none;
     padding: 10px;
     border-radius: 10px;
     text-align: justify;
     font-size: 15px;
-    color:;
-
 }
 
 #login,#cadastre{
@@ -316,15 +313,12 @@ legend{
 }
 
 .d-flex {
-    margin-top: ;
     margin-left: 2% ;
     
 }
 #sair {
-    margin-top: ;
     margin-left: -15% ;
-    
-}
+    }
 
 
   @media (max-width: 400px){

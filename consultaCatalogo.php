@@ -1,5 +1,7 @@
 <?php include("cabecalho.php")?>
 <?php
+include('verificarLogin.php');
+verificarLogin();
 session_start();
 include_once('config.php');
    // print_r($_SESSION);
@@ -32,7 +34,7 @@ include_once('config.php');
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <br><br><br><br>
+    <br><br>
 <?php
     echo "<h1 id='BemVindo'>Catalogo de Produtos e Estoque</h1>";
 ?>
@@ -45,7 +47,32 @@ include_once('config.php');
       <th scope="col">#</th>
       <th scope="col">Barra</th>
       <th scope="col">Produto</th>
-      <th scope="col">Marca</th>
+      <th scope="col"><label for="categoria">Filtrar por categoria:</label><br>
+<select id="categoria">
+  <option value="">Todas</option>
+  <option value="Acessórios">Acessórios</option>
+  <option value="Bijouteria">Bijouteria</option>
+  <option value="Boca">Boca</option>
+  <option value="Mãos">Mãos</option>
+  <option value="Olhos">Olhos</option>
+  <option value="rosto">Rosto</option>
+  <option value="sobrancelhas">Sobrancelhas</option>
+</select></th>
+<th scope="col"><label for="marca">Filtrar por marca:</label><br>
+<select id="marca">
+  <option value="">Todas</option>
+  <option value="belle angel">Belle Angel</option>
+  <option value="belle femme">Belle Femme</option>
+  <option value="dapop">Dapop</option>
+  <option value="even">Even</option>
+  <option value="max love">Max Love</option>
+  <option value="mia make">Mia Make</option>
+  <option value="meili star">Meili Star</option>
+  <option value="miss catherine">Miss Catherine</option>
+  <option value="super poderes">Super Poderes</option>
+  <option value="venus">Venus</option>
+  <option value="vivai">Vivai</option>
+</select></th>
       <th scope="col">Caracteristicas</th>
       <th scope="col">Valor de Venda</th>
       <th scope="col">Qtd Comprada</th>
@@ -64,6 +91,8 @@ include_once('config.php');
             echo "<td>" .$user_data['barra']. "</td>";
 
             echo "<td>" .$user_data['produto']. "</td>";
+           
+            echo "<td>" .$user_data['categoria']. "</td>";
             
             echo "<td>" .$user_data['marca']. "</td>";
             
@@ -117,5 +146,45 @@ include_once('config.php');
     {
         window.location = 'consultaCatalogo.php?search='+search.value;
     }
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('categoria').addEventListener('change', function() {
+      var categoriaSelecionada = this.value;
+      var linhas = document.querySelectorAll('tbody tr');
+
+      linhas.forEach(function(linha) {
+        var categoriaTd = linha.querySelector('td:nth-child(4)'); // Quarta coluna é a de Categoria
+        var categoriaProduto = categoriaTd.textContent.toLowerCase().trim(); // Pegando o texto da categoria e colocando em minúsculas
+
+        // Verificando se a categoria selecionada é igual à categoria do produto na linha atual
+        if (categoriaSelecionada === '' || categoriaProduto === categoriaSelecionada) {
+          linha.style.display = 'table-row'; // Mostra a linha
+        } else {
+          linha.style.display = 'none'; // Esconde a linha
+        }
+      });
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('marca').addEventListener('change', function() {
+      var categoriaSelecionada = this.value;
+      var linhas = document.querySelectorAll('tbody tr');
+
+      linhas.forEach(function(linha) {
+        var categoriaTd = linha.querySelector('td:nth-child(5)'); // Quarta coluna é a de Categoria
+        var categoriaProduto = categoriaTd.textContent.toLowerCase().trim(); // Pegando o texto da categoria e colocando em minúsculas
+
+        // Verificando se a categoria selecionada é igual à categoria do produto na linha atual
+        if (categoriaSelecionada === '' || categoriaProduto === categoriaSelecionada) {
+          linha.style.display = 'table-row'; // Mostra a linha
+        } else {
+          linha.style.display = 'none'; // Esconde a linha
+        }
+      });
+    });
+  });
 </script>
 </html>

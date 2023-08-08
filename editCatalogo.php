@@ -1,5 +1,7 @@
 <?php include("cabecalho.php")?>
 <?php
+include('verificarLogin.php');
+verificarLogin();
     include_once('config.php');
 
     if(!empty($_GET['id']))
@@ -14,6 +16,7 @@
 
                 $barra = $user_data['barra'];
                 $produto = $user_data['produto'];
+                $categoria = $user_data['categoria'];
                 $marca = $user_data['marca'];
                 $caracteristicas = $user_data['caracteristicas'];
                 $valordevenda = $user_data['valordevenda'];
@@ -51,7 +54,7 @@
 </a>
 
 <br>
-<fieldset style="width: 50%; height: 220%; margin: 0px auto; background-color:#f8bdc6">
+<fieldset style="width: 30%; height: 220%; margin: 0px auto; background-color:#f8bdc6">
          
          
              <form id="insert_form" name="cadastrodeprodutos" method="post" action="saveEditCatalogo.php">
@@ -60,6 +63,11 @@
                  <div>
                      <label>Produto: *</label><br>
                      <input type="text"size="50" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50" value="<?php echo $produto ?>" required>
+                 </div><br>
+
+                 <div>
+                     <label>Categoria: *</label><br>
+                     <input type="text"size="50" name="categoria" placeholder="informe categoria" id="categoria" maxlength="50" value="<?php echo $categoria ?>" required>
                  </div><br>
  
                  <div>

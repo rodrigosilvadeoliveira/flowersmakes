@@ -1,5 +1,8 @@
+
 <?php include("cabecalho.php")?>
 <?php
+include('verificarLogin.php');
+verificarLogin();
 session_start();
 ini_set('display_errors', 1); // Exibir erros no navegador (para fins de desenvolvimento)
 error_reporting(E_ALL); // Relatar todos os tipos de erro (para fins de desenvolvimento)

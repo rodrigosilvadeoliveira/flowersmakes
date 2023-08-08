@@ -6,6 +6,7 @@
         $id = $_POST['id'];
         $barra = $_POST['barra'];
         $produto = $_POST['produto'];
+        $categoria = $_POST['categoria'];
         $marca = $_POST['marca'];
         $caracteristicas = $_POST['caracteristicas'];
         $valordevenda = $_POST['valordevenda'];
@@ -13,7 +14,7 @@
         $valordecompra = $_POST['valordecompra'];
         
         $sqlInsert = "UPDATE novos 
-        SET barra='$barra',produto='$produto',marca='$marca',caracteristicas='$caracteristicas',valordevenda='$valordevenda',qtdcomprada='$qtdcomprada',valordecompra='$valordecompra'
+        SET barra='$barra',produto='$produto', categoria='$categoria', marca='$marca',caracteristicas='$caracteristicas',valordevenda='$valordevenda',qtdcomprada='$qtdcomprada',valordecompra='$valordecompra'
         WHERE id=$id";
         $result = $conexao->query($sqlInsert);
         print_r($result);

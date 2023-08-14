@@ -39,8 +39,7 @@ include_once('config.php');
     <script src="bootstrap.min.js"></script>
     </head>
 <body>
-<br><br><br>
-<br>
+<br id="pular">
    <?php
        echo "<h1 id='BemVindo'>Vendedor(a) <U>$logado</u></h1>";
    ?>
@@ -114,6 +113,13 @@ if (isset($_POST['confirmar_compra'])) {
     $banco = "cadastro";
     
     $conexao = mysqli_connect($host, $usuario, $senha, $banco);
+    $valorTotal = $_POST['valorTotal'];
+    $tipodePagamento = $_POST['tipodePagamento'];
+    $datas = date('Y-m-d'); // Data e hora atual
+    $hora = date('H:i:s'); // Data e hora atual
+// Insira as informações da compra no banco de dados
+$query_pagamento = "INSERT INTO pagamento (valorTotal, tipodePagamento, datas, hora) VALUES ('$valorTotal', '$tipodePagamento', '$datas', '$hora')";
+mysqli_query($conexao, $query_pagamento);
 
     if (!$conexao) {
         die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
@@ -262,13 +268,25 @@ echo "</tr>";
                 <h5 class="modal-title" id="confirmacaoModalLabel">Confirmar Compra</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                Tem certeza de que deseja confirmar a compra?
-            </div>
+           <!-- <div class="modal-body">
+                Verifique valor total da compra e selecione forma de pagamento:
+            </div>-->
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <form method="POST" action="vendas.php">
-                    <button type="submit" name="confirmar_compra" class="btn btn-primary">Confirmar</button>
+            <form method="POST" id="selectPagamento" action="vendas.php">
+                <label for="tipodePagamento"><b>Forma de Pagamento:</b></label><br>
+                <select id="tipodePagamento" name="tipodePagamento">
+                <option value="">Selecione</option>
+                <option value="credito">Crédito</option>
+                <option value="debito">Débito</option>
+                <option value="pix">Pix</option>
+                <option value="dinheiro">A vista</option>
+            </select><br>
+            <label for="tipodePagamento"><b>Valor Total:</b>
+            <input type="text" name="valorTotal" value="<?php echo $valorTotal; ?>"></label><br>
+            <p>Tem certeza de que deseja confirmar a compra?</p>
+            <button type="submit" name="confirmar_compra" class="btn btn-primary">Confirmar</button>
+        </form>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </form>
             </div>
         </div>

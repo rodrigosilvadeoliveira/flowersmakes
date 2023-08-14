@@ -2,7 +2,7 @@
 <?php
 include('verificarLogin.php');
 verificarLogin();
-session_start();
+
 ini_set('display_errors', 1); // Exibir erros no navegador (para fins de desenvolvimento)
 error_reporting(E_ALL); // Relatar todos os tipos de erro (para fins de desenvolvimento)
 date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Brasil/Brasília
@@ -35,13 +35,15 @@ $dataHora = date('Y-m-d H:i:s'); // Data e hora atual
 print_r($dataHora);
 $barra = $_POST['barra'];
 $produto = $_POST['produto'];
+$categoria = $_POST['categoria'];
 $marca = $_POST['marca'];
 $caracteristicas = $_POST['caracteristicas'];
 $valordevenda = $_POST['valordevenda'];
 $qtdcomprada =  $_POST['qtdcomprada'];
 $valordecompra = $_POST['valordecompra'];
 
-$result = mysqli_query($conexao, "INSERT INTO novos (barra,produto,marca,caracteristicas,valordevenda,qtdcomprada,valordecompra, data_hora) values ('$barra','$produto','$marca','$caracteristicas','$valordevenda','$qtdcomprada', '$valordecompra', '$dataHora')");
+
+$result = mysqli_query($conexao, "INSERT INTO novos (barra,produto,categoria,marca,caracteristicas,valordevenda,qtdcomprada,valordecompra, data_hora) values ('$barra','$produto','$categoria','$marca','$caracteristicas','$valordevenda','$qtdcomprada', '$valordecompra', '$dataHora')");
 
 header('Location: cadastroProduto.php');
 }
@@ -57,8 +59,7 @@ header('Location: cadastroProduto.php');
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <br>
-<a href="consultaCatalogo.php" >
+    <br><a href="consultaCatalogo.php" >
 <svg xmlns="http://www.w3.org/2000/svg" id="voltar" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
   <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
 </svg>
@@ -72,38 +73,43 @@ header('Location: cadastroProduto.php');
  
                  <div>
                      <label class="nomedoCampo">Produto: *</label><br>
-                     <input type="text" size="50" class="campoProduto" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50">
+                     <input type="text" class="campoTexto" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50">
+                 </div><br>
+
+                 <div>
+                     <label class="nomedoCampo">Categoria: *</label><br>
+                     <input type="text" class="campoTexto" name="produto" placeholder="Informar Categoria" id="produto" maxlength="50">
                  </div><br>
  
                  <div>
                      <label class="nomedoCampo">Marca: *</label><br>
-                     <input type="text" size="50" class="campoProduto" name="marca" placeholder="Informar a Marca" id="marca" maxlength="">
+                     <input type="text" class="campoTexto" name="marca" placeholder="Informar a Marca" id="marca" maxlength="">
                  </div><br>
  
                  <div>
                      <label class="nomedoCampo">Caracteristicas: *</label><br>
-                     <input type="text" size="50" class="campoProduto" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50"><br>
+                     <input type="text" class="campoTexto" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50"><br>
                  </div><br>
 
                  <div>
                  <label class="nomedoCampo">Valor de Venda por Unidade: *</label><br>
-                     <input type="decimal" size="306" class="campoProduto" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6">
+                     <input type="decimal" class="campoNumero" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6">
                  </div><br>
                 
                  <div class="nomedoCampo">
                  <label>Qtd comprada: *</label><br>
-                     <input type="number" size="6" class="campoProduto" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6"><br>
+                     <input type="number" class="campoNumero" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6"><br>
                                         
 
                  </div><br>
                  <div>
                  <label class="nomedoCampo">Valor de Compra: *</label><br>
-                     <input type="decimal" size="6" class="campoProduto" name="valordecompra" placeholder="quantidade comprada do lote" id="valordecompra" maxlength="6"><br><br>
+                     <input type="decimal" class="campoNumero" name="valordecompra" placeholder="quantidade comprada do lote" id="valordecompra" maxlength="6"><br><br>
 </div>
 
 <div>
                      <label class="nomedoCampo">Código de Barras: *</label><br>
-                     <input type="number" size="15" class="campoProduto" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15">
+                     <input type="number" class="campoNumero" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15">
                  
                      <input type="submit" name="submit" id="incluirProduto">
                      

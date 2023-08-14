@@ -47,17 +47,21 @@ include_once('config.php');
       <th scope="col">#</th>
       <th scope="col">Barra</th>
       <th scope="col">Produto</th>
-      <th scope="col"><label for="categoria">Filtrar por categoria:</label><br>
-<select id="categoria">
-  <option value="">Todas</option>
-  <option value="Acessórios">Acessórios</option>
-  <option value="Bijouteria">Bijouteria</option>
-  <option value="Boca">Boca</option>
-  <option value="Mãos">Mãos</option>
-  <option value="Olhos">Olhos</option>
-  <option value="rosto">Rosto</option>
-  <option value="sobrancelhas">Sobrancelhas</option>
-</select></th>
+      <th scope="col">
+  <label for="categoria">Filtrar por categoria:</label><br>
+  <select id="categoria">
+    <option value="">Todas</option>
+    <option value="acessórios">Acessórios</option>
+    <option value="bijouteria">Bijouteria</option>
+    <option value="boca">Boca</option>
+    <option value="cabelo">Cabelo</option>
+    <option value="limpreza de pele">Limpeza de pele</option>
+    <option value="mãos">Mãos</option>
+    <option value="olhos">Olhos</option>
+    <option value="rosto">Rosto</option>
+    <option value="sobrancelhas">Sobrancelhas</option>
+  </select>
+</th>
 <th scope="col"><label for="marca">Filtrar por marca:</label><br>
 <select id="marca">
   <option value="">Todas</option>
@@ -187,4 +191,24 @@ include_once('config.php');
     });
   });
 </script>
+<script>
+  // Obtenha o elemento select
+const categoriaSelect = document.getElementById('categoria');
+
+// Array com novas categorias
+const novasCategorias = ['teste', 'Teste2'];
+
+// Função para adicionar as novas categorias ao select
+function adicionarNovasCategorias() {
+  for (const novaCategoria of novasCategorias) {
+    const option = document.createElement('option');
+    option.value = novaCategoria;
+    option.textContent = novaCategoria;
+    categoriaSelect.appendChild(option);
+  }
+}
+
+// Chame a função para adicionar as novas categorias
+adicionarNovasCategorias();
+  </script>
 </html>

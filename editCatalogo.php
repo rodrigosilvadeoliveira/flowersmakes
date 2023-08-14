@@ -61,46 +61,46 @@ verificarLogin();
                 
  
                  <div>
-                     <label>Produto: *</label><br>
-                     <input type="text"size="50" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50" value="<?php echo $produto ?>" required>
+                     <label class="campodeFormulario">Produto: *</label><br>
+                     <input type="text" class="campoTexto" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50" value="<?php echo $produto ?>" required>
                  </div><br>
 
                  <div>
-                     <label>Categoria: *</label><br>
-                     <input type="text"size="50" name="categoria" placeholder="informe categoria" id="categoria" maxlength="50" value="<?php echo $categoria ?>" required>
+                     <label class="campodeFormulario">Categoria: *</label><br>
+                     <input type="text" class="campoTexto" name="categoria" placeholder="informe categoria" id="categoria" maxlength="50" value="<?php echo $categoria ?>" required>
                  </div><br>
  
                  <div>
-                     <label>Marca: *</label><br>
-                     <input type="text" size="50" name="marca" placeholder="Informar a Marca" id="marca" maxlength="" value="<?php echo $marca ?>" required>
+                     <label class="campodeFormulario">Marca: *</label><br>
+                     <input type="text" class="campoTexto" name="marca" placeholder="Informar a Marca" id="marca" maxlength="" value="<?php echo $marca ?>" required>
                  </div><br>
  
                  <div>
-                     <label>Caracteristicas: *</label><br>
-                     <input type="text" size="50" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" value="<?php echo $caracteristicas ?>">
+                     <label class="campodeFormulario">Caracteristicas: *</label><br>
+                     <input type="text" class="campoTexto" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" value="<?php echo $caracteristicas ?>">
                      <br>
                  </div><br>
 
                  <div>
-                 <label>Valor de Venda por Unidade: *</label><br>
-                     <input type="decimal" size="50" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
+                 <label class="campodeFormulario">Valor de Venda por Unidade: *</label><br>
+                     <input type="decimal" class="campoNumero" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
                  </div><br>
                 
                  <div>
-                 <label>Qtd comprada: *</label><br>
-                     <input type="number" size="6" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6" value="<?php echo $qtdcomprada ?>">
+                 <label class="campodeFormulario">Qtd comprada: *</label><br>
+                     <input type="number" class="campoNumero" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6" value="<?php echo $qtdcomprada ?>">
                      <br>
                                         
 
                  </div><br>
                  <div>
-                 <label>Valor de Compra: *</label><br>
-                     <input type="decimal" size="6" name="valordecompra" placeholder="valor de compra da unidade" id="valordecompra" maxlength="6" value="<?php echo $valordecompra ?>"><br><br>
+                 <label class="campodeFormulario">Valor de Compra: *</label><br>
+                     <input type="decimal" class="campoNumero" name="valordecompra" placeholder="valor de compra da unidade" id="valordecompra" maxlength="6" value="<?php echo $valordecompra ?>"><br><br>
 </div>
 
 <div>
-                     <label>Código de Barras: *</label><br>
-                     <input type="number" size="15" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" value="<?php echo $barra ?>">
+                     <label class="campodeFormulario">Código de Barras: *</label><br>
+                     <input type="number" class="campoNumero" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" value="<?php echo $barra ?>">
                      <br>
                      <input type="hidden" name="id" value="<?php echo $id ?>">
                      <br>

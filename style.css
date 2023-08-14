@@ -77,6 +77,7 @@ body{
 }
 #exportar
 {
+    margin-top: auto;
     margin-left: 5px;
     border: none;
     padding: 10px;
@@ -171,9 +172,21 @@ legend{
     width: 98%;
     margin-left: 5px;
 }
+/*Campos do formulario produtos*/
 .nomedoCampo{
     margin-left: 5px;
-    font-size: 25px;
+    font-size: 15px;
+    font-weight: bold;
+}
+/*campos de texto e numeros de formulario produtos e vendas*/
+.campoTexto{
+    width: 100%;
+}
+.campoNumero{
+    width: 50%;
+}
+.campodeFormulario{
+    font-weight: bold;
 }
 
 #data_nascimento{
@@ -309,16 +322,21 @@ legend{
     display: none;
   }
   #pular {
-    margin-top: 100%;
+    margin-top: 55%;
 }
 
 .d-flex {
     margin-left: 2% ;
     
 }
+
 #sair {
     margin-left: -15% ;
     }
+#dataRelatorio{
+    margin-left: 1% ;
+
+}
 
 
   @media (max-width: 400px){

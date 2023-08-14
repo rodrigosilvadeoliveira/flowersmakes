@@ -2,7 +2,7 @@
 <?php
 include('verificarLogin.php');
 verificarLogin();
-session_start();
+
 include_once('config.php');
    // print_r($_SESSION);
     if((!isset($_SESSION['usuario'])== true) and ($_SESSION['senha']) == true)
@@ -39,10 +39,20 @@ include_once('config.php');
 <?php
     echo "<h3 id='BemVindo'>Vendas realizadas</h3>";
 ?>
+<fieldset class="boxformularioDatas" style="width: 35.5%; height: 220%; margin-left: 1%; background-color:#f8bdc6">
+<form id="dataRelatorio" method="POST" action="relatorio.php">
+    <label for="data_inicio"><b>Selecione as datas do periodo desejado:</b></label><br>
+    <label for="data_inicio"><b>Data Inicio:</b></label>
+    <input type="date" name="data_inicio" id="data_inicio" />
+    <label for="data_fim"><b>Data Fim:</b></label>
+    <input type="date" name="data_fim" id="data_fim" />
+    <input type="submit" value="Exportar" id="Exportar"/>
+</form>
+</fieldset>
 <div>
-    <!-- Botão para acionar a geração do arquivo Excel -->
+    <!-- Botão para acionar a geração do arquivo Excel de toda consulta da pagina
     <a id="exportar" href="criarArquivo.php" target="_blank">
-        <button>Exportar para Excel</button>
+       -->
     </a>
 </div>
 <br>

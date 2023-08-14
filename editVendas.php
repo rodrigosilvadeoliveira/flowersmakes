@@ -52,43 +52,44 @@ verificarLogin();
 </a>
 
 <br>
-<fieldset style="width: 50%; height: 220%; margin: 0px auto; background-color:#f8bdc6">
+<fieldset style="width: 35.5%; height: 220%; margin: 0px auto; background-color:#f8bdc6">
          
          
              <form id="insert_form" name="editvendas" method="post" action="saveEditVendas.php">
                 
  
                  <div>
-                     <label>Produto: *</label><br>
-                     <input type="text"size="50" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50" value="<?php echo $produto ?>" required>
+                     <label class="campodeFormulario">Produto: *</label><br>
+                     <input type="text"class="campoTexto" placeholder="Informar nome do produto" id="produto" maxlength="50" value="<?php echo $produto ?>" required>
                  </div><br>
  
                  <div>
-                     <label>Marca: *</label><br>
-                     <input type="text" size="50" name="marca" placeholder="Informar a Marca" id="marca" maxlength="" value="<?php echo $marca ?>" required>
+                     <label class="campodeFormulario">Marca: *</label><br>
+                     <input type="text" class="campoTexto" name="marca" placeholder="Informar a Marca" id="marca" maxlength="" value="<?php echo $marca ?>" required>
                  </div><br>
  
                  <div>
-                     <label>Caracteristicas: *</label><br>
-                     <input type="text" size="50" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" value="<?php echo $caracteristicas ?>">
+                     <label class="campodeFormulario">Caracteristicas: *</label><br>
+                     <input type="text" class="campoTexto" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" value="<?php echo $caracteristicas ?>">
                      <br>
                  </div><br>
 
                  <div>
-                 <label>Valor de Venda por Unidade: *</label><br>
-                     <input type="decimal" size="50" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
+                 <label class="campodeFormulario">Valor de Venda por Unidade: *</label><br>
+                     <input type="decimal" class="campoNumero" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
                  </div><br>
 
                  <div>
-                     <label>Observação: *</label><br>
-                     <input type="varchar" size="50" name="obs" placeholder="obs" id="obs" maxlength="50" value="<?php echo $obs ?>">
+                     <label class="campodeFormulario">Observação: *</label><br>
+                     <input type="varchar" class="campoTexto" name="obs" placeholder="obs" id="obs" maxlength="50" value="<?php echo $obs ?>">
                  </div><br>
                  
 <div>
-                     <label>Código de Barras: *</label><br>
-                     <input type="number" size="15" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" value="<?php echo $barra ?>">
-                 
+                     <label class="campodeFormulario">Código de Barras: *</label><br>
+                     <p><input type="number" class="campoNumero" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" value="<?php echo $barra ?>"></p>
+                    
                      <input type="hidden" name="id" value="<?php echo $id ?>">
+                     
                      <input type="submit" name="update" id="submit">
                      
                      

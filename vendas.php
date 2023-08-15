@@ -284,7 +284,7 @@ echo "</tr>";
             <label for="tipodePagamento"><b>Valor Total:</b>
             <input type="text" name="valorTotal" value="<?php echo $valorTotal; ?>"></label><br>
             <p>Tem certeza de que deseja confirmar a compra?</p>
-            <button type="submit" name="confirmar_compra" class="btn btn-primary">Confirmar</button>
+            <button type="submit" name="confirmar_compra" class="btn btn-primary" style= 'margin-left:15%'>Confirmar</button>
         </form>
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                 </form>

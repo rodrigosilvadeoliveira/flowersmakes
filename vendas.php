@@ -274,15 +274,15 @@ echo "</tr>";
             <div class="modal-footer">
             <form method="POST" id="selectPagamento" action="vendas.php">
                 <label for="tipodePagamento"><b>Forma de Pagamento:</b></label><br>
-                <select id="tipodePagamento" name="tipodePagamento">
+                <select id="tipodePagamento" name="tipodePagamento" required>
                 <option value="">Selecione</option>
                 <option value="credito">Crédito</option>
                 <option value="debito">Débito</option>
                 <option value="pix">Pix</option>
                 <option value="dinheiro">A vista</option>
-            </select><br>
+            </select>
             <label for="tipodePagamento"><b>Valor Total:</b>
-            <input type="text" name="valorTotal" value="<?php echo $valorTotal; ?>"></label><br>
+            <input type="text" name="valorTotal" value="<?php echo $valorTotal; ?>" required></label><br>
             <p>Tem certeza de que deseja confirmar a compra?</p>
             <button type="submit" name="confirmar_compra" class="btn btn-primary" style= 'margin-left:15%'>Confirmar</button>
         </form>

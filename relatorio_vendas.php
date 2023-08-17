@@ -26,8 +26,8 @@ $sheet = $spreadsheet->getActiveSheet();
 
 // Defina o cabeçalho da tabela
 $sheet->setCellValue('A1', 'id');
-$sheet->setCellValue('B1', 'valorTotal');
-$sheet->setCellValue('C1', 'tipodePagamento');
+$sheet->setCellValue('B1', 'tipodePagamento');
+$sheet->setCellValue('C1', 'valorTotal');
 $sheet->setCellValue('D1', 'datas');
 $sheet->setCellValue('E1', 'hora');
 $sheet->setCellValue('G1', 'Total Vendas');
@@ -41,7 +41,7 @@ $sheet->setCellValue('J1', 'Kau 35%');
 $sheet->setCellValue('K1', 'Vania 35%');
 $sheet->setCellValue('L1', 'Rodrigo 10%');
 $sheet->setCellValue('M1', 'Loja 20%');
-$sheet->setCellValue('G2', '=SUM(B2:B999)');
+$sheet->setCellValue('G2', '=SUM(C2:B999)');
 $sheet->setCellValue('J2', '=P2*35/100');
 $sheet->setCellValue('K2', '=P2*35/100');
 $sheet->setCellValue('L2', '=P2*10/100');
@@ -88,8 +88,8 @@ if ($result) {
     $row = 2;
     while ($row_data = $result->fetch_assoc()) {
     $sheet->setCellValue('A' . $row, $row_data['id']);
-    $sheet->setCellValue('B' . $row, $row_data['valorTotal']);
-    $sheet->setCellValue('C' . $row, $row_data['tipodePagamento']);
+    $sheet->setCellValue('B' . $row, $row_data['tipodePagamento']);
+    $sheet->setCellValue('C' . $row, $row_data['valorTotal']);
     $sheet->setCellValue('D' . $row, $row_data['datas']);
     $sheet->setCellValue('E' . $row, $row_data['hora']);
     $row++;

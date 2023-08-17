@@ -39,7 +39,7 @@ include_once('config.php');
 <?php
     echo "<h3 id='BemVindo'>Vendas realizadas</h3>";
 ?>
-<fieldset class="boxformularioDatas" style="width: 35.5%; height: 220%; margin-left: 1%; background-color:#f8bdc6">
+<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; background-color:#f8bdc6">
 <form id="dataRelatorio" method="POST" action="relatorio.php">
     <label for="data_inicio"><b>Relatorio de Vendas por produto:</b></label><br>
     <label for="data_inicio"><b>Data Inicio:</b></label>
@@ -49,9 +49,10 @@ include_once('config.php');
     <input type="submit" value="Exportar" id="Exportar"/>
 </form>
 </fieldset>
-<fieldset class="boxformularioDatas" style="width: 35.5%; height: 220%; margin-left: 1%; background-color:#f8bdc6">
+<br>
+<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; background-color:#f8bdc6">
 <form id="dataRelatorio" method="POST" action="relatorio_vendas.php">
-    <label for="data_inicio"><b>Relatorio de Vendas diária:</b></label><br>
+    <label for="data_inicio"><b>Relatorio de Vendas por tipo de Pgto:</b></label><br>
     <label for="data_inicio"><b>Data Inicio:</b></label>
     <input type="date" name="data_inicio" id="data_inicio" />
     <label for="data_fim"><b>Data Fim:</b></label>

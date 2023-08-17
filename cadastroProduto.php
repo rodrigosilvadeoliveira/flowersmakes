@@ -65,57 +65,55 @@ header('Location: cadastroProduto.php');
 </svg>
 </a>
 <br>
-<fieldset class="boxformularioProduto" style="width: 38.5%; height: 220%; margin: 0px auto; background-color:#f8bdc6">
+<fieldset class="boxformularioProduto" style="width: 95%; height: 220%; margin: 0px auto; background-color:#f8bdc6">
          
          
-             <form id="insert_form" name="cadastrodeprodutos" method="post" action="cadastroProduto.php">
+             <form id="insert_form" class="row g-3" name="cadastrodeprodutos" method="post" action="cadastroProduto.php">
                   
  
-                 <div>
+             <div class="col-md-6">
                      <label class="nomedoCampo">Produto: *</label><br>
-                     <input type="text" class="campoTexto" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50">
+                     <input type="text" class="form-control" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50" required>
                  </div><br>
 
-                 <div>
+                 <div class="col-md-6">
                      <label class="nomedoCampo">Categoria: *</label><br>
-                     <input type="text" class="campoTexto" name="produto" placeholder="Informar Categoria" id="produto" maxlength="50">
+                     <input type="text" class="form-control" name="produto" placeholder="Informar Categoria" id="produto" maxlength="50" required>
                  </div><br>
  
-                 <div>
+                 <div class="col-md-6">
                      <label class="nomedoCampo">Marca: *</label><br>
-                     <input type="text" class="campoTexto" name="marca" placeholder="Informar a Marca" id="marca" maxlength="">
+                     <input type="text" class="form-control" name="marca" placeholder="Informar a Marca" id="marca" maxlength="" required>
                  </div><br>
  
-                 <div>
+                 <div class="col-md-6">
                      <label class="nomedoCampo">Caracteristicas: *</label><br>
-                     <input type="text" class="campoTexto" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50"><br>
+                     <input type="text" class="form-control" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" required><br>
                  </div><br>
 
-                 <div>
+                 <div class="col-md-6">
                  <label class="nomedoCampo">Valor de Venda por Unidade: *</label><br>
-                     <input type="decimal" class="campoNumero" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6">
+                     <input type="decimal" class="form-control" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" required>
                  </div><br>
                 
-                 <div class="nomedoCampo">
-                 <label>Qtd comprada: *</label><br>
-                     <input type="number" class="campoNumero" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6"><br>
+                 <div class="col-md-6">
+                 <label class="nomedoCampo">Qtd comprada: *</label><br>
+                     <input type="number" class="form-control" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6" required><br>
                                         
 
                  </div><br>
-                 <div>
+                 <div class="col-md-6">
                  <label class="nomedoCampo">Valor de Compra: *</label><br>
-                     <input type="decimal" class="campoNumero" name="valordecompra" placeholder="quantidade comprada do lote" id="valordecompra" maxlength="6"><br><br>
+                     <input type="decimal" class="form-control" name="valordecompra" placeholder="quantidade comprada do lote" id="valordecompra" maxlength="6" required><br><br>
 </div>
 
-<div>
+<div class="col-md-6">
                      <label class="nomedoCampo">Código de Barras: *</label><br>
-                     <input type="number" class="campoNumero" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15">
-                 
-                     <input type="submit" name="submit" id="incluirProduto">
-                     
-                     
-
-                 </div><br>
+                     <input type="number" class="form-control" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" required>
+                     </div>
+                     <div class="col-3">
+                        <input type="submit" name="submit" id="submit" value="Salvar">
+                     </div>
 
              </form>   
                 

@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div><img id="logo" src ="flowersLogo.jpeg">
+<div><img id="logo" src ="logo_flowers.png">
 
 </div>
     <h1 id="flowers">Sistema de Loja <br><u>Flowers Makes</u></h1>

@@ -39,7 +39,7 @@ include_once('config.php');
     <script src="bootstrap.min.js"></script>
     </head>
 <body>
-<br id="pular">
+<br >
    <?php
        echo "<h1 id='BemVindo'>Vendedor(a) <U>$logado</u></h1>";
    ?>

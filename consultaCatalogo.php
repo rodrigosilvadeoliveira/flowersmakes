@@ -17,11 +17,7 @@ include_once('config.php');
         $data = $_GET['search'];
         $sql = "SELECT * FROM novos WHERE id LIKE '%$data%' or produto LIKE '%$data%' or marca LIKE '%$data%' ORDER BY id DESC";
     }
-    else
-    {
-        $sql = "SELECT * FROM novos ORDER BY id DESC";
-    }
-    $result = $conexao->query($sql);
+
 ?>
      
 <!DOCTYPE html>
@@ -41,6 +37,19 @@ include_once('config.php');
 
 <div>
 <a id="incluirCadastro" value="Novo Cadastro" href="cadastroProduto.php">Novo Cadastro</a>
+<br>
+
+<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; margin-top:2%; background-color:#f8bdc6">
+<form id="dataRelatorio" method="POST" action="consultaCatalogo.php">
+    <label for="data_inicio"><b>Relatorio de Estoque por periodo:</b></label><br>
+    <label for="data_inicio"><b>Data Inicio:</b></label>
+    <input type="date" name="data_inicio" id="data_inicio" />
+    <label for="data_fim"><b>Data Fim:</b></label>
+    <input type="date" name="data_fim" id="data_fim" />
+    <input type="submit" value="Consultar" id="Exportar"/>
+</form>
+</fieldset>
+
 <table class="table" id="tabelaLista">
   <thead>
     <tr>
@@ -79,14 +88,44 @@ include_once('config.php');
 </select></th>
       <th scope="col">Caracteristicas</th>
       <th scope="col">Valor de Venda</th>
-      <th scope="col">Qtd Comprada</th>
+      <th scope="col">
+      <label for="qtdcomprada">Estoque:</label><br>
+  <select id="qtdcomprada">
+    <option value="">Todas</option>
+    <option value="0">0</option>
+    <option value="1">1</option>
+    <option value="2">2</option>
+    <option value="3">3</option>
+    <option value="4">5</option>
+    <option value="5">5</option>
+    <option value="6">6</option>
+    <option value="7">7</option>
+    <option value="8">8</option>
+  </select></th>
       <th scope="col">Valor de Compra</th>
-      <th scope="col">Data e hora</th>
+      <th scope="col">Data</th>
+      <th scope="col">Hora</th>
       <th scope="col">......</th>
     </tr>
   </thead>
   <tbody>
   <?php
+
+$dbHost = 'localhost';
+$dbUsername = 'root';
+$dbPassword = '';
+$dbName = 'cadastro';
+
+// Estabelecer a conexão com o banco de dados
+$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+if (isset($_POST['data_inicio']) && isset($_POST['data_fim'])) {
+    $inicio = $_POST['data_inicio'];
+    $fim = $_POST['data_fim'];
+
+$sql = "SELECT * FROM novos WHERE data BETWEEN '$inicio' AND '$fim'";
+$result = $conexao->query($sql);
+
         while($user_data = mysqli_fetch_assoc($result))
         {
             echo "<tr>";
@@ -108,7 +147,9 @@ include_once('config.php');
             
             echo "<td>" .$user_data['valordecompra']. "</td>";
             
-            echo "<td>" .$user_data['data_hora']. "</td>";
+            echo "<td>" .$user_data['data']. "</td>";
+
+            echo "<td>" .$user_data['hora']. "</td>";
             
             echo "<td> 
             <a class='btn btn-sm btn-primary' href='editCatalogo.php?id=$user_data[id]' title='Editar'>
@@ -126,7 +167,7 @@ include_once('config.php');
 
         }
 
-
+      }
 
   ?>
     
@@ -179,6 +220,26 @@ include_once('config.php');
 
       linhas.forEach(function(linha) {
         var categoriaTd = linha.querySelector('td:nth-child(5)'); // Quarta coluna é a de Categoria
+        var categoriaProduto = categoriaTd.textContent.toLowerCase().trim(); // Pegando o texto da categoria e colocando em minúsculas
+
+        // Verificando se a categoria selecionada é igual à categoria do produto na linha atual
+        if (categoriaSelecionada === '' || categoriaProduto === categoriaSelecionada) {
+          linha.style.display = 'table-row'; // Mostra a linha
+        } else {
+          linha.style.display = 'none'; // Esconde a linha
+        }
+      });
+    });
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('qtdcomprada').addEventListener('change', function() {
+      var categoriaSelecionada = this.value;
+      var linhas = document.querySelectorAll('tbody tr');
+
+      linhas.forEach(function(linha) {
+        var categoriaTd = linha.querySelector('td:nth-child(8)'); // Quarta coluna é a de Categoria
         var categoriaProduto = categoriaTd.textContent.toLowerCase().trim(); // Pegando o texto da categoria e colocando em minúsculas
 
         // Verificando se a categoria selecionada é igual à categoria do produto na linha atual

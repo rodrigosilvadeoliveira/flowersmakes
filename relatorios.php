@@ -37,8 +37,14 @@ include_once('config.php');
 <br><br><br>
    
 <?php
-    echo "<h3 id='BemVindo'>Vendas realizadas</h3>";
+    echo "<h3 id='BemVindorelatorio'>Relatórios</h3>";
 ?>
+<h3 id="instrucao" style="font-size:17px; margin-left:1%;">
+<b>*Intruções para gerar relatório:</b><br>
+1. Selecione data inicio e a data fim, de acordo com o periodo a ser consultado.
+    <p>2. Click no botão Exportar.
+    <br>3. Verificar na Pasta download arquivo excel do relatório</p> </h3>
+    
 <fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; background-color:#f8bdc6">
 <form id="dataRelatorio" method="POST" action="relatorio.php">
     <label for="data_inicio"><b>Relatorio de Vendas por produto:</b></label><br>
@@ -57,6 +63,24 @@ include_once('config.php');
     <input type="date" name="data_inicio" id="data_inicio" />
     <label for="data_fim"><b>Data Fim:</b></label>
     <input type="date" name="data_fim" id="data_fim" />
+    <input type="submit" value="Exportar" id="Exportar"/>
+</form>
+</fieldset>
+<br>
+<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; background-color:#f8bdc6">
+<form id="dataRelatorio" method="POST" action="relatorio_estoque.php">
+    <label for="data_inicio"><b>Relatorio de Estoque:</b></label><br>
+    <label for="data_inicio"><b>Data Inicio:</b></label>
+    <input type="date" name="data_inicio" id="data_inicio" />
+    <label for="data_fim"><b>Data Fim:</b></label>
+    <input type="date" name="data_fim" id="data_fim" />
+    <input type="submit" value="Exportar" id="Exportar"/>
+</form>
+</fieldset>
+<br>
+<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; background-color:#f8bdc6">
+<form id="dataRelatorio" method="POST" action="relatorio_estoque_completo.php">
+    <label for="data_inicio"><b>Exportar em planilha todo o Estoque:</b></label>
     <input type="submit" value="Exportar" id="Exportar"/>
 </form>
 </fieldset>

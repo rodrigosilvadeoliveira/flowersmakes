@@ -131,9 +131,13 @@ header('Location: login.php');
     <label for="senha" class="form-label">Senha</label>
     <input type="password"  name="senha" id="senha" class="form-control">
   </div>
-  <div class="col-5">
+  <div class="col-3">
     <label for="telefone" class="form-label">Telefone</label>
     <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="dd numero">
+  </div>
+  <div class="col-3">
+    <label for="data_nascimento" class="form-label">Data de nascimento:</label>
+    <input type="date" name="data_nascimento" id="data_nascimento"class="form-control">
   </div>
   <div class="col-md-2">
     <label for="inputState" class="form-label">Genero:</label>
@@ -144,10 +148,7 @@ header('Location: login.php');
     <option value="outros">Outros</option>
     </select>
   </div>
-  <div class="col-3">
-    <label for="data_nascimento" class="form-label">Data de nascimento:</label>
-    <input type="date" name="data_nascimento" id="data_nascimento"class="form-control">
-  </div>
+  
   <div class="col-5">
     <label for="endereco" class="form-label">Endereço</label>
     <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Rua,Avenida ...">
@@ -156,11 +157,11 @@ header('Location: login.php');
     <label for="numero" class="form-label">Numero</label>
     <input type="text" class="form-control" name="numero" id="numero" placeholder="123, bloco b, Ap10">
   </div>
-  <div class="col-md-6">
+  <div class="col-md-3">
     <label for="cidade" class="form-label">Cidade</label>
     <input type="text" name="cidade" id="cidade" class="form-control">
   </div>
-  <div class="col-md-4">
+  <div class="col-md-2">
     <label for="estado" class="form-label">Estado</label>
     <select name="estado" id="estado" class="form-select">
       <option selected>Selecione...</option>

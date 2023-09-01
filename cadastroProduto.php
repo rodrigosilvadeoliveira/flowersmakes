@@ -78,7 +78,7 @@ header('Location: cadastroProduto.php');
 
                  <div class="col-md-6">
                      <label class="nomedoCampo">Categoria: *</label><br>
-                     <input type="text" class="form-control" name="produto" placeholder="Informar Categoria" id="produto" maxlength="50" required>
+                     <input type="text" class="form-control" name="categoria" placeholder="Informar Categoria" id="produto" maxlength="50" required>
                  </div><br>
  
                  <div class="col-md-6">

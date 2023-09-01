@@ -17,7 +17,11 @@ include_once('config.php');
         $data = $_GET['search'];
         $sql = "SELECT * FROM vendas WHERE barra LIKE '%$data%' or produto LIKE '%$data%' or datas LIKE '%$data%' ORDER BY id DESC";
     }
-    
+    else
+    {
+        $sql = "SELECT * FROM vendas ORDER BY datas DESC";
+    }
+    $result = $conexao->query($sql);
 ?>
      
 <!DOCTYPE html>
@@ -33,21 +37,9 @@ include_once('config.php');
 <br><br><br>
    
 <?php
-    echo "<h3 id='BemVindo'>Consulta de Vendas realizadas</h3>";
-
-
+    echo "<h3 id='BemVindo'>Vendas realizadas</h3>";
 ?>
-<?php
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
-$dbName = 'cadastro';
 
-// Estabelecer a conexão com o banco de dados
-$conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
-
-
-?>
 <div>
     <!-- Botão para acionar a geração do arquivo Excel de toda consulta da pagina
     <a id="exportar" href="criarArquivo.php" target="_blank">
@@ -57,16 +49,6 @@ $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 <br>
 <a id="vendasrealizadas" value="Vendas Realizadas" href="vendas.php">Novo Atendimento</a>
 <br>
-<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; margin-top: 2%; background-color:#f8bdc6">
-<form id="dataRelatorio" method="POST" action="vendasrealizadas.php">
-    <label for="data_inicio"><b>Selecione o periodo a ser consultado:</b></label><br>
-    <label for="data_inicio"><b>Data Inicio:</b></label>
-    <input type="date" name="data_inicio" id="data_inicio" />
-    <label for="data_fim"><b>Data Fim:</b></label>
-    <input type="date" name="data_fim" id="data_fim" />
-    <input type="submit" value="Consultar" id="Exportar"/>
-</form>
-</fieldset>
 <div>
 <table class="table" id="tabelaLista">
   <thead>
@@ -86,16 +68,7 @@ $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
   </thead>
   <tbody>
   <?php
-
-if (isset($_POST['data_inicio']) && isset($_POST['data_fim'])) {
-    $inicio = $_POST['data_inicio'];
-    $fim = $_POST['data_fim'];
-
-$sql = "SELECT * FROM vendas WHERE datas BETWEEN '$inicio' AND '$fim'";
-$result = $conexao->query($sql);
-
-
-while($user_data = mysqli_fetch_assoc($result))
+        while($user_data = mysqli_fetch_assoc($result))
         {
             echo "<tr>";
             echo "<td>" .$user_data['id']. "</td>";
@@ -133,7 +106,7 @@ while($user_data = mysqli_fetch_assoc($result))
         }
 
 
-    }
+
   ?>
     
     </tr>

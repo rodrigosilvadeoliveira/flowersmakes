@@ -42,13 +42,11 @@ include_once('config.php');
 <br>
 
 <fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; margin-top:2%; background-color:#f8bdc6">
-<form id="dataRelatorio" method="POST" action="consultaCatalogo.php">
-    <label for="data_inicio"><b>Relatorio de Estoque por periodo:</b></label><br>
-    <label for="data_inicio"><b>Data Inicio:</b></label>
-    <input type="date" name="data_inicio" id="data_inicio" />
-    <label for="data_fim"><b>Data Fim:</b></label>
-    <input type="date" name="data_fim" id="data_fim" />
-    <input type="submit" value="Consultar" id="Exportar"/>
+<form id="dataRelatorio" method="POST" action="consultaProdutos.php">
+    <label for="nomeproduto"><b>Consultar produto no Estoque:</b></label><br>
+    <label for="nomeproduto"><b>Nome do produto:</b></label>
+    <input type="varchar" name="nomeproduto" id="nomeproduto" />
+        <input type="submit" value="Consultar" id="Exportar"/>
 </form>
 </fieldset>
 
@@ -121,55 +119,55 @@ $dbName = 'cadastro';
 // Estabelecer a conexão com o banco de dados
 $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 
-if (isset($_POST['data_inicio']) && isset($_POST['data_fim'])) {
-    $inicio = $_POST['data_inicio'];
-    $fim = $_POST['data_fim'];
+if (isset($_POST['nomeproduto'])){
+  $nome = $_POST['nomeproduto'];
 
-$sql = "SELECT * FROM novos WHERE data BETWEEN '$inicio' AND '$fim'";
+$sql = "SELECT * FROM novos WHERE produto LIKE '$nome' ORDER BY id DESC";
+
 $result = $conexao->query($sql);
 
-        while($user_data = mysqli_fetch_assoc($result))
-        {
-            echo "<tr>";
-            echo "<td>" .$user_data['id']. "</td>";
-            
-            echo "<td>" .$user_data['barra']. "</td>";
+      while($user_data = mysqli_fetch_assoc($result))
+      {
+          echo "<tr>";
+          echo "<td>" .$user_data['id']. "</td>";
+          
+          echo "<td>" .$user_data['barra']. "</td>";
 
-            echo "<td>" .$user_data['produto']. "</td>";
-           
-            echo "<td>" .$user_data['categoria']. "</td>";
-            
-            echo "<td>" .$user_data['marca']. "</td>";
-            
-            echo "<td>" .$user_data['caracteristicas']. "</td>";
-            
-            echo "<td>" .$user_data['valordevenda']. "</td>";
+          echo "<td>" .$user_data['produto']. "</td>";
+         
+          echo "<td>" .$user_data['categoria']. "</td>";
+          
+          echo "<td>" .$user_data['marca']. "</td>";
+          
+          echo "<td>" .$user_data['caracteristicas']. "</td>";
+          
+          echo "<td>" .$user_data['valordevenda']. "</td>";
 
-            echo "<td>" .$user_data['qtdcomprada']. "</td>";
-            
-            echo "<td>" .$user_data['valordecompra']. "</td>";
-            
-            echo "<td>" .$user_data['data']. "</td>";
+          echo "<td>" .$user_data['qtdcomprada']. "</td>";
+          
+          echo "<td>" .$user_data['valordecompra']. "</td>";
+          
+          echo "<td>" .$user_data['data']. "</td>";
 
-            echo "<td>" .$user_data['hora']. "</td>";
-            
-            echo "<td> 
-            <a class='btn btn-sm btn-primary' href='editCatalogo.php?id=$user_data[id]' title='Editar'>
-            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
-                <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
-            </svg>
-            </a> 
-            <a class='btn btn-sm btn-danger' href='deleteCatalogo.php?id=$user_data[id]' title='Deletar'>
-                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
-                    <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/>
-                </svg>
-            </a>
+          echo "<td>" .$user_data['hora']. "</td>";
+          
+          echo "<td> 
+          <a class='btn btn-sm btn-primary' href='editCatalogo.php?id=$user_data[id]' title='Editar'>
+          <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-pencil' viewBox='0 0 16 16'>
+              <path d='M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z'/>
+          </svg>
+          </a> 
+          <a class='btn btn-sm btn-danger' href='deleteCatalogo.php?id=$user_data[id]' title='Deletar'>
+              <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+                  <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/>
+              </svg>
+          </a>
 </td>";
-            echo "</tr>";
-
-        }
+          echo "</tr>";
 
       }
+
+    }
 
   ?>
     

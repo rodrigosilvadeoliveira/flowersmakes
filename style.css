@@ -185,10 +185,12 @@ legend{
 }
 /*Campos do formulario produtos*/
 .nomedoCampo{
+    padding-left: 5px;
     margin-left: 5px;
     font-size: 15px;
     font-weight: bold;
 }
+
 /*campos de texto e numeros de formulario produtos e vendas*/
 .campoTexto{
     width: 100%;
@@ -326,7 +328,7 @@ legend{
 }
 
 #voltar {
-    margin-top: 2%;
+    margin-top: 5%;
     margin-left: -0.8%;
     width: 5vw;
     height: 5vh;

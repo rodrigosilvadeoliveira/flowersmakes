@@ -88,7 +88,7 @@ if (isset($_POST['codigo_barras'])) {
         die("Falha na conexão com o banco de dados: " . mysqli_connect_error());
     }
 
-    $query = "SELECT * FROM novos WHERE barra = '$codigoBarras'";
+    $query = "SELECT * FROM novos WHERE barra = '$codigoBarras' or id = '$codigoBarras'";
     $resultado = mysqli_query($conexao, $query);
 
     // Verifique se o produto foi encontrado

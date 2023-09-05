@@ -94,7 +94,8 @@ if (isset($_POST['data_inicio']) && isset($_POST['data_fim'])) {
 $sql = "SELECT * FROM vendas WHERE datas BETWEEN '$inicio' AND '$fim'";
 $result = $conexao->query($sql);
 
-
+// Exiba a lista de produtos e calcule o valor total
+$valorTotal = 0; // Variável para armazenar o valor total
 while($user_data = mysqli_fetch_assoc($result))
         {
             echo "<tr>";
@@ -130,10 +131,16 @@ while($user_data = mysqli_fetch_assoc($result))
             echo "<td>" .$user_data['obs']. "</td>";
             echo "</tr>";
 
+            $valorTotal += $user_data['valordevenda']; // Adicione o valor de venda ao valor total
+
         }
 
 
     }
+    echo "<tr>";
+echo "<td colspan='4'>Valor Total:</td>";
+echo "<td>" . $valorTotal . "</td>";
+echo "</tr>";
   ?>
     
     </tr>

@@ -28,7 +28,9 @@ include_once('config.php');
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Sistema Flowers</title>
     <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <script src="bootstrap.min.js"></script>
+    </head>
 <body>
 <br><br><br>
    
@@ -96,6 +98,7 @@ $result = $conexao->query($sql);
 
 // Exiba a lista de produtos e calcule o valor total
 $valorTotal = 0; // Variável para armazenar o valor total
+
 while($user_data = mysqli_fetch_assoc($result))
         {
             echo "<tr>";
@@ -130,17 +133,15 @@ while($user_data = mysqli_fetch_assoc($result))
 </td>";
             echo "<td>" .$user_data['obs']. "</td>";
             echo "</tr>";
-
             $valorTotal += $user_data['valordevenda']; // Adicione o valor de venda ao valor total
-
         }
 
-
+        echo "<tr>";
+        echo "<td colspan='4'><b>Valor Total:</b></td>";
+        echo "<td>" . $valorTotal . "</td>";
+        echo "</tr>";
     }
-    echo "<tr>";
-echo "<td colspan='4'>Valor Total:</td>";
-echo "<td>" . $valorTotal . "</td>";
-echo "</tr>";
+    
   ?>
     
     </tr>

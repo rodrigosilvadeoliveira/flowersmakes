@@ -64,9 +64,7 @@ body{
     line-height: 80px;
     text-align: center;
     color: rgb(172, 16, 130);
-    font-size: 80px;
-    
-
+    font-size: 85px;
 }
 #BemVindo
 {
@@ -378,11 +376,31 @@ legend{
     width: 80px;
     height: 70px;
 }
+#flowers{
+        
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    height: top;
+    line-height: 80px;
+    text-align: center;
+    color: rgb(172, 16, 130);
+    font-size: 45px;
+        
+}
 
   @media (max-width: 400px){
     .d-flex {
         margin-left: 10% ;
         
+    }
+    #sair {
+        margin-left: 500% ;
+        margin-top: -90%;
+        }
+    #logoFlowers{
+        display: none
+    }
+    #pesquisar{
+        display: none
     }
     #flowers{
         
@@ -391,7 +409,7 @@ legend{
         line-height: 80px;
         text-align: center;
         color: rgb(172, 16, 130);
-        font-size: 65px;
+        font-size: 45px;
             
     }
     

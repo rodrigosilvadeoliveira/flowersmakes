@@ -15,6 +15,12 @@ body{
     color: white;
     
     }
+    .scroll-horizontal {
+        width: 100%; /* Defina a largura do elemento, ajuste conforme necessário */
+        white-space: nowrap; /* Impede a quebra de texto para que o conteúdo não quebre em várias linhas */
+        overflow-x: auto; /* Adiciona uma barra de rolagem horizontal quando o conteúdo exceder a largura */
+        border: 1px solid #ccc; /* Apenas para fins de demonstração, pode ser removido */
+    }
     header {
         position: fixed;
         top: 0;
@@ -64,14 +70,21 @@ body{
     line-height: 80px;
     text-align: center;
     color: rgb(172, 16, 130);
-    font-size: 85px;
+    font-size: 80px;
+}
+#meuForm{
+    margin-left: 1%;
 }
 #BemVindo
 {
-    margin-top: 3%;
+    margin-top: 5%;
     text-align: center;
     color: rgb(172, 16, 130);
     
+}
+#openModal{
+    margin-left: 1%;
+    background-color: ;
 }
 #BemVindorelatorio
 {
@@ -130,8 +143,13 @@ body{
     width: 20%;
 }
 
-fieldset{
+.boxformularioDatas{
     border: 3px solid  rgb(172, 16, 130);
+    width: 40%; 
+    height: 220%;
+    margin-left: 2%; 
+    margin-top:2%; 
+    background-color:#f8bdc6">
 }
 legend{
     border: 1px rgb(30, 79, 255);
@@ -198,6 +216,9 @@ legend{
 }
 .campodeFormulario{
     font-weight: bold;
+}
+#openModal{
+    margin-top: 1%;
 }
 
 #data_nascimento{
@@ -315,6 +336,18 @@ legend{
     border-radius: 10px;
 
 }
+#tabelaatendimentomobile{
+    display: none;
+    }
+    #confirmarmobile{
+        display: none;
+    }
+    #confirmar{
+        margin-top: 1%;
+        margin-left: 1%;
+        background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
+        width: 15%;
+    }
 #carrinho{
     background-color: rgba(0, 0, 0, 0.9);
     position: absolute;
@@ -376,22 +409,381 @@ legend{
     width: 80px;
     height: 70px;
 }
-#flowers{
+@media (max-width: 999px){
+    #flowers{
         
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    height: top;
-    line-height: 80px;
-    text-align: center;
-    color: rgb(172, 16, 130);
-    font-size: 45px;
+        font-size: 45px;
+
+    }
+    #dataRelatorio{
+        margin-left: 1% ;
+    
+    }
+    .tela-login{
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-25%);
+        padding: 35px;
+        border-radius: 15px;
+        color: white;
         
+        }
+    #BemVindo
+    {
+        margin-top: 10%;
+        text-align: center;
+        color: rgb(172, 16, 130);
+        
+    }
+    #logoFlowers{
+        display: none
+    }
+    #sair {
+        margin-left: 1220% ;
+        margin-top: -75%;
+        }
+        #tabelaAtendimento{
+            display: none;
+        }
+    #tabelaatendimentomobile{
+    display: inline-table;
+    margin-left: 4%;
+    margin-top: 2%;
+    width: 50%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+        
+    }
+    #confirmar{
+        margin-top: 4%;
+        margin-left: 4%;
+        background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
+        width: 50%;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background-color: white;
+        width: 95%;
+        height: 90%;
+        max-width: 600px;
+        margin-top: 5%;
+        margin-left: 2%;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    /* Estilos para o vídeo da câmera */
+    video {
+        margin-top: -3%;
+        margin-left: 3%;
+        width: 90%;
+        height: 75%;
+    }
+    
+    .drawingBuffer{
+        width: 400;
+        height: 400;
+    }
+    .lercodigo{
+        margin-top: -40%;
+    }
+    #closeModal{
+        margin-top: 2%;
+    }
+    .boxformularioDatas{
+        width: 90%; 
+        height: 220%;
+        margin-left: 1.7%; 
+        margin-top:2%; 
+       
+    }
+    .boxformulariodatasconsulta{
+        width: 85%; 
+        height: 220%;
+        margin-left: 4%; 
+        margin-top:2%; 
+       
+    }    
+    #incluirCadastro{
+        font-size: 20px;
+     }
+    
 }
 
+
+@media (max-width: 800px){
+    #flowers{
+        
+        font-size: 45px;
+
+    }
+    #dataRelatorio{
+        margin-left: 1% ;
+    
+    }
+    .tela-login{
+        background-color: rgba(0, 0, 0, 0.9);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-25%);
+        padding: 35px;
+        border-radius: 15px;
+        color: white;
+        
+        }
+    #BemVindo
+    {
+        margin-top: 10%;
+        text-align: center;
+        color: rgb(172, 16, 130);
+        
+    }
+    #logoFlowers{
+        display: none
+    }
+    #sair {
+        margin-left: 1220% ;
+        margin-top: -75%;
+        }
+        #tabelaAtendimento{
+            display: none;
+        }
+    #tabelaatendimentomobile{
+    display: inline-table;
+    margin-left: 4%;
+    margin-top: 2%;
+    width: 50%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+        
+    }
+    #confirmar{
+        margin-top: 4%;
+        margin-left: 4%;
+        background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
+        width: 50%;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background-color: white;
+        width: 95%;
+        height: 90%;
+        max-width: 600px;
+        margin-top: 5%;
+        margin-left: 2%;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    /* Estilos para o vídeo da câmera */
+    video {
+        margin-top: -3%;
+        margin-left: 3%;
+        width: 90%;
+        height: 75%;
+    }
+    
+    .drawingBuffer{
+        width: 400;
+        height: 400;
+    }
+    .lercodigo{
+        margin-top: -40%;
+    }
+    #closeModal{
+        margin-top: 2%;
+    }
+    .boxformularioDatas{
+        width: 90%; 
+        height: 220%;
+        margin-left: 4%; 
+        margin-top:2%; 
+       
+    }
+    .boxformulariodatasconsulta{
+        width: 85%; 
+        height: 220%;
+        margin-left: 4%; 
+        margin-top:2%; 
+       
+    }    
+}
+
+@media (max-width: 541px){
+    #voltar {
+        margin-top: 5%;
+        margin-left: 1%;
+        width: 6vw;
+        height: 6vh;
+        fill: rgb(172, 16, 130);
+      }
+      .boxformularioDatas{
+        width: 70%; 
+        height: 220%;
+        margin-left: 4%; 
+        margin-top:2%; 
+       
+    }
+    .boxformulariodatasconsulta{
+        width: 85%; 
+        height: 220%;
+        margin-left: 4%; 
+        margin-top:2%; 
+       
+    }
+    #BemVindo
+    {
+        margin-top: 13%;
+        text-align: center;
+        color: rgb(172, 16, 130);
+        font-size: 24px;
+        
+    }
+    
+    #logoFlowers{
+        display: none
+    }
+    #sair {
+        margin-left: 630% ;
+        margin-top: -75%;
+        }
+        #tabelaAtendimento{
+            display: none;
+        }
+    #tabelaatendimentomobile{
+    display: inline-table;
+    margin-left: 4%;
+    margin-top: 2%;
+    width: 50%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+        
+    }
+    #incluirCadastro{
+        margin-left: 13px;
+           
+    }
+    #confirmar{
+        margin-top: 4%;
+        margin-left: 4%;
+        background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
+        width: 50%;
+    }
+    .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 60%;
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    .modal-content {
+        background-color: white;
+        width: 95%;
+        height: 90%;
+        max-width: 600px;
+        margin-top: 5%;
+        margin-left: 2%;
+        padding: 20px;
+        border-radius: 5px;
+    }
+
+    /* Estilos para o vídeo da câmera */
+    video {
+        margin-top: 10%;
+        margin-left: 3%;
+        width: 90%;
+        height: 75%;
+    }
+    
+    .drawingBuffer{
+        width: 400;
+        height: 400;
+    }
+    .lercodigo{
+        margin-top: -10%;
+        margin-left: 11%;
+        width: 50%;
+    }
+    #closeModal{
+        margin-top: 2%;
+        margin-left: 12%;
+        width: 72%;
+    }
+    #flowers{
+        
+        font-size: 35px;
+       }
+       .tela-login{
+        margin-top: 5%;
+        }
+        #camera{
+            margin-top: -10%;
+            height: 270px;
+        }
+}
   @media (max-width: 400px){
     .d-flex {
         margin-left: 10% ;
         
     }
+    #logo{
+        top: 1px;
+        width: 100px;
+        height: 90px;
+        align-items: center;
+    }
+    #openModal{
+        margin-left: 5%;
+        background-color: ;
+    }
+    
+    #BemVindo
+{
+    margin-top: 13%;
+    text-align: center;
+    color: rgb(172, 16, 130);
+    
+}
+#meuForm{
+    margin-left: 3%;
+}
+
     #sair {
         margin-left: 500% ;
         margin-top: -90%;
@@ -404,12 +796,7 @@ legend{
     }
     #flowers{
         
-        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        height: top;
-        line-height: 80px;
-        text-align: center;
-        color: rgb(172, 16, 130);
-        font-size: 45px;
+       font-size: 35px;
             
     }
     
@@ -439,26 +826,70 @@ legend{
     .navbar-brand {
             display: none;
           }
-          #tabelaAtendimento{
-            margin-left: 15px;
-            margin-top: 20px;
-            background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
-            width: 50%;
-            border: none;
-            padding: 15px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 10px;
-        
-        }
+                 
         #consultar{
-            margin-left: 4%;
+            margin-left: 2%;
         }
+        #tabelaAtendimento{
+            display: none;
+        }
+    #tabelaatendimentomobile{
+    display: inline-table;
+    margin-left: 4%;
+    margin-top: 2%;
+    width: 50%;
+    border: none;
+    padding: 15px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+        
+    }
         #confirmar{
+            margin-top: 2%;
             margin-left: 4%;
             background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
             width: 50%;
-            
         }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            width: 95%;
+            height: 90%;
+            max-width: 600px;
+            margin-top: 5%;
+            margin-left: 2%;
+            padding: 20px;
+            border-radius: 5px;
+        }
+
+        /* Estilos para o vídeo da câmera */
+        video {
+            margin-top: -5%;
+            margin-left: -3%;
+            width: 105%;
+            height: 120%;
+        }
+        
+        .drawingBuffer{
+            width: 400;
+            height: 400;
+        }
+        .lercodigo{
+            margin-top: 10%;
+        }
+        #closeModal{
+            margin-top: 2%;
+        }
+
   }

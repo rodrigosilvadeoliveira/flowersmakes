@@ -47,11 +47,11 @@ $sheet->setCellValue('S1', 'Rodrigo 10%');
 $sheet->setCellValue('T1', 'Loja 20%');
 $sheet->setCellValue('M2', '=SUM(H2:H376)');
 $sheet->setCellValue('N2', '=SUM(F2:F376)');
-$sheet->setCellValue('O2', '=M2-L2');
-$sheet->setCellValue('Q2', '=P2*35/100');
-$sheet->setCellValue('R2', '=P2*35/100');
-$sheet->setCellValue('S2', '=P2*10/100');
-$sheet->setCellValue('T2', '=P2*20/100');
+$sheet->setCellValue('O2', '=N2-M2');
+$sheet->setCellValue('Q2', '=O2*40/100');
+$sheet->setCellValue('R2', '=O2*40/100');
+$sheet->setCellValue('S2', '=O2*10/100');
+$sheet->setCellValue('T2', '=O2-N2');
 
 
 //Estilo da celula

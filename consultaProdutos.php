@@ -2,7 +2,7 @@
 <?php
 include('verificarLogin.php');
 verificarLogin();
-session_start();
+//session_start();
 include_once('config.php');
    // print_r($_SESSION);
     if((!isset($_SESSION['usuario'])== true) and ($_SESSION['senha']) == true)
@@ -37,13 +37,14 @@ include_once('config.php');
     echo "<h1 id='BemVindo'>Catalogo de Produtos e Estoque</h1>";
 ?>
 
-<div>
+<div class="scroll-horizontal">
 <a id="incluirCadastro" value="Novo Cadastro" href="cadastroProduto.php">Novo Cadastro Produto</a>
 <a id="incluirCadastro" value="Novo Cadastro" href="consultaCatalogo.php">Consultar Estoque por periodo</a>
 <a id="incluirCadastro" value="Novo Cadastro" href="consultaProdutos.php">Consultar Estoque por nome Produto</a>
 <br>
-
-<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; margin-top:2%; background-color:#f8bdc6">
+</div>
+<div class="boxformulariodatasconsulta">
+<fieldset>
 <form id="dataRelatorio" method="POST" action="consultaProdutos.php">
     <label for="nomeproduto"><b>Consultar produto no Estoque:</b></label><br>
     <label for="nomeproduto"><b>Nome do produto:</b></label>
@@ -51,7 +52,8 @@ include_once('config.php');
         <input type="submit" value="Consultar" id="Exportar"/>
 </form>
 </fieldset>
-
+</div>
+<div class="scroll-horizontal">
 <table class="table" id="tabelaLista">
   <thead>
     <tr>

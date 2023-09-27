@@ -23,14 +23,14 @@ include_once('config.php');
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Sistema Flowers</title>
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
     <script src="bootstrap.min.js"></script>
-    </head>
+</head>
 <body>
 <br><br><br>
    
@@ -59,17 +59,19 @@ $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
 <br>
 <a id="vendasrealizadas" value="Vendas Realizadas" href="vendas.php">Novo Atendimento</a>
 <br>
-<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; margin-top: 2%; background-color:#f8bdc6">
+<div class="boxformularioDatas">
+<fieldset>
 <form id="dataRelatorio" method="POST" action="vendasrealizadas.php">
     <label for="data_inicio"><b>Selecione o periodo a ser consultado:</b></label><br>
-    <label for="data_inicio"><b>Data Inicio:</b></label>
+    <label for="data_inicio"><b>Data Inic:</b></label>
     <input type="date" name="data_inicio" id="data_inicio" />
     <label for="data_fim"><b>Data Fim:</b></label>
     <input type="date" name="data_fim" id="data_fim" />
     <input type="submit" value="Consultar" id="Exportar"/>
 </form>
 </fieldset>
-<div>
+</div>
+<div class="scroll-horizontal">
 <table class="table" id="tabelaLista">
   <thead>
     <tr>

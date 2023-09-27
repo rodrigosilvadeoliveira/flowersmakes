@@ -72,7 +72,7 @@ header('Location: cadastroProduto.php');
          
          
              <form id="insert_form" class="row g-3" name="cadastrodeprodutos" method="post" action="cadastroProduto.php">
-                  1
+                  
                   <h1>Cadastro de Produto</h1>
              <div class="col-md-5">
                      <label class="nomedoCampo">Produto: *</label><br>
@@ -91,7 +91,7 @@ header('Location: cadastroProduto.php');
  
                  <div class="col-md-5">
                      <label class="nomedoCampo">Caracteristicas: *</label><br>
-                     <input type="text" class="form-control" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" required><br>
+                     <input type="text" class="form-control" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" required>
                  </div><br>
 
                  <div class="col-md-5">
@@ -101,13 +101,13 @@ header('Location: cadastroProduto.php');
                 
                  <div class="col-md-5">
                  <label class="nomedoCampo">Qtd comprada: *</label><br>
-                     <input type="number" class="form-control" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6" required><br>
+                     <input type="number" class="form-control" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6" required>
                                         
 
                  </div><br>
                  <div class="col-md-5">
                  <label class="nomedoCampo">Valor de Compra: *</label><br>
-                     <input type="decimal" class="form-control" name="valordecompra" placeholder="quantidade comprada do lote" id="valordecompra" maxlength="6" required><br><br>
+                     <input type="decimal" class="form-control" name="valordecompra" placeholder="quantidade comprada do lote" id="valordecompra" maxlength="6" required>
 </div>
 
 <div class="col-md-5">

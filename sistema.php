@@ -2,7 +2,7 @@
 <?php
 include('verificarLogin.php');
 verificarLogin();
-session_start();
+//session_start();
 include_once('config.php');
    // print_r($_SESSION);
     if((!isset($_SESSION['usuario'])== true) and ($_SESSION['senha']) == true)
@@ -44,7 +44,7 @@ include_once('config.php');
 <br>
 <a id="incluirCadastro" value="Novo Cadastro" href="formulario.php">Novo Cadastro</a>
 <br>
-<div>
+<div class="scroll-horizontal">
 <table class="table" id="tabelaLista">
   <thead>
     <tr>

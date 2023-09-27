@@ -37,6 +37,7 @@ include_once('config.php');
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
     <script src="bootstrap.min.js"></script>
+    <script src="quagga.min.js"></script>
     </head>
 <body>
 <br >
@@ -44,11 +45,76 @@ include_once('config.php');
        echo "<h1 id='BemVindo'>Vendedor(a) <U>$logado</u></h1>";
    ?>
 <br>
+
 <form id="meuForm" method="POST" action="vendas.php">
-        <label for="codigo_barras">Código de Barras:</label>
-        <input type="text" name="codigo_barras" id="codigo_barras" />
+        <label for="codigo_barras"><b>Código de Barras:</b></label>
+       <input type="text" name="codigo_barras" id="codigo_barras" />
         <input type="submit" value="Consultar" id="consultar"/>
     </form>
+    <button id="openModal"><svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-camera" viewBox="0 0 16 16">
+  <path d="M15 12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h1.172a3 3 0 0 0 2.12-.879l.83-.828A1 1 0 0 1 6.827 3h2.344a1 1 0 0 1 .707.293l.828.828A3 3 0 0 0 12.828 5H14a1 1 0 0 1 1 1v6zM2 4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-1.172a2 2 0 0 1-1.414-.586l-.828-.828A2 2 0 0 0 9.172 2H6.828a2 2 0 0 0-1.414.586l-.828.828A2 2 0 0 1 3.172 4H2z"/>
+  <path d="M8 11a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5zm0 1a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7zM3 6.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0z"/>
+</svg> Abrir Câmera</button>
+
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+        <div class="camera" id="camera" autoplay>
+            <video autoplay="true" preload="auto" src muted="true" playsinline="true">
+                <canvas class="drawingBuffer">
+            </video>
+        </div>
+        <form id="meuForm" method="POST" action="vendas.php">
+        <input type="text" class="lercodigo" name="codigo_barras" id="codigo_barras1" />
+        <input type="submit" value="Consultar" id="consultar"/>
+    </form>    
+            <button id="closeModal">Fechar Câmera</button>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quagga/0.12.1/quagga.min.js"></script>
+    <script>
+        let isModalOpen = false;
+
+        document.getElementById('openModal').addEventListener('click', function () {
+            document.getElementById('myModal').style.display = 'block';
+            isModalOpen = true;
+
+            // Inicialize o QuaggaJS quando o modal for aberto
+            Quagga.init({
+                inputStream: {
+                    name: 'Live',
+                    type: 'LiveStream',
+                    target: document.querySelector('#camera')
+                },
+                decoder: {
+                    readers: ['ean_reader', 'code_128_reader', 'upc_reader']
+                }
+            }, function (err) {
+                if (err) {
+                    console.error(err);
+                    return;
+                }
+                Quagga.start();
+            });
+
+            document.getElementById('closeModal').addEventListener('click', function () {
+                // Pare a câmera e feche o modal
+                Quagga.stop();
+                document.getElementById('myModal').style.display = 'none';
+                isModalOpen = false;
+            });
+
+            Quagga.onDetected(function (data) {
+                if (isModalOpen) {
+                    var codigoBarras = data.codeResult.code;
+                    var tipoCodigo = data.codeResult.format;
+                    document.getElementById('codigo_barras1').value = codigoBarras;
+                alert('Tipo de código de barras: ' + tipoCodigo);
+                }
+            });
+        });
+    </script>
 <table class="table" id="tabelaAtendimento">
   <thead>
     <tr>
@@ -58,6 +124,7 @@ include_once('config.php');
       <th scope="col">Marca</th>
       <th scope="col">Caracteristicas</th>
       <th scope="col">Preço</th>
+      <th scope="col">Imagem</th>
 
       <th scope="col">......</th>
     </tr>
@@ -138,7 +205,8 @@ mysqli_query($conexao, $query_pagamento);
         $caracteristicas = $produto['caracteristicas'];
         $valordevenda = $produto['valordevenda'];
         $valordecompra = $produto['valordecompra'];
-        
+        $imagem = $produto['imagem'];
+
         // Verifique se o produto está na tabela de compra e se há quantidade suficiente para vender
         $query_compra = "SELECT * FROM novos WHERE barra = '$barra'";
         $resultado_compra = mysqli_query($conexao, $query_compra);
@@ -235,6 +303,7 @@ foreach ($_SESSION['produtos'] as $produto) {
     echo "<td>" . $produto['marca'] . "<br>";
     echo "<td>" . $produto['caracteristicas'] . "<br>";
     echo "<td>" . $produto['valordevenda'] . "<br>";
+    echo "<td><img src=".$produto['imagem']." width='60' height='60'></td>";
     echo "<br>";
     echo "<td>
             <a class='btn btn-sm btn-danger' href='deleteprodutodalista.php?id=" . $produto['id'] . "' title='Deletar'>
@@ -305,6 +374,51 @@ echo "</tr>";
     // Chama a função manterCursor() após o carregamento completo do DOM
     document.addEventListener("DOMContentLoaded", manterCursor);
 </script>
+</table>
+<table class="table" id="tabelaatendimentomobile">
+  <thead>
+    <tr>
+    <th scope="col">Descrição</th>
+      
+      <th scope="col">Preço</th>
+
+      <th scope="col">......</th>
+    </tr>
+  </thead>
+  <tbody>
+  <?php
+foreach ($_SESSION['produtos'] as $produto) {
+    echo "<tr>";
+    echo "<td>";
+    echo "<strong>ID:</strong> " . $produto['id'] . "<br>";
+    echo "<strong>Código de Barras:</strong> " . $produto['barra'] . "<br>";
+    echo "<strong>Produto:</strong> " . $produto['produto'] . "<br>";
+    echo "<strong>Marca:</strong> " . $produto['marca'] . "<br>";
+    echo "<strong>Características:</strong> " . $produto['caracteristicas'] . "<br>";
+    echo "</td>";
+    echo "<td>" . $produto['valordevenda'] . "<br>";
+    
+    echo "<td>
+            <a class='btn btn-sm btn-danger' href='deleteprodutodalista.php?id=" . $produto['id'] . "' title='Deletar'>
+                <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+                    <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/>
+                </svg>
+            </a>
+        </td>";
+    echo "</tr>";
+    
+}
+
+// Exiba o valor total
+echo "<tr>";
+echo "<td colspan='2'>Valor Total:</td>";
+echo "<td>" . $valorTotal . "</td>";
+echo "</tr>";
+
+
+?>
+<br>
+
 </table>
     </body>
 </html>

@@ -2,7 +2,7 @@
 <?php
 include('verificarLogin.php');
 verificarLogin();
-session_start();
+//session_start();
 include_once('config.php');
    // print_r($_SESSION);
     if((!isset($_SESSION['usuario'])== true) and ($_SESSION['senha']) == true)
@@ -37,23 +37,25 @@ include_once('config.php');
     echo "<h1 id='BemVindo'>Catalogo de Produtos e Estoque</h1>";
 ?>
 
-<div>
+<div class="scroll-horizontal">
 <a id="incluirCadastro" value="Novo Cadastro" href="cadastroProduto.php">Novo Cadastro Produto</a>
 <a id="incluirCadastro" value="Novo Cadastro" href="consultaCatalogo.php">Consultar Estoque por periodo</a>
 <a id="incluirCadastro" value="Novo Cadastro" href="consultaProdutos.php">Consultar Estoque por nome Produto</a>
 <br>
-
-<fieldset class="boxformularioDatas" style="width: 40%; height: 220%; margin-left: 1%; margin-top:2%; background-color:#f8bdc6">
+</div>
+<div class="boxformularioDatas">
+<fieldset>
 <form id="dataRelatorio" method="POST" action="consultaCatalogo.php">
     <label for="data_inicio"><b>Relatorio de Estoque por periodo:</b></label><br>
-    <label for="data_inicio"><b>Data Inicio:</b></label>
+    <label for="data_inicio"><b>Data Inic:</b></label>
     <input type="date" name="data_inicio" id="data_inicio" />
-    <label for="data_fim"><b>Data Fim:</b></label>
+    <label for="data_fim"><b>Data Fim:  </b></label>
     <input type="date" name="data_fim" id="data_fim" />
     <input type="submit" value="Consultar" id="Exportar"/>
 </form>
 </fieldset>
-
+</div>
+<div class="scroll-horizontal">
 <table class="table" id="tabelaLista">
   <thead>
     <tr>
@@ -113,6 +115,7 @@ include_once('config.php');
     </tr>
   </thead>
   <tbody>
+    
   <?php
 
 $dbHost = 'localhost';

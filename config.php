@@ -7,13 +7,9 @@ $dbName = 'cadastro';
 
 $conexao = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
 
-//if($conexao->connect_errno)
-//{
- //   echo "Erro de conexão";
-
-//}else{
-  //  echo "Conxesão realizada com sucesso";
-//}
+if ($conexao->connect_error) {
+  die("Erro na conexão com o banco de dados: " . $conexao->connect_error);
+}
 
 
 ?>

@@ -63,9 +63,17 @@ body{
     height: 160px;
     align-items: center;
 }
+#logologin{
+    top: 1px;
+    width: 200px;
+    height: 200px;
+    align-items: center;
+    margin-top: ;
+    margin-left: 5%;
+}
 #flowers{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin-top: -6%;
+    margin-top: -12%;
     height: top;
     line-height: 80px;
     text-align: center;
@@ -85,6 +93,7 @@ body{
 #openModal{
     margin-left: 1%;
     background-color: ;
+    margin-top: 1%;
 }
 #BemVindorelatorio
 {
@@ -118,8 +127,8 @@ body{
 }
 .boxlogin{
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 2%;
+    left: 90%;
     transform: translate(-50%,50%);
     border-radius: 15px;
     color: black;
@@ -216,9 +225,6 @@ legend{
 }
 .campodeFormulario{
     font-weight: bold;
-}
-#openModal{
-    margin-top: 1%;
 }
 
 #data_nascimento{
@@ -409,6 +415,232 @@ legend{
     width: 80px;
     height: 70px;
 }
+/* Estilos para o vídeo da câmera */
+video {
+    margin-top: -3%;
+    margin-left: 25%;
+    width: 50%;
+    height: 35%;
+}
+
+.drawingBuffer{
+    width: 400;
+    height: 400;
+}
+.lercodigo{
+    width: 40%;
+    margin-top: -40%;
+    margin-left: 27%;
+}
+#closeModal{
+    margin-top: 1%;
+    margin-left: 24.8%;
+    width: 52%;
+}
+/*Site*/
+.imgloja{
+    
+    width: 350px;
+    height: 350px;
+}
+.linkloja{
+    margin-top: 200px;
+}
+#continuar{
+    position: relative;
+    text-align: center;
+    color: white;
+    background-color: #007bff;
+    text-decoration: none;
+    border: 3px solid dodgerblue;
+    padding: 10px;
+    border-radius: 15px;
+}
+.boxcarrinho{
+    position: absolute;
+    top: 26%;
+    left: 82%;
+    transform: translate(-50%,-25%);
+    border-radius: 15px;
+    color: black;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 15px;
+    border-radius: 15px;
+    width: 13,5%;
+}
+#cabecalho{
+    margin-top: 10px;
+}
+#logoSite{
+    top: 1px;
+    width: 120px;
+    height: 100px;
+    align-items: center;
+}
+.imagens{
+    width: 170px;
+    height: 170px;
+    margin: 10px;
+
+}
+#tituloSite{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: -6%;
+    height: top;
+    line-height: 80px;
+    text-align: center;
+    color: rgb(172, 16, 130);
+    font-size: 40px;
+}
+#tabelaProduto{
+    margin-left: ;
+    width: 10%;
+    
+    padding: 15px;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+.container {
+    display: flex; /* Use flexbox para alinhar os elementos lado a lado */
+    margin-bottom: 90%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.boxpro{
+    background:  white;
+    align-items: center; /* Alinhe verticalmente no centro */
+    width: 200px; /* Define a largura máxima de cada caixa */
+    margin: 10px; /* Adicione margens para espaçamento entre as caixas */
+    margin-left: 5%;
+}
+.boxhome{
+    
+    background:  ;
+    align-items: flex-start; /* Alinhe verticalmente no centro */
+    width: 200px; /* Define a largura máxima de cada caixa */
+    height: 200px;
+    margin: 100px; /* Adicione margens para espaçamento entre as caixas */
+}
+.containerhome {
+    display: flex; /* Use flexbox para alinhar os elementos lado a lado */
+    margin-bottom: 90%;
+    margin-top: -10%;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.fieldhome{
+    width: 80%;
+    background: ;
+    margin-top: 200px;
+    margin-left: 140px;
+}
+
+.addCarrinho{
+    height: 30px;
+    font-size: 14px;
+}
+#tabelaCarrinhos {
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+}
+
+#tabelaCarrinhos table {
+    width: 100%;
+}
+
+#tabelaCarrinhos tr {
+    display: inline-block;
+    width: 15%;
+    box-sizing: border-box;
+}
+#titulosite{
+    margin-top: 200px;
+}
+
+.produtos {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+#tabelaCarrinho{
+    margin-left: 15px;
+    margin-top: 20px;
+    background: white;
+    width: 50%;
+    border: none;
+    padding: 15px;
+    color: black;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 10px;
+
+}
+
+#sobre_prod {
+    border: 25px solid #903;
+    background: #903;
+    margin: 0;
+    padding:0;
+}
+#sobre {
+    list-style: none; 
+    margin: 10px;
+     display: inline;
+}
+#sobre a {
+    padding: 20px 40px; 
+    margin:0;
+    border: 0px solid #f00; 
+    background: #903;
+    text-decoration: none;
+    color:#FFF;
+/* cantos arredondados */
+    -webkit-border-radius:5px;
+    -moz-border-radius:5px;
+     border-radius:5px;
+}
+#sobre a:hover {
+    background: #CCC;
+    color: #000; 
+     border-color: #000;
+}
+#slider_horizontal {
+	display: block;
+	width: 100%;
+	overflow-x: scroll;
+	margin-top: -30px;
+	padding: 5px;
+	box-sizing: border-box;
+	
+}
+#slider_horizontal::-webkit-scrollbar {
+	display: none;
+}
+#container_slider {
+	display: block;
+	white-space: nowrap;
+margin-top: -15px;
+}
+.horizontal_slider::-webkit-scrollbar {
+	display: none;
+}
+	
+
+	.slider_container {
+		display: block;
+		white-space: nowrap;
+
+	}
+.item {
+
+    display: inline-block;
+    margin-right: 10px;
+}
+
 @media (max-width: 999px){
     #flowers{
         
@@ -755,6 +987,13 @@ legend{
         #camera{
             margin-top: -10%;
             height: 270px;
+        }
+        #openModal{
+            margin-left: 5%;
+            margin-top: 1%;
+        }
+        #consultar{
+            margin-left: 4%;
         }
 }
   @media (max-width: 400px){

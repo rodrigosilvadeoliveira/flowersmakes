@@ -7,16 +7,52 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div><img id="logo" src ="logo_flowers.png">
 
-</div>
-    <h1 id="flowers">Sistema de Loja <br><u>Flowers Makes</u></h1>
-
-    
-    <div class="boxlogin">
-        <a href="login.php" id="login">Login</a>
         <!--
 <a href="formulario.php" id="cadastre">Cadastre-se</a>"
 //-->
+<header>
+<div class="cabecalho" id="cabecalho">
+<?php include('cabecalhoSite.php');?>
+</div>    
+</header>
+<h1>Pagina Inicial</h1>
+    <div class="containerhome">
+        <div class="boxhome">
+<div class="linkloja">
+  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
+  </div>
+  <a href="nossaLoja"><img class="" id="nossaloja">Conheça nossa loja</a>
+  </div>
+  <div class="boxhome">
+  <div class="linkloja">
+  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
+  </div>
+  <a href="nossaLoja"><img class="" id="nossaloja">Mais Vendidos</a>
+        </div>
+
+        <div class="boxhome">
+  <div class="linkloja">
+  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
+  </div>
+  <a href="nossaLoja"><img class="" id="nossaloja">Nossa Equipe</a>
+        </div>
+
+        <div class="boxhome">
+  <div class="linkloja">
+  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
+  </div>
+  <a href="nossaLoja"><img class="" id="nossaloja">Nossa História</a>
+        </div>
+
+        <div class="boxhome">
+  <div class="linkloja">
+  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
+  </div>
+  <a href="nossaLoja"><img class="" id="nossaloja">Posso ajudar?
+</a>
+        </div>
+      </div>
+</body>
 </body>
 </html>

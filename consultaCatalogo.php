@@ -93,7 +93,8 @@ include_once('config.php');
   <option value="vivai">Vivai</option>
 </select></th>
       <th scope="col">Caracteristicas</th>
-      <th scope="col">Valor de Venda</th>
+      <th scope="col">Site</th>
+      <th scope="col">Vlr Venda</th>
       <th scope="col">
       <label for="qtdcomprada">Estoque:</label><br>
   <select id="qtdcomprada">
@@ -108,7 +109,8 @@ include_once('config.php');
     <option value="7">7</option>
     <option value="8">8</option>
   </select></th>
-      <th scope="col">Valor de Compra</th>
+      <th scope="col">Vlr Compra</th>
+      <th scope="col">Imagem</th>
       <th scope="col">Data</th>
       <th scope="col">Hora</th>
       <th scope="col">......</th>
@@ -148,12 +150,16 @@ $result = $conexao->query($sql);
             
             echo "<td>" .$user_data['caracteristicas']. "</td>";
             
+            echo "<td>" .$user_data['siteprod']. "</td>";
+
             echo "<td>" .$user_data['valordevenda']. "</td>";
 
             echo "<td>" .$user_data['qtdcomprada']. "</td>";
             
             echo "<td>" .$user_data['valordecompra']. "</td>";
             
+            echo "<td><img src=".$user_data['imagem']." width='60' height='60'></td>";
+
             echo "<td>" .$user_data['data']. "</td>";
 
             echo "<td>" .$user_data['hora']. "</td>";

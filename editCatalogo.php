@@ -19,6 +19,7 @@ verificarLogin();
                 $categoria = $user_data['categoria'];
                 $marca = $user_data['marca'];
                 $caracteristicas = $user_data['caracteristicas'];
+                $siteprod = $user_data['siteprod'];
                 $valordevenda = $user_data['valordevenda'];
                 $qtdcomprada =  $user_data['qtdcomprada'];
                 $valordecompra = $user_data['valordecompra'];
@@ -69,6 +70,11 @@ verificarLogin();
                  <div>
                      <label class="campodeFormulario">Categoria: *</label><br>
                      <input type="text" class="campoTexto" name="categoria" placeholder="informe categoria" id="categoria" maxlength="50" value="<?php echo $categoria ?>" required>
+                 </div><br>
+
+                 <div>
+                     <label class="campodeFormulario">Site: *</label><br>
+                     <input type="text" class="campoTexto" name="siteprod" placeholder="informe categoria" id="siteprod" maxlength="50" value="<?php echo $siteprod ?>" required>
                  </div><br>
  
                  <div>

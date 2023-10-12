@@ -56,7 +56,7 @@ include_once('config.php');
 <div class="scroll-horizontal">
 <table class="table" id="tabelaLista">
   <thead>
-    <tr>
+  <tr>
       <th scope="col">#</th>
       <th scope="col">Barra</th>
       <th scope="col">Produto</th>
@@ -91,7 +91,8 @@ include_once('config.php');
   <option value="vivai">Vivai</option>
 </select></th>
       <th scope="col">Caracteristicas</th>
-      <th scope="col">Valor de Venda</th>
+      <th scope="col">Site</th>
+      <th scope="col">Vlr Venda</th>
       <th scope="col">
       <label for="qtdcomprada">Estoque:</label><br>
   <select id="qtdcomprada">
@@ -106,7 +107,8 @@ include_once('config.php');
     <option value="7">7</option>
     <option value="8">8</option>
   </select></th>
-      <th scope="col">Valor de Compra</th>
+      <th scope="col">Vlr Compra</th>
+      <th scope="col">Imagem</th>
       <th scope="col">Data</th>
       <th scope="col">Hora</th>
       <th scope="col">......</th>
@@ -132,28 +134,32 @@ $result = $conexao->query($sql);
 
       while($user_data = mysqli_fetch_assoc($result))
       {
-          echo "<tr>";
-          echo "<td>" .$user_data['id']. "</td>";
-          
-          echo "<td>" .$user_data['barra']. "</td>";
+        echo "<tr>";
+        echo "<td>" .$user_data['id']. "</td>";
+        
+        echo "<td>" .$user_data['barra']. "</td>";
 
-          echo "<td>" .$user_data['produto']. "</td>";
-         
-          echo "<td>" .$user_data['categoria']. "</td>";
-          
-          echo "<td>" .$user_data['marca']. "</td>";
-          
-          echo "<td>" .$user_data['caracteristicas']. "</td>";
-          
-          echo "<td>" .$user_data['valordevenda']. "</td>";
+        echo "<td>" .$user_data['produto']. "</td>";
+       
+        echo "<td>" .$user_data['categoria']. "</td>";
+        
+        echo "<td>" .$user_data['marca']. "</td>";
+        
+        echo "<td>" .$user_data['caracteristicas']. "</td>";
+        
+        echo "<td>" .$user_data['siteprod']. "</td>";
 
-          echo "<td>" .$user_data['qtdcomprada']. "</td>";
-          
-          echo "<td>" .$user_data['valordecompra']. "</td>";
-          
-          echo "<td>" .$user_data['data']. "</td>";
+        echo "<td>" .$user_data['valordevenda']. "</td>";
 
-          echo "<td>" .$user_data['hora']. "</td>";
+        echo "<td>" .$user_data['qtdcomprada']. "</td>";
+        
+        echo "<td>" .$user_data['valordecompra']. "</td>";
+        
+        echo "<td><img src=".$user_data['imagem']." width='60' height='60'></td>";
+
+        echo "<td>" .$user_data['data']. "</td>";
+
+        echo "<td>" .$user_data['hora']. "</td>";
           
           echo "<td> 
           <a class='btn btn-sm btn-primary' href='editCatalogo.php?id=$user_data[id]' title='Editar'>

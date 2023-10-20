@@ -1,15 +1,14 @@
 <?php
 session_start();
 
+// Verifique se o array 'carrinho' já está definido na sessão
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = array(); // Se não estiver definido, crie-o como um array vazio
+}
 // Conecte-se ao banco de dados (substitua com suas configurações)
 include('config.php');
 
-// Verifique se a sessão do carrinho já existe; se não, crie-a
-if (!isset($_SESSION['carrinho'])) {
-    $_SESSION['carrinho'] = array();
-}
 
-// Função para adicionar um produto ao carrinho
 // Função para adicionar um produto ao carrinho
 function adicionarProdutoAoCarrinho($idProduto, $conexao)
 {
@@ -99,8 +98,11 @@ document.addEventListener("DOMContentLoaded", function() {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <title>Site</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <script src="bootstrap.min.js"></script>
 </head>
 <body>
 <div><img id="logo" src ="logo_flowers.png">
@@ -131,7 +133,68 @@ document.addEventListener("DOMContentLoaded", function() {
         </tr>
     </thead>
     <tbody>
+    <form action="carrinho - Copia.php" method="post">
         <?php
+        
+        // Verifique se o formulário foi enviado
+if (isset($_POST['confirmar_pedido'])) {
+    $dbHost = 'localhost';
+    $dbUsername = 'root';
+    $dbPassword = '';
+    $dbName = 'cadastro';
+
+    $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+
+    ini_set('display_errors', 1); // Exibir erros no navegador (para fins de desenvolvimento)
+error_reporting(E_ALL); // Relatar todos os tipos de erro (para fins de desenvolvimento)
+date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Brasil/Brasília
+
+    // Verifique se houve erro na conexão com o banco de dados
+    if ($conexao->connect_error) {
+        die("Erro na conexão com o banco de dados: " . $conexao->connect_error);
+    }
+    $nome = $_POST['nome'];
+
+    // Insira o cliente na tabela de clientes
+$sql = "INSERT INTO clientes (nome) VALUES (?)";
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("s", $nome); // "s" indica que é uma string
+$stmt->execute();
+
+// Obtenha o ID do cliente gerado automaticamente
+$id_clientes = $conexao->insert_id;
+$status = 'pendente';
+
+    // Insira o pedido na tabela de pedidos
+    $sql = "INSERT INTO pedidos (id_clientes, status, data_pedido, hora_pedido) VALUES ( ?, '$status', CURDATE(), CURTIME())";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $id_clientes);
+    $stmt->execute();
+
+    // Obtenha o ID do pedido gerado automaticamente
+    $id_pedido = $conexao->insert_id;
+
+    // Inserir os produtos associados a esse pedido na tabela de produtos
+    foreach ($_SESSION['carrinho'] as $produtoNoCarrinho) {
+        $id_produto = $produtoNoCarrinho['id'];
+        $quantidade = $produtoNoCarrinho['quantidade']; // Substitua pela forma correta de obter a quantidade
+        $preco_unitario = $produtoNoCarrinho['valordevenda'];
+
+        $sql = "INSERT INTO produto (id_pedido, id_produto, quantidade, preco_unitario) VALUES (?, ?, ?, ?)";
+        $stmt = $conexao->prepare($sql);
+        $stmt->bind_param("iiid", $id_pedido, $id_produto, $quantidade, $preco_unitario);
+        $stmt->execute();
+    }
+
+    // Após concluir a inserção do pedido no banco, você pode limpar o carrinho
+    $_SESSION['carrinho'] = array();
+
+    // Feche a conexão com o banco de dados
+    $conexao->close();
+
+    
+} 
+            
         $valorTotal = 0;
 
         // Listar produtos no carrinho aqui
@@ -176,14 +239,11 @@ document.addEventListener("DOMContentLoaded", function() {
     echo "</tr>";
 
     $valorTotal += $linhaTotal;
-    
                         }
-                    
-                
-            
-            ?>
-           
 
+                    
+  ?>
+   
             <tr>
             <tr>
     <td colspan="2">Valor Total:</td>
@@ -192,9 +252,85 @@ document.addEventListener("DOMContentLoaded", function() {
             </tr>
         </tbody>
     </table>
+    <!--<fieldset class="boxcliente" id="boxcliente">-->
+<h1>Informar dados para Entrega</h1>
+<h3>*Se optar por retirar em Loja em loja, não é necessário informar endereço</h3>
+    <div class="col-md-5">
+    <label for="nome" class="form-label">*Nome completo:</label>
+    <input type="text" name="nome" id="nome" class="form-control" id="inputCity" required>
+  </div>
+  
+  <div class="col-3">
+    <label for="telefone" class="form-label">*Telefone:</label>
+    <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="dd numero" required>
+  </div>
+  
+  <div class="col-md-5">
+    <label for="email" class="form-label">Email:</label>
+    <input type="email"  name="email" id="email" class="form-control">
+  </div>
+  
+  <div class="col-5">
+    <label for="endereco" class="form-label">Endereço:</label>
+    <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Rua,Avenida ...">
+  </div>
+  <div class="col-5">
+    <label for="numero" class="form-label">Numero:</label>
+    <input type="text" class="form-control" name="numero" id="numero" placeholder="123, bloco b, Ap10">
+  </div>
+  <div class="col-md-3">
+    <label for="cidade" class="form-label">Cidade:</label>
+    <input type="text" name="cidade" id="cidade" class="form-control">
+  </div>
+  <div class="col-md-2">
+    <label for="estado" class="form-label">Estado:</label>
+    <select name="estado" id="estado" class="form-select">
+      <option selected>Selecione...</option>
+      <option value="acre">AC</option>
+      <option value="alagoas">AL</option>
+      <option value="amapa">AP</option>
+      <option value="amazonas">AM</option>
+      <option value="bahia">BH</option>
+      <option value="ceara">CE</option>
+      <option value="distritoFederal">DF</option>
+      <option value="espiritoSanto">ES</option>
+      <option value="goias">GO</option>
+      <option value="maranhao">MA</option>
+      <option value="matoGrosso">MT</option>
+      <option value="matoGrossodoSul">MS</option>
+      <option value="minasGerai">MG</option>
+      <option value="para">PA</option>
+      <option value="paraiba">PB</option>
+      <option value="parana">PR</option>
+      <option value="pernanbuco">PE</option>
+      <option value="piaui">PI</option>
+      <option value="riodeJaneiro">RJ</option>
+      <option value="rioGrandedoNorte">RN</option>
+      <option value="rioGrandedoSul">RS</option>
+      <option value="rodonia">RO</option>
+      <option value="roraima">RR</option>
+      <option value="santaCatarina">SC</option>
+      <option value="saoPaulo">SP</option>
+      <option value="sergipe">SE</option>
+      <option value="tocantis">TO</option>
+    </select>
+  </div>
+   </label>
+    </div>
+  </div>
+   <div class="col-md-2">
+    <label for="inputState" class="form-label">*Forma de Entrega:</label>
+    <select id="inputState" class="form-select" name="tpentrega">
+    <option value="">Selecione</option>
+    <option value="retirar">Retirar na loja</option>
+    <option value="entregar">Para entrega</option>
+    </select>
+  </div>
+<input type="submit" name="confirmar_pedido" value="Confirmar Pedido">
+    </form>
+    
+<!--</fieldset>-->
+
 </body>
 </html>
 
-<?php
-$conexao->close();
-?>

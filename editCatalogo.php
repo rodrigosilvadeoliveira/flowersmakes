@@ -23,6 +23,7 @@ verificarLogin();
                 $valordevenda = $user_data['valordevenda'];
                 $qtdcomprada =  $user_data['qtdcomprada'];
                 $valordecompra = $user_data['valordecompra'];
+                $imagem = $user_data['imagem'];
             }
         }
         else
@@ -56,62 +57,77 @@ verificarLogin();
 </a>
 
 <br>
-<fieldset style="width: 30%; height: 220%; margin: 0px auto; background-color:#f8bdc6">
+<fieldset class="boxformularioProduto" style="width: 95%; height: 220%; margin: 0px auto; margin-top: 4%; background-color:#f8bdc6">
          
-         
-             <form id="insert_form" name="cadastrodeprodutos" method="post" action="saveEditCatalogo.php">
+         <h1> *Lembre-se de sempre selecionar e cadastrar imagem novamente antes de atualizar</h1>
+             <form id="insert_form" class="row g-3" name="cadastrodeprodutos" method="post" action="saveEditCatalogo.php"  enctype="multipart/form-data">
                 
+             <div class="col-md-5">
+                  <label class="nomedoCampo">Nova Imagem: *</label><br>
+                  <input type="file" name="imagem" class="form-control" accept="image/*" value="<?php echo $imagem ?>">
+                  </div><br>
  
-                 <div>
+                  <div class="col-md-5">
                      <label class="campodeFormulario">Produto: *</label><br>
-                     <input type="text" class="campoTexto" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50" value="<?php echo $produto ?>" required>
+                     <input type="text" class="form-control" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="50" value="<?php echo $produto ?>" required>
                  </div><br>
 
-                 <div>
+                 <div class="col-md-5">
                      <label class="campodeFormulario">Categoria: *</label><br>
-                     <input type="text" class="campoTexto" name="categoria" placeholder="informe categoria" id="categoria" maxlength="50" value="<?php echo $categoria ?>" required>
+                     <input type="text" class="form-control" name="categoria" placeholder="informe categoria" id="categoria" maxlength="50" value="<?php echo $categoria ?>" required>
                  </div><br>
 
-                 <div>
-                     <label class="campodeFormulario">Site: *</label><br>
-                     <input type="text" class="campoTexto" name="siteprod" placeholder="informe categoria" id="siteprod" maxlength="50" value="<?php echo $siteprod ?>" required>
-                 </div><br>
- 
-                 <div>
+                 <div class="col-md-5">
                      <label class="campodeFormulario">Marca: *</label><br>
-                     <input type="text" class="campoTexto" name="marca" placeholder="Informar a Marca" id="marca" maxlength="" value="<?php echo $marca ?>" required>
+                     <input type="text" class="form-control" name="marca" placeholder="Informar a Marca" id="marca" maxlength="" value="<?php echo $marca ?>" required>
                  </div><br>
  
-                 <div>
+                 <div class="col-md-5">
                      <label class="campodeFormulario">Caracteristicas: *</label><br>
-                     <input type="text" class="campoTexto" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" value="<?php echo $caracteristicas ?>">
-                     <br>
+                     <input type="text" class="form-control" name="caracteristicas" placeholder="Informar cor, modelo etc." id="caracteristicas" maxlength="50" value="<?php echo $caracteristicas ?>">
+                     
                  </div><br>
 
-                 <div>
+                 <div class="col-md-5">
                  <label class="campodeFormulario">Valor de Venda por Unidade: *</label><br>
-                     <input type="decimal" class="campoNumero" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
-                 </div><br>
+                     <input type="decimal" class="form-control" name="valordevenda" placeholder="valor proposto para venda" id="valordevenda" maxlength="6" value="<?php echo $valordevenda ?>">
+                 </div>
                 
-                 <div>
+                 <div class="col-md-5">
                  <label class="campodeFormulario">Qtd comprada: *</label><br>
-                     <input type="number" class="campoNumero" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6" value="<?php echo $qtdcomprada ?>">
-                     <br>
-                                        
-
-                 </div><br>
-                 <div>
+                     <input type="number" class="form-control" name="qtdcomprada" placeholder="quantidade comprada do lote" id="qtdcomprada" maxlength="6" value="<?php echo $qtdcomprada ?>">
+                     
+                </div>
+      
+                <div class="col-md-5">
                  <label class="campodeFormulario">Valor de Compra: *</label><br>
-                     <input type="decimal" class="campoNumero" name="valordecompra" placeholder="valor de compra da unidade" id="valordecompra" maxlength="6" value="<?php echo $valordecompra ?>"><br><br>
+                     <input type="decimal" class="form-control" name="valordecompra" placeholder="valor de compra da unidade" id="valordecompra" maxlength="6" value="<?php echo $valordecompra ?>">
 </div>
 
-<div>
+<div class="col-md-5">
                      <label class="campodeFormulario">Código de Barras: *</label><br>
-                     <input type="number" class="campoNumero" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" value="<?php echo $barra ?>">
+                     <input type="number" class="form-control" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" value="<?php echo $barra ?>">
                      <br>
+
+                     <div class="col-md-5">
+                     <label class="campodeFormulario">Catagoria Site: *</label><br>
+                     <select id="qtdcomprada" class="form-control" name="siteprod" maxlength="" value="<?php echo $siteprod ?>" required>
+        <option value="">Selecione Categoria</option>
+        <option value="Promocoes">Promoções</option>
+        <option value="Rosto">Rosto</option>
+        <option value="Olhos">Olhos</option>
+        <option value="Boca">Boca</option>
+        <option value="Acessorios">Acessórios</option>
+        <option value="Aplicadores">Aplicadores</option>
+        <option value="Sobrancelhas">Sobrancelhas</option>
+        <option value="Corporal">Corporal</option>
+        <option value="Infaltil">Infaltil</option>
+        </select>
+                 </div><br>
+</div>
                      <input type="hidden" name="id" value="<?php echo $id ?>">
-                     <br>
-                     <input type="submit" name="update" id="submit">
+                     
+                     <input type="submit" name="update" class="atualizar">
                      
                    
                  </div><br>

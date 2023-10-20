@@ -18,7 +18,7 @@
     <h1 id="tituloSite">Site Flowers Makes</u></h1>
 
     <div class="boxcarrinho">
-    <a href="carrinho.php" id="login">Sacola</a>
+    <a href="carrinho - Copia.php" id="login">Sacola</a>
     </div>
     <div class="boxlogin">
      <a href="login.php" id="login">Login</a>

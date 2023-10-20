@@ -42,9 +42,16 @@ $caracteristicas = $_POST['caracteristicas'];
 $valordevenda = $_POST['valordevenda'];
 $qtdcomprada =  $_POST['qtdcomprada'];
 $valordecompra = $_POST['valordecompra'];
+$siteprod = $_POST['siteprod'];
 
+if (isset($_FILES["imagem"]) && !empty($_FILES["imagem"])){
+    $imagem = "./img/".$_FILES["imagem"]["name"];
+    move_uploaded_file($_FILES["imagem"]["tmp_name"] ,$imagem);
+}else{
+    $imagem = "";
+}
 
-$result = mysqli_query($conexao, "INSERT INTO novos (barra,produto,categoria,marca,caracteristicas,valordevenda,qtdcomprada,valordecompra, data, hora) values ('$barra','$produto','$categoria','$marca','$caracteristicas','$valordevenda','$qtdcomprada', '$valordecompra', '$data', '$hora')");
+$result = mysqli_query($conexao, "INSERT INTO novos (barra,produto,categoria,marca,caracteristicas,valordevenda,qtdcomprada,valordecompra, data, hora, imagem, siteprod) values ('$barra','$produto','$categoria','$marca','$caracteristicas','$valordevenda','$qtdcomprada', '$valordecompra', '$data', '$hora', '$imagem', '$siteprod')");
 
 header('Location: cadastroProduto.php');
 }
@@ -71,9 +78,14 @@ header('Location: cadastroProduto.php');
 <fieldset class="boxformularioProduto" style="width: 95%; height: 220%; margin: 0px auto; margin-top: 4%; background-color:#f8bdc6">
          
          
-             <form id="insert_form" class="row g-3" name="cadastrodeprodutos" method="post" action="cadastroProduto.php">
+             <form id="insert_form" class="row g-3" name="cadastrodeprodutos" method="post" action="cadastroProduto.php" enctype="multipart/form-data">
                   
                   <h1>Cadastro de Produto</h1>
+                  <div class="col-md-5">
+                  <label class="nomedoCampo">Imagem: *</label><br>
+                  <input type="file" name="imagem" class="form-control" accept="image/*">
+                  </div><br>
+
              <div class="col-md-5">
                      <label class="nomedoCampo">Produto: *</label><br>
                      <input type="text" class="form-control" name="produto" placeholder="Informar nome do produto" id="produto" maxlength="30" required>
@@ -81,8 +93,19 @@ header('Location: cadastroProduto.php');
 
                  <div class="col-md-5">
                      <label class="nomedoCampo">Categoria: *</label><br>
-                     <input type="text" class="form-control" name="categoria" placeholder="Informar Categoria" id="produto" maxlength="30" required>
-                 </div><br>
+                     <select id="qtdcomprada" class="form-control" name="produto" id="produto" maxlength="" required>
+        <option value="">Selecione Categoria</option>
+        <option value="Promocoes">Promoções</option>
+        <option value="Rosto">Rosto</option>
+        <option value="Olhos">Olhos</option>
+        <option value="Boca">Boca</option>
+        <option value="Acessorios">Acessórios</option>
+        <option value="Aplicadores">Aplicadores</option>
+        <option value="Sobrancelhas">Sobrancelhas</option>
+        <option value="Corporal">Corporal</option>
+        <option value="Infaltil">Infaltil</option>
+        </select>                
+     </div><br>
  
                  <div class="col-md-5">
                      <label class="nomedoCampo">Marca: *</label><br>
@@ -110,11 +133,29 @@ header('Location: cadastroProduto.php');
                      <input type="decimal" class="form-control" name="valordecompra" placeholder="quantidade comprada do lote" id="valordecompra" maxlength="6" required>
 </div>
 
-<div class="col-md-5">
+        <div class="col-md-5">
                      <label class="nomedoCampo">Código de Barras: *</label><br>
                      <input type="number" class="form-control" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" required>
                      </div>
-                     <div class="col-3">
+       
+                     
+                <div class="col-md-5">
+                     <label class="nomedoCampo">Categoria Site: *</label><br>
+                     <select id="qtdcomprada" class="form-control" name="siteprod" id="siteprod" maxlength="" required>
+        <option value="">Selecione Categoria</option>
+        <option value="Promocoes">Promoções</option>
+        <option value="Rosto">Rosto</option>
+        <option value="Olhos">Olhos</option>
+        <option value="Boca">Boca</option>
+        <option value="Acessorios">Acessórios</option>
+        <option value="Aplicadores">Aplicadores</option>
+        <option value="Sobrancelhas">Sobrancelhas</option>
+        <option value="Corporal">Corporal</option>
+        <option value="Infaltil">Infaltil</option>
+        </select>
+                 </div><br>
+
+              <div class="col-3">
                         <input type="submit" name="submit" id="submit" value="Salvar">
                      </div>
 

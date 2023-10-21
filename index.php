@@ -20,9 +20,9 @@
     <div class="containerhome">
         <div class="boxhome">
 <div class="linkloja">
-  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
+  <a href="produtosrosto.php"><img class="imgloja" id="nossaloja"src="img/rosto.png"></a>
   </div>
-  <a href="nossaLoja"><img class="" id="nossaloja">Conheça nossa loja</a>
+  <a href="produtosrosto.php"><img class="" id="nossaloja">Produtos para Rosto</a>
   </div>
   <div class="boxhome">
   <div class="linkloja">

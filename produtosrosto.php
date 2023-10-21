@@ -57,18 +57,16 @@ if (isset($_POST['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Flowers</title>
     <link rel="stylesheet" href="style.css">
-    <style>
-        
-    </style>
+    
 </head>
 <body>
 <header>
-<div class="cabecalho" id="cabecalho">
-<?php include('cabecalhoSite.php');?>
-</div>    
+    <div class="cabecalho" id="cabecalho">
+    <?php include('cabecalhoSite.php');?>
+    </div>    
 
 </header>
-<h1 id="titulosite">Produtos categoria rosto</h1>
+<h1 id="titulocategoria">Produtos categoria rosto</h1>
 <div id="tabelaCarrinhos">
         <table>
             <tbody>   
@@ -82,8 +80,8 @@ if (isset($_POST['id'])) {
                 echo '<b>' . $produtoNoCarrinho['produto'] . '</b><br>';
                 echo $produtoNoCarrinho['marca'] . ' - ' . $produtoNoCarrinho['caracteristicas'] . '<br>';
                 echo 'SKU ' . $produtoNoCarrinho['id'] . '<br>';
-                echo 'R$' . $produtoNoCarrinho['valordevenda'];
-                echo '<form action="carrinho - Copia.php" method="post">';
+                echo 'R$ ' . $produtoNoCarrinho['valordevenda'];
+                echo '<form action="carrinho.php" method="post">';
                 echo '<input type="hidden" name="id" value="' . $produtoNoCarrinho['id'] . '">';
                 echo '<input type="submit" class="addCarrinho" value="Adicionar ao Carrinho">';
                 echo '</form>';

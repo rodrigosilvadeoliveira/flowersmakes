@@ -428,6 +428,9 @@ legend{
     background-color: #007bff;
     color: #ffffff;
 }  
+.nav-link{
+    font-size: 18px;
+}
 #logoFlowers{
     width: 80px;
     height: 70px;
@@ -455,6 +458,45 @@ video {
     width: 52%;
 }
 /*Site*/
+.continuarcomprando{
+   
+    position: ;
+    margin-left: 1%;
+    text-align: center;
+    color: white;
+    background-color: #aa5377;
+    text-decoration: none;
+    border: 3px solid dodgerblue;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 20px;
+}
+.confirmarpedido{
+   
+    position: ;
+    margin-left: ;
+    text-align: center;
+    color: white;
+    background-color: #aa5377;
+    text-decoration: none;
+    border: 3px solid dodgerblue;
+    padding: 10px;
+    border-radius: 15px;
+    font-size: 20px;
+
+}
+.boxcarrinho{
+    position: absolute;
+    top: 26%;
+    left: 90%;
+    transform: translate(-50%,-25%);
+    border-radius: 15px;
+    color: black;
+    background-color: #f8bdc6;
+    padding: 15px;
+    border-radius: 15px;
+    width: 13,5%;
+}
 .imgloja{
     
     width: 350px;
@@ -472,19 +514,9 @@ video {
     border: 3px solid dodgerblue;
     padding: 10px;
     border-radius: 15px;
+    
 }
-.boxcarrinho{
-    position: absolute;
-    top: 26%;
-    left: 82%;
-    transform: translate(-50%,-25%);
-    border-radius: 15px;
-    color: black;
-    background-color: rgba(0, 0, 0, 0.8);
-    padding: 15px;
-    border-radius: 15px;
-    width: 13,5%;
-}
+
 #cabecalho{
     margin-top: 10px;
 }
@@ -494,6 +526,21 @@ video {
     height: 100px;
     align-items: center;
 }
+.titulocarrinho{
+    margin-top: 15%;
+    text-align: center;
+}
+.dadosentrega{
+    text-align: center;
+
+}
+.fraseentrega{
+    text-align: center;
+    font-size: 18px;
+}
+.dadoscliente{
+    margin-left: 2%;
+}
 .imagens{
     width: 170px;
     height: 170px;
@@ -502,12 +549,21 @@ video {
 }
 #tituloSite{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin-top: -6%;
+    margin-top: -7%;
     height: top;
     line-height: 80px;
     text-align: center;
     color: rgb(172, 16, 130);
     font-size: 40px;
+}
+#fraseSite{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    margin-top: -3%;
+    height: top;
+    line-height: 80px;
+    text-align: center;
+    color: rgb(172, 16, 130);
+    font-size: 20px;
 }
 #tabelaProduto{
     margin-left: ;
@@ -564,6 +620,7 @@ video {
     width: 100%;
     max-width: 100%;
     overflow: auto;
+    margin-left: 5%;
 }
 
 #tabelaCarrinhos table {
@@ -575,8 +632,11 @@ video {
     width: 15%;
     box-sizing: border-box;
 }
-#titulosite{
-    margin-top: 200px;
+#titulocategoria{
+    margin-top: 250px;
+    text-align: center;
+    font-family: cursive;
+    color: ;
 }
 
 .produtos {

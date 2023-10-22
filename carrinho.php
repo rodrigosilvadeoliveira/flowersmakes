@@ -57,23 +57,27 @@ function calcularTotal(select, valorVenda) {
     totalElement.textContent = "R$" + total.toFixed(2);
 
     // Atualize o valor total geral
-    atualizarValorTotalGeral();
+        atualizarValorTotalGeral();
 }
 
 // Função para atualizar o valor total geral
 function atualizarValorTotalGeral() {
-    const todasLinhas = document.querySelectorAll(".total");
+    const todasLinhas = document.querySelectorAll("tr");
+
     let totalGeral = 0;
 
     todasLinhas.forEach(function(linha) {
-        totalGeral += parseFloat(linha.textContent.replace("R$", ""));
+        const totalElement = linha.querySelector(".total");
+        if (totalElement) {
+            totalGeral += parseFloat(totalElement.textContent.replace("R$", ""));
+        }
     });
 
     // Atualize o valor total geral
     valorTotalGeral = totalGeral;
 
     // Exiba o valor total geral na célula desejada
-    const valorTotalGeralCell = document.querySelector('#valorTotalGeralCell');
+    const valorTotalGeralCell = document.querySelector("#valorTotalGeralCell");
     if (valorTotalGeralCell) {
         valorTotalGeralCell.textContent = "R$" + valorTotalGeral.toFixed(2);
     }
@@ -140,12 +144,8 @@ document.addEventListener("DOMContentLoaded", function() {
         
         // Verifique se o formulário foi enviado
 if (isset($_POST['confirmar_pedido'])) {
-    $dbHost = 'localhost';
-    $dbUsername = 'root';
-    $dbPassword = '';
-    $dbName = 'cadastro';
-
-    $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);
+    
+    include('config.php');
 
     ini_set('display_errors', 1); // Exibir erros no navegador (para fins de desenvolvimento)
 error_reporting(E_ALL); // Relatar todos os tipos de erro (para fins de desenvolvimento)
@@ -156,9 +156,16 @@ date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Br
         die("Erro na conexão com o banco de dados: " . $conexao->connect_error);
     }
     $nome = $_POST['nome'];
+    $telefone = $_POST['telefone'];
+    $email = $_POST['email'];
+    $tpentrega = $_POST['tpentrega'];
+    $endereco = $_POST['endereco'];
+    $numero = $_POST['numero'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
 
     // Insira o cliente na tabela de clientes
-$sql = "INSERT INTO clientes (nome) VALUES (?)";
+$sql = "INSERT INTO clientes (nome, telefone, email, tpentrega, endereco, numero, cidade, estado) VALUES (?, '$telefone', '$email', '$tpentrega', '$endereco', '$numero', '$cidade', '$estado')";
 $stmt = $conexao->prepare($sql);
 $stmt->bind_param("s", $nome); // "s" indica que é uma string
 $stmt->execute();
@@ -175,18 +182,24 @@ $status = 'pendente';
 
     // Obtenha o ID do pedido gerado automaticamente
     $id_pedido = $conexao->insert_id;
-
+    
+    
     // Inserir os produtos associados a esse pedido na tabela de produtos
     foreach ($_SESSION['carrinho'] as $produtoNoCarrinho) {
         $id_produto = $produtoNoCarrinho['id'];
-        $quantidade = $produtoNoCarrinho['quantidade']; // Substitua pela forma correta de obter a quantidade
+        $produto = $produtoNoCarrinho['produto'];
+        $marca = $produtoNoCarrinho['marca'];
+        $quantidade = $_POST['quantidade']; // Substitua pela forma correta de obter a quantidade
         $preco_unitario = $produtoNoCarrinho['valordevenda'];
+        $linhaTotal = $quantidade * $preco_unitario; // Calcule o valor da linha total
 
-        $sql = "INSERT INTO produto (id_pedido, id_produto, quantidade, preco_unitario) VALUES (?, ?, ?, ?)";
-        $stmt = $conexao->prepare($sql);
-        $stmt->bind_param("iiid", $id_pedido, $id_produto, $quantidade, $preco_unitario);
-        $stmt->execute();
+    $sql = "INSERT INTO produto (id_pedido, id_produto, produto, marca, quantidade, preco_unitario, linhaTotal) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("iissddd", $id_pedido, $id_produto, $produto, $marca, $quantidade, $preco_unitario, $linhaTotal);
+    $stmt->execute();
+
     }
+    
 
     // Após concluir a inserção do pedido no banco, você pode limpar o carrinho
     $_SESSION['carrinho'] = array();
@@ -212,10 +225,10 @@ $status = 'pendente';
     $valorPadraoSelect = 1;
 
     echo "<td>
-        <select class='categoria' onchange='calcularTotal(this, " . $produtoNoCarrinho['valordevenda'] . ")' value='$valorPadraoSelect'>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
+    <select name='quantidade' class='categoria' onchange='calcularTotal(this, " . $produtoNoCarrinho['valordevenda'] . ")'>
+    <option value='1'>1</option>
+    <option value='2'>2</option>
+   <option value='3'>3</option>
             <option value='4'>4</option>
             <option value='5'>5</option>
             <option value='6'>6</option>
@@ -228,7 +241,7 @@ $status = 'pendente';
     $linhaTotal = $produtoNoCarrinho['valordevenda'] * $valorPadraoSelect;
     
     echo "<td><span class='total'>R$" . number_format($linhaTotal, 2) . "</span></td>";
-    
+    echo "<input type='hidden' name='preco_unitario' id='preco_unitario' value=''>";
     echo "<td><img src='" . $produtoNoCarrinho['imagem'] . "' width='60' height='60'></td>";
     echo "<td>
         <a class='btn btn-sm btn-danger' href='deleteprodutodalistasite.php?id=" . $produtoNoCarrinho['id'] . "' title='Deletar'>
@@ -251,6 +264,7 @@ $status = 'pendente';
     <td colspan="2">Valor Total:</td>
     <td id="valorTotalGeralCell" colspan="3">R$ 0.00</td>
     </tr>
+    
             </tr>
         </tbody>
     </table>
@@ -296,33 +310,33 @@ $status = 'pendente';
     <label for="estado" class="form-label">Estado:</label>
     <select name="estado" id="estado" class="form-select">
       <option selected>Selecione...</option>
-      <option value="acre">AC</option>
-      <option value="alagoas">AL</option>
-      <option value="amapa">AP</option>
-      <option value="amazonas">AM</option>
-      <option value="bahia">BH</option>
-      <option value="ceara">CE</option>
-      <option value="distritoFederal">DF</option>
-      <option value="espiritoSanto">ES</option>
-      <option value="goias">GO</option>
-      <option value="maranhao">MA</option>
-      <option value="matoGrosso">MT</option>
-      <option value="matoGrossodoSul">MS</option>
-      <option value="minasGerai">MG</option>
-      <option value="para">PA</option>
-      <option value="paraiba">PB</option>
-      <option value="parana">PR</option>
-      <option value="pernanbuco">PE</option>
-      <option value="piaui">PI</option>
-      <option value="riodeJaneiro">RJ</option>
-      <option value="rioGrandedoNorte">RN</option>
-      <option value="rioGrandedoSul">RS</option>
-      <option value="rodonia">RO</option>
-      <option value="roraima">RR</option>
-      <option value="santaCatarina">SC</option>
-      <option value="saoPaulo">SP</option>
-      <option value="sergipe">SE</option>
-      <option value="tocantis">TO</option>
+      <option value="ac">AC</option>
+      <option value="al">AL</option>
+      <option value="ap">AP</option>
+      <option value="am">AM</option>
+      <option value="bh">BH</option>
+      <option value="ce">CE</option>
+      <option value="df">DF</option>
+      <option value="es">ES</option>
+      <option value="go">GO</option>
+      <option value="ma">MA</option>
+      <option value="mt">MT</option>
+      <option value="ms">MS</option>
+      <option value="mg">MG</option>
+      <option value="pa">PA</option>
+      <option value="pb">PB</option>
+      <option value="pr">PR</option>
+      <option value="pe">PE</option>
+      <option value="pi">PI</option>
+      <option value="rj">RJ</option>
+      <option value="rn">RN</option>
+      <option value="rs">RS</option>
+      <option value="ro">RO</option>
+      <option value="rr">RR</option>
+      <option value="sc">SC</option>
+      <option value="sp">SP</option>
+      <option value="se">SE</option>
+      <option value="to">TO</option>
     </select>
   </div><br>
    </label>

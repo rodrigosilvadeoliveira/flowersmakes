@@ -17,6 +17,6 @@ if (isset($_GET['id'])) {
 
 // Redirecione de volta para a página anterior sem adicionar ao histórico
 header("HTTP/1.1 303 See Other");
-header("Location: carrinho - Copia.php");
+header("Location: carrinho.php");
 exit();
 ?>

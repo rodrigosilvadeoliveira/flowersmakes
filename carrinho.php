@@ -96,6 +96,18 @@ document.addEventListener("DOMContentLoaded", function() {
     atualizarValorTotalGeral();
 });
 
+// Adicione este código ao seu JavaScript
+$(document).ready(function() {
+    // Quando o botão do pedido é clicado
+    $('button[data-target="#pedidoSucessoModal"]').click(function() {
+        // Obtenha o id_pedido do botão clicado
+        var idPedido = $(this).data('id-pedido');
+
+        // Exiba o id_pedido no modal
+        $('#id_pedido').text(idPedido);
+    });
+});
+
 </script>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,6 +119,9 @@ document.addEventListener("DOMContentLoaded", function() {
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
     <script src="bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-lWce9obiiWb1NzKd6ZkW3h/UrzVJx3rnTw1kz96Eo8/0s5HAHzVTmg2d8QQzWt8" crossorigin="anonymous"></script>
+
 </head>
 <body>
     <header>
@@ -138,7 +153,7 @@ document.addEventListener("DOMContentLoaded", function() {
             <th scope="col">Ações</th>
         </tr>
     </thead>
-    <tbody>
+   
     <form action="carrinho.php" method="post">
         <?php
         
@@ -182,6 +197,18 @@ $status = 'pendente';
 
     // Obtenha o ID do pedido gerado automaticamente
     $id_pedido = $conexao->insert_id;
+// Se o pedido foi confirmado com sucesso, exiba o modal
+if ($stmt->execute()) {
+    $id_pedido = $conexao->insert_id; // Defina o id_pedido
+    echo '<script>
+        var idPedido = ' . $id_pedido . ';
+        $(document).ready(function(){
+            $("#pedidoSucessoModal").modal("show");
+        });
+    </script>';
+} else {
+    // Lidere com o erro, se necessário
+}
     
     
     // Inserir os produtos associados a esse pedido na tabela de produtos
@@ -193,12 +220,12 @@ $status = 'pendente';
         $preco_unitario = $produtoNoCarrinho['valordevenda'];
         $linhaTotal = $quantidade * $preco_unitario; // Calcule o valor da linha total
 
-    $sql = "INSERT INTO produto (id_pedido, id_produto, produto, marca, quantidade, preco_unitario, linhaTotal) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO produto (id_pedido, id_produto, produto, marca, quantidade, preco_unitario, linhatotal) VALUES (?, ?, ?, ?, ?, ?, ?)";
     $stmt = $conexao->prepare($sql);
     $stmt->bind_param("iissddd", $id_pedido, $id_produto, $produto, $marca, $quantidade, $preco_unitario, $linhaTotal);
     $stmt->execute();
 
-    }
+}
     
 
     // Após concluir a inserção do pedido no banco, você pode limpar o carrinho
@@ -206,6 +233,10 @@ $status = 'pendente';
 
     // Feche a conexão com o banco de dados
     $conexao->close();
+// Após o código onde você mostra o modal com sucesso, adicione o seguinte código JavaScript para definir a variável idPedido
+echo '<script>
+    var idPedido = ' . $id_pedido . ';
+</script>';
 
     
 } 
@@ -258,7 +289,26 @@ $status = 'pendente';
 
                     
   ?>
-   
+    <tbody>
+    <div class="modal fade" id="pedidoSucessoModal" tabindex="-1" role="dialog" aria-labelledby="pedidoSucessoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pedidoSucessoModalLabel">Parabéns seu pedido foi enviado</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                Agradecemos sua preferência. Seu pedido (ID: <span id="id_pedido"><?= $id_pedido ?></span>) foi enviado com sucesso. Caso tenha alguma dúvida, entre em contato conosco. <a href="contato.php">Contato Flowers Makes</a>
+</div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
             <tr>
             <tr>
     <td colspan="2">Valor Total:</td>
@@ -290,8 +340,8 @@ $status = 'pendente';
     <label for="inputState" class="form-label">*Forma de Entrega:</label>
     <select id="inputState" class="form-select" name="tpentrega">
     <option value="">Selecione</option>
-    <option value="retirar">Retirar na loja</option>
-    <option value="entregar">Para entrega</option>
+    <option value="Retirar">Retirar na loja</option>
+    <option value="Entregar">Para entrega</option>
     </select>
   </div><br>
   <div class="col-5">
@@ -341,7 +391,8 @@ $status = 'pendente';
   </div><br>
    </label>
    
-   <button type="submit"  class="confirmarpedido" name="confirmar_pedido" value="Confirmar Pedido">
+   <button type="submit"  class="confirmarpedido" name="confirmar_pedido" value="Confirmar Pedido" data-toggle="modal" data-target="#pedidoSucessoModal" data-id-pedido="<?= $id_pedido ?>">
+   
    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-bag-check" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"/>
   <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"/>
@@ -357,5 +408,6 @@ $status = 'pendente';
 <!--</fieldset>-->
 
 </body>
+
 </html>
 

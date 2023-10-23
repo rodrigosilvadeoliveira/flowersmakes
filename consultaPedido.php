@@ -64,7 +64,8 @@ $query = "SELECT
     pr.produto AS nome_produto,
     pr.marca AS marca_produto,
     pr.quantidade AS quantidade_produto,
-    pr.preco_unitario AS preco_unitario
+    pr.preco_unitario AS preco_unitario,
+    pr.linhatotal AS linhatotal_produto
 FROM
     clientes AS c
 JOIN
@@ -81,19 +82,28 @@ if ($resultado->num_rows > 0) {
     echo "<h1>Lista de Pedidos Pendentes</h1>";
     echo "<div class='scroll-horizontal'>";
     echo "<table class='table' id='tabelaLista'>";
-    echo "<tr><th>Pedido</th><th>Status</th><th>Nome do Cliente</th><th>Telefone</th><th>Email</th><th>Data do Pedido</th><th>Produto</th><th>Marca</th><th>Vl.Prod</th></tr>";
+    echo "<tr><th>Pedido</th><th>Status</th><th>Tp.entrega</th><th>Nome do Cliente</th><th>Telefone</th>
+    <th>Endereço</th><th>Numero</th><th>Cidade</th><th>Estado</th><th>Data do Pedido</th><th>Produto</th><th>Marca</th><th>Vl.Prod</th><th>Qtd</th><th>Vl.Total</th>
+    <th><img class='' id='' src='img/tucano.png' align='' width='30' height='30'></th></tr>";
     
     while ($row = $resultado->fetch_assoc()) {
         echo "<tr>";
         echo "<td>" . $row['id_pedido'] . "</td>";
         echo "<td>" . $row['status_pedido'] . "</td>";
+        echo "<td>" . $row['tp_entrega'] . "</td>";
         echo "<td>" . $row['nome_cliente'] . "</td>";
         echo "<td>" . $row['telefone_cliente'] . "</td>";
-        echo "<td>" . $row['email_cliente'] . "</td>";
+        echo "<td>" . $row['endereco_cliente'] . "</td>";
+        echo "<td>" . $row['numero_cliente'] . "</td>";
+        echo "<td>" . $row['cidade_cliente'] . "</td>";
+        echo "<td>" . $row['estado_cliente'] . "</td>";
         echo "<td>" . $row['data_pedido'] . "</td>";
         echo "<td>" . $row['nome_produto'] . "</td>";
         echo "<td>" . $row['marca_produto'] . "</td>";
         echo "<td>" . $row['preco_unitario'] . "</td>";
+        echo "<td>" . $row['quantidade_produto'] . "</td>";
+        echo "<td>" . $row['linhatotal_produto'] . "</td>";
+        echo "<td><button class='concluir-button' data-id='" . $row['id_pedido'] . "'>Concluir</button></td>";
         echo "</tr>";
     }
     
@@ -208,4 +218,29 @@ function adicionarNovasCategorias() {
 // Chame a função para adicionar as novas categorias
 adicionarNovasCategorias();
   </script>
+   <script>
+    document.addEventListener('click', function (event) {
+        if (event.target.classList.contains('concluir-button')) {
+            const idPedido = event.target.getAttribute('data-id');
+
+            // Aqui, você deve enviar uma solicitação AJAX para um arquivo PHP que atualizará o status do pedido
+            // Substitua 'atualizarStatusPedido.php' pelo nome do arquivo PHP que você irá criar para processar a atualização.
+            // Lembre-se de passar o ID do pedido como um parâmetro na solicitação.
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'atualizarStatusPedido.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    // Atualize a tabela ou faça outras ações após a conclusão bem-sucedida
+                    console.log('Status do pedido atualizado com sucesso');
+                } else {
+                    console.error('Erro ao atualizar o status do pedido');
+                }
+            };
+            xhr.send('idPedido=' + idPedido);
+        }
+    });
+</script>
+
 </html>

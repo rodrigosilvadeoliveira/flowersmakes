@@ -415,9 +415,9 @@ legend{
     background-color: #ccc;
 	width: 100%;
 	height: 25vh;
-    
-    
+       
 }
+
 .btn btn-primary{
    
     background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
@@ -492,7 +492,7 @@ video {
     transform: translate(-50%,-25%);
     border-radius: 15px;
     color: black;
-    background-color: #f8bdc6;
+    background-color: ;
     padding: 15px;
     border-radius: 15px;
     width: 13,5%;

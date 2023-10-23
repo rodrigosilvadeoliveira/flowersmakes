@@ -271,7 +271,8 @@ legend{
 }
 #update{
     background-image: linear-gradient(to right, rgb(172, 16, 130), rgb(90,20,220));
-    width: 50%;
+    width: 30%;
+    height: 50%;
     border: none;
     padding: 15px;
     color: white;
@@ -458,6 +459,17 @@ video {
     width: 52%;
 }
 /*Site*/
+.nossaloja{
+    width: 20%;
+    height: 10%
+}
+.endloja{
+    margin-left: 2%;
+}
+.mensagem{
+    width: 30%;
+    height: 80%
+}
 .continuarcomprando{
    
     position: ;

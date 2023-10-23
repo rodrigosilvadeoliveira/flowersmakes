@@ -85,7 +85,9 @@
         <li class="nav-item">
           <a class="nav-link" href="relatorios.php">Infanti</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" href="contato.php">Contato</a>
+        </li>
       </ul>
       <!--
       <form class="d-flex" role="search" id="pesquisar">

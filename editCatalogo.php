@@ -64,7 +64,7 @@ verificarLogin();
                 
              <div class="col-md-5">
                   <label class="nomedoCampo">Nova Imagem: *</label><br>
-                  <input type="file" name="imagem" class="form-control" accept="image/*" value="<?php echo $imagem ?>">
+                  <input type="text" name="imagem" class="form-control" accept="image/*" value="<?php echo $imagem ?>">
                   </div><br>
  
                   <div class="col-md-5">
@@ -108,26 +108,16 @@ verificarLogin();
                      <label class="campodeFormulario">Código de Barras: *</label><br>
                      <input type="number" class="form-control" name="barra" placeholder="Ler código de Barra" id="barra" maxlength="15" value="<?php echo $barra ?>">
                      <br>
-
+</div>
                      <div class="col-md-5">
                      <label class="campodeFormulario">Catagoria Site: *</label><br>
-                     <select id="qtdcomprada" class="form-control" name="siteprod" maxlength="" value="<?php echo $siteprod ?>" required>
-        <option value="">Selecione Categoria</option>
-        <option value="Promocoes">Promoções</option>
-        <option value="Rosto">Rosto</option>
-        <option value="Olhos">Olhos</option>
-        <option value="Boca">Boca</option>
-        <option value="Acessorios">Acessórios</option>
-        <option value="Aplicadores">Aplicadores</option>
-        <option value="Sobrancelhas">Sobrancelhas</option>
-        <option value="Corporal">Corporal</option>
-        <option value="Infaltil">Infaltil</option>
-        </select>
+                     <input type="text" id="siteprod" class="form-control" name="siteprod" maxlength="" value="<?php echo $siteprod ?>" required>
+        
                  </div><br>
-</div>
+<div>
                      <input type="hidden" name="id" value="<?php echo $id ?>">
                      
-                     <input type="submit" name="update" class="atualizar">
+                     <input type="submit" name="update" id="update" class="atualizar">
                      
                    
                  </div><br>

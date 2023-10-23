@@ -143,6 +143,7 @@ header('Location: cadastroProduto.php');
                      <label class="nomedoCampo">Categoria Site: *</label><br>
                      <select id="qtdcomprada" class="form-control" name="siteprod" id="siteprod" maxlength="" required>
         <option value="">Selecione Categoria</option>
+        <option value="na">Sem Categoria</option>
         <option value="Promocoes">Promoções</option>
         <option value="Rosto">Rosto</option>
         <option value="Olhos">Olhos</option>

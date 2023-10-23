@@ -304,6 +304,7 @@ echo '<script>
 </div>
 
                 <div class="modal-footer">
+                
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                 </div>
             </div>
@@ -321,7 +322,20 @@ echo '<script>
     <!--<fieldset class="boxcliente" id="boxcliente">-->
 <h1 class="dadosentrega">Informar dados para Entrega</h1>
 <h3 class="fraseentrega">*Se optar por retirar em Loja em loja, informar endereço é opcional.</h3>
-<div class="dadoscliente">    
+
+<div class="dadoscliente">   
+<span><b>Para retirar em loja nosso endereço:</b>
+<br>
+Horário: Seg á Sex (09:30 as 18:00) Sab (09:00 as 17:00)
+<br>
+Rua: Ciquenta e um, Nº1
+<br>
+Cep: 08472-715
+<br>
+Conj. Hab. Inacio Monteiro
+<br>
+São Paulo - SP</span>
+<br><br> 
 <div class="col-md-5">
     <label for="nome" class="form-label">*Nome completo:</label>
     <input type="text" name="nome" id="nome" class="form-control" id="inputCity" required>

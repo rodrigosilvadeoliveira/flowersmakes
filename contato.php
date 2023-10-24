@@ -1,7 +1,22 @@
 <?php
-session_start();
+include_once('config.php');
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nome = $_POST['nome'];
+    $sobrenome = $_POST['sobrenome'];
+    $telefone = $_POST['telefone'];
+    $email = $_POST['email'];
+    $tpcontato = $_POST['tpcontato'];
+    $pedido = $_POST['pedido'];
+    $assunto = $_POST['assunto'];
+    $mensagem = $_POST['mensagem'];
+    $status = 'pendente';
 
+    $result = mysqli_query($conexao, "INSERT INTO contato (nome, sobrenome, telefone, email, tpcontato, pedido, assunto, mensagem, status) 
+    VALUES ('$nome', '$sobrenome', '$telefone', '$email', '$tpcontato', '$pedido', '$assunto', '$mensagem', '$status')");
+
+    header('Location: contato.php');
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,18 +35,22 @@ session_start();
     </div>    
 
 </header>
+<form action="contato.php" method="post">
+
+
 <h1 id="titulocategoria">Contato com a Flowers Makes</h1>
 
 <h3 class="fraseentrega">*Estamos a disposição para te auxiliar e ter a melhor experiência em nosso site.<br> Deixe a baixo sua mensagem em breve entraremos em contato, não deixe se seleciona qual forma de contato é de sua preferência,<br> se forma escolhida for whatsAPP não deixe de informar o numero no campo telefone.</h3>
+
 <div class="dadoscliente">    
 <div class="col-md-5">
-    <label for="nome" class="form-label">*Nome completo:</label>
-    <input type="text" name="nome" id="nome" class="form-control" id="inputCity" required>
+    <label for="nome" class="form-label">*Nome:</label>
+    <input type="text" name="nome" id="nome" class="form-control" required>
   </div><br>
   
   <div class="col-md-5">
     <label for="nome" class="form-label">*Sobrenome:</label>
-    <input type="text" name="nome" id="nome" class="form-control" id="inputCity" required>
+    <input type="text" name="sobrenome" id="sobrenome" class="form-control" required>
   </div><br>
 
   <div class="col-2">
@@ -44,22 +63,23 @@ session_start();
     <input type="email"  name="email" id="email" class="form-control">
   </div><br>
 
-<div class="col-md-5">
-  <label for="inputState" class="form-label">*Forma de contato:</label>
-    <select id="inputState" class="form-select" name="tpentrega">
-    <option value="">Selecione</option>
-    <option value="email">Email</option>
-    <option value="whatsapp">WhatsApp</option>
+  <div class="col-md-5">
+    <label for="inputState" class="form-label">*Forma de contato:</label>
+    <select id="tpcontato" class="form-select" name="tpcontato">
+        <option value="">Selecione</option>
+        <option value="email">Email</option>
+        <option value="whatsapp">WhatsApp</option>
     </select>
-  </div><br>
+</div>
+<br>
 
   <div class="col-2">
     <label for="telefone" class="form-label">Numero do Pedido:</label>
-    <input type="num" class="form-control" name="telefone" id="telefone" placeholder="dd numero" required>
+    <input type="num" class="form-control" name="pedido" id="pedido" placeholder="dd numero" required>
   </div><br>
   <div class="col-md-5">
     <label for="nome" class="form-label">*Titulo para Assunto:</label>
-    <input type="text" name="nome" id="nome" class="form-control" required>
+    <input type="text" name="assunto" id="assunto" class="form-control" required>
   </div><br>
   
   <div class="col-md-5">

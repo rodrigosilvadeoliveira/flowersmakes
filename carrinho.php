@@ -171,6 +171,7 @@ date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Br
         die("Erro na conexão com o banco de dados: " . $conexao->connect_error);
     }
     $nome = $_POST['nome'];
+    $sobrenome = $_POST['sobrenome'];
     $telefone = $_POST['telefone'];
     $email = $_POST['email'];
     $tpentrega = $_POST['tpentrega'];
@@ -180,7 +181,7 @@ date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Br
     $estado = $_POST['estado'];
 
     // Insira o cliente na tabela de clientes
-$sql = "INSERT INTO clientes (nome, telefone, email, tpentrega, endereco, numero, cidade, estado) VALUES (?, '$telefone', '$email', '$tpentrega', '$endereco', '$numero', '$cidade', '$estado')";
+$sql = "INSERT INTO clientes (nome, sobrenome, telefone, email, tpentrega, endereco, numero, cidade, estado) VALUES (?, '$sobrenome', '$telefone', '$email', '$tpentrega', '$endereco', '$numero', '$cidade', '$estado')";
 $stmt = $conexao->prepare($sql);
 $stmt->bind_param("s", $nome); // "s" indica que é uma string
 $stmt->execute();
@@ -337,10 +338,15 @@ Conj. Hab. Inacio Monteiro
 São Paulo - SP</span>
 <br><br> 
 <div class="col-md-5">
-    <label for="nome" class="form-label">*Nome completo:</label>
-    <input type="text" name="nome" id="nome" class="form-control" id="inputCity" required>
+    <label for="nome" class="form-label">*Nome:</label>
+    <input type="text" name="nome" id="nome" class="form-control" required>
   </div><br>
   
+  <div class="col-md-5">
+    <label for="nome" class="form-label">*Sobrenome:</label>
+    <input type="text" name="sobrenome" id="sobrenome" class="form-control" required>
+  </div><br>
+
   <div class="col-2">
     <label for="telefone" class="form-label">*Telefone:</label>
     <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="dd numero" required>

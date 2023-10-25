@@ -472,7 +472,7 @@ video {
     height: 80%
 }
 .continuarcomprando{
-   
+    width: 20%;
     margin-left: 1%;
     color: white;
     background-color: #aa5377;
@@ -756,6 +756,14 @@ margin-top: -15px;
         margin-top: 28%;
         text-align: center;
     }
+    .continuarcomprando{
+        width: 27%;
+        font-size: 20px;
+}
+.carroussel{
+    margin-top: 25%;
+ 
+}
 }
 @media (max-width: 999px){
     #flowers{
@@ -888,6 +896,14 @@ margin-top: -15px;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+.continuarcomprando{
+    width: 30%;
+    font-size: 20px;
+}
+.carroussel{
+    margin-top: 30%;
+ 
+}
 }
 
 @media (max-width: 800px){
@@ -1014,7 +1030,14 @@ margin-top: -15px;
 .produto-info {
     font-size: 14px;
 }
-
+.continuarcomprando{
+    width: 35%;
+    font-size: 20px;
+}
+.carroussel{
+    margin-top: 45%;
+ 
+}
 }
 
 
@@ -1149,8 +1172,13 @@ margin-top: -15px;
     text-align: center;
 }
 .continuarcomprando{
-    margin-top: 3%;
-}    
+    width: 50%;
+    font-size: 20px;
+}
+.carroussel{
+    margin-top: 60%;
+ 
+}   
 }
   @media (max-width: 400px){
     .d-flex {
@@ -1289,5 +1317,9 @@ margin-top: -15px;
         .titulocarrinho{
             margin-top: 75%;
             text-align: center;
+        }
+        .carroussel{
+            margin-top: 95%;
+         
         }
   }

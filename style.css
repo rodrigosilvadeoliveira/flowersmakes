@@ -26,6 +26,7 @@ body{
         top: 0;
         width: 100%;
         background-color: #f0f0f0;
+        z-index: 100;
         /* outros estilos desejados para o cabeçalho */
       }
       main {
@@ -472,13 +473,11 @@ video {
 }
 .continuarcomprando{
    
-    position: ;
     margin-left: 1%;
-    text-align: center;
     color: white;
     background-color: #aa5377;
     text-decoration: none;
-    border: 3px solid dodgerblue;
+    border: 3px solid #aa5377;
     padding: 10px;
     border-radius: 15px;
     font-size: 20px;
@@ -559,6 +558,16 @@ video {
     margin: 10px;
 
 }
+.imagenscarroussel{
+    width: 90%;
+    height: 90%;
+    margin: 10px;
+    padding: 2%;
+
+}
+.produto-info {
+    font-size: 14px;
+}
 #tituloSite{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     margin-top: -7%;
@@ -628,11 +637,12 @@ video {
     height: 30px;
     font-size: 14px;
 }
-#tabelaCarrinhos {
+#tabelaCarrinho {
     width: 100%;
     max-width: 100%;
     overflow: auto;
-    margin-left: 5%;
+    margin-top: 2%;
+    margin-left: 1%;
 }
 
 #tabelaCarrinhos table {
@@ -644,6 +654,25 @@ video {
     width: 15%;
     box-sizing: border-box;
 }
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.carroussel-container {
+    display: contents;
+    position: fixed;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    z-index: 50;
+}
+.produtos {
+    width: 30%; /* Ajuste a largura desejada para seus produtos */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
 #titulocategoria{
     margin-top: 250px;
     text-align: center;
@@ -651,24 +680,17 @@ video {
     color: ;
 }
 
-.produtos {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-#tabelaCarrinho{
-    margin-left: 15px;
-    margin-top: 20px;
-    background: white;
-    width: 50%;
-    border: none;
-    padding: 15px;
-    color: black;
-    font-size: 15px;
-    cursor: pointer;
-    border-radius: 10px;
-
+#titulohome{
+    margin-top: 10%;
+    text-align: center;
+    font-family: cursive;
+    color: ;
 }
 
+.carroussel{
+    margin-top: 15%;
+ 
+}
 #sobre_prod {
     border: 25px solid #903;
     background: #903;
@@ -729,7 +751,12 @@ margin-top: -15px;
     display: inline-block;
     margin-right: 10px;
 }
-
+@media (max-width: 1025px){
+    .titulocarrinho{
+        margin-top: 28%;
+        text-align: center;
+    }
+}
 @media (max-width: 999px){
     #flowers{
         
@@ -843,9 +870,25 @@ margin-top: -15px;
     #incluirCadastro{
         font-size: 20px;
      }
-    
-}
+/*site*/
+.titulocarrinho{
+    margin-top: 30%;
+    text-align: center;
+} 
 
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.produtos {
+    width: 30%; /* Ajuste a largura desejada para seus produtos */
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+}
 
 @media (max-width: 800px){
     #flowers{
@@ -956,8 +999,24 @@ margin-top: -15px;
         margin-left: 4%; 
         margin-top:2%; 
        
-    }    
+    }
+    /*site*/
+.titulocarrinho{
+    margin-top: 43%;
+    text-align: center;
 }
+.imagens{
+    width: 170px;
+    height: 170px;
+    margin: 10px;
+
+}
+.produto-info {
+    font-size: 14px;
+}
+
+}
+
 
 @media (max-width: 541px){
     #voltar {
@@ -1084,6 +1143,14 @@ margin-top: -15px;
         #consultar{
             margin-left: 4%;
         }
+        /*site*/
+.titulocarrinho{
+    margin-top: 55%;
+    text-align: center;
+}
+.continuarcomprando{
+    margin-top: 3%;
+}    
 }
   @media (max-width: 400px){
     .d-flex {
@@ -1219,5 +1286,8 @@ margin-top: -15px;
         #closeModal{
             margin-top: 2%;
         }
-
+        .titulocarrinho{
+            margin-top: 75%;
+            text-align: center;
+        }
   }

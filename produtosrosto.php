@@ -68,6 +68,7 @@ if (isset($_POST['id'])) {
 </header>
 <h1 id="titulocategoria">Produtos categoria rosto</h1>
 <div id="tabelaCarrinhos">
+<div class="produtos-container">
         <table>
             <tbody>   
             <?php
@@ -75,16 +76,18 @@ if (isset($_POST['id'])) {
             
             while ($produtoNoCarrinho = mysqli_fetch_assoc($result)) {
                 echo '<tr class="produtos">';
-                echo '<td><img class="imagens" src="' . $produtoNoCarrinho['imagem'] . '">';
-                echo '<br>';
-                echo '<b>' . $produtoNoCarrinho['produto'] . '</b><br>';
-                echo $produtoNoCarrinho['marca'] . ' - ' . $produtoNoCarrinho['caracteristicas'] . '<br>';
-                echo 'SKU ' . $produtoNoCarrinho['id'] . '<br>';
-                echo 'R$ ' . $produtoNoCarrinho['valordevenda'];
+                echo '<td>';
+                echo '<img class="imagens" src="' . $produtoNoCarrinho['imagem'] . '">';
+                echo '<div class="produto-info">';
+                echo '<b>' . $produtoNoCarrinho['produto'] . '</b>';
+                echo '<p>' . $produtoNoCarrinho['marca'] . ' - ' . $produtoNoCarrinho['caracteristicas'] . '</p>';
+                echo '<p>SKU ' . $produtoNoCarrinho['id'] . '</p>';
+                echo '<p>R$ ' . $produtoNoCarrinho['valordevenda'] . '</p>';
                 echo '<form action="carrinho.php" method="post">';
                 echo '<input type="hidden" name="id" value="' . $produtoNoCarrinho['id'] . '">';
                 echo '<input type="submit" class="addCarrinho" value="Adicionar ao Carrinho">';
                 echo '</form>';
+                echo '</div>';
                 echo '</td>';
                 echo '</tr>';
             }
@@ -92,6 +95,10 @@ if (isset($_POST['id'])) {
         </tbody>
     </table>
 </div>
+</div>
+<div class="footer" id="footer">
+      <?php include('footerSite.php');?>
+      </div>
 </body>
 </html>
 

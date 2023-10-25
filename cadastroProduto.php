@@ -101,6 +101,7 @@ header('Location: cadastroProduto.php');
         <option value="Boca">Boca</option>
         <option value="Acessorios">Acessórios</option>
         <option value="Aplicadores">Aplicadores</option>
+        <option value="Carroussel">Carroussel</option>
         <option value="Sobrancelhas">Sobrancelhas</option>
         <option value="Corporal">Corporal</option>
         <option value="Infaltil">Infaltil</option>
@@ -152,6 +153,7 @@ header('Location: cadastroProduto.php');
         <option value="Aplicadores">Aplicadores</option>
         <option value="Sobrancelhas">Sobrancelhas</option>
         <option value="Corporal">Corporal</option>
+        <option value="Carroussel">Carroussel</option>
         <option value="Infaltil">Infaltil</option>
         </select>
                  </div><br>

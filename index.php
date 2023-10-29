@@ -47,13 +47,14 @@ if (isset($_POST['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contato Flowers</title>
+    <title>Home Flowers</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <script src="bootstrap.min.js"></script>
 </head>
 <body>
 
@@ -86,45 +87,14 @@ if (isset($_POST['id'])) {
 
 <h1 id="titulohome">Pagina inicial Flowers Makes</h1>
 
-    <div class="containerhome">
-        <div class="boxhome">
-<div class="linkloja">
-  <a href="produtosrosto.php"><img class="imgloja" id="nossaloja"src="img/rosto.png"></a>
-  </div>
-  <a href="produtosrosto.php"><img class="" id="nossaloja">Produtos para Rosto</a>
-  </div>
-  <div class="boxhome">
-  <div class="linkloja">
-  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
-  </div>
-  <a href="nossaLoja"><img class="" id="nossaloja">Mais Vendidos</a>
-        </div>
-
-        <div class="boxhome">
-  <div class="linkloja">
-  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
-  </div>
-  <a href="nossaLoja"><img class="" id="nossaloja">Nossa Equipe</a>
-        </div>
-
-        <div class="boxhome">
-  <div class="linkloja">
-  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
-  </div>
-  <a href="nossaLoja"><img class="" id="nossaloja">Nossa História</a>
-        </div>
-
-        <div class="boxhome">
-  <div class="linkloja">
-  <a href="nossaLoja"><img class="imgloja" id="nossaloja"src="img/cestaPomocao.jpeg"></a>
-  </div>
-  <a href="nossaLoja"><img class="" id="nossaloja">Posso ajudar?
-</a>
-        </div>
-      </div>
-      <div class="footer" id="footer">
-      <?php include('footerSite.php');?>
-      </div>
+<div class="containerhome">
+    <div class="boxhome">
+        <a href="produtosrosto.php"><img class="imgloja" id="nossaloja" src="img/rosto.png"></a>
+        <a href="nossaLoja.php"><img class="imgloja" id="nossaloja" src="img/nossaloja.png"></a>
+        <a href="nossaLoja.php"><img class="imgloja" id="nossaloja" src="img/maisvendidos.png"></a>
+    </div>
+</div>
+     
       <script>
 $(document).ready(function(){
     $('.carroussel-container').slick({
@@ -136,5 +106,9 @@ $(document).ready(function(){
 });
 </script>
 
+      
+      <?php include('footerSite.php');?>
+     
+     
 </body>
 </html>

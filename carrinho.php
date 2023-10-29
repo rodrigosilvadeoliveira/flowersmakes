@@ -324,6 +324,7 @@ echo '<script>
     <!--<fieldset class="boxcliente" id="boxcliente">-->
 <h1 class="dadosentrega">Informar dados para Entrega</h1>
 <h3 class="fraseentrega">*Se optar por retirar em Loja em loja, informar endereço é opcional.</h3>
+<h3 class="fraseentrega">*O pagamento do seu pedido, pode ser realizado antecipadamento pelo pix: lojaflowersmakes@gmail.com ou a combinar no recebimento do pedido.</h3>
 
 <div class="dadoscliente">   
 <span><b>Para retirar em loja nosso endereço:</b>

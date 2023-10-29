@@ -57,6 +57,12 @@ if (isset($_POST['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Site Flowers</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <script src="bootstrap.min.js"></script>
     
 </head>
 <body>
@@ -67,7 +73,7 @@ if (isset($_POST['id'])) {
 
 </header>
 <h1 id="titulocategoria">Produtos categoria rosto</h1>
-<div id="tabelaCarrinhos">
+<div id="tabelaSite">
 <div class="produtos-container">
         <table>
             <tbody>   

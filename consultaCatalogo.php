@@ -120,10 +120,7 @@ include_once('config.php');
     
   <?php
 
-$dbHost = 'localhost';
-$dbUsername = 'root';
-$dbPassword = '';
-$dbName = 'cadastro';
+include_once('config.php');
 
 // Estabelecer a conexão com o banco de dados
 $conexao = new mysqli($dbHost, $dbUsername, $dbPassword, $dbName);

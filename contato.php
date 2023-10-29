@@ -72,6 +72,8 @@ if (isset($_POST['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contato Flowers</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/png">
+    <script src="bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -152,9 +154,12 @@ if (isset($_POST['id'])) {
 </form>
 <br>
 <div class="endloja">
-<img class="nossaloja" src="img/fotoloja.jpeg"><br><span><b>Venha visitar nossa loja:</b>
+<img class="nossaloja" src="img/fotoloja.jpeg"><br><span><br>
+<b>Venha visitar nossa loja:</b>
 <br>
 Horário: Seg á Sex (09:30 as 18:00) Sab (09:00 as 17:00)
+<br>
+WhatssApp: 11 - 950238363
 <br>
 Rua: Ciquenta e um, Nº1
 <br>

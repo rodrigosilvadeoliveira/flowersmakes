@@ -460,6 +460,7 @@ video {
     width: 52%;
 }
 /*Site*/
+
 .nossaloja{
     width: 20%;
     height: 10%
@@ -508,14 +509,8 @@ video {
     border-radius: 15px;
     width: 13,5%;
 }
-.imgloja{
-    
-    width: 350px;
-    height: 350px;
-}
-.linkloja{
-    margin-top: 200px;
-}
+
+
 #continuar{
     position: relative;
     text-align: center;
@@ -534,7 +529,7 @@ video {
 #logoSite{
     top: 1px;
     width: 120px;
-    height: 100px;
+    height: 110px;
     align-items: center;
 }
 .titulocarrinho{
@@ -570,7 +565,7 @@ video {
 }
 #tituloSite{
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    margin-top: -7%;
+    margin-top: -5%;
     height: top;
     line-height: 80px;
     text-align: center;
@@ -585,6 +580,7 @@ video {
     text-align: center;
     color: rgb(172, 16, 130);
     font-size: 20px;
+    overflow-wrap: break-word
 }
 #tabelaProduto{
     margin-left: ;
@@ -610,22 +606,23 @@ video {
     margin: 10px; /* Adicione margens para espaçamento entre as caixas */
     margin-left: 5%;
 }
-.boxhome{
-    
-    background:  ;
-    align-items: flex-start; /* Alinhe verticalmente no centro */
-    width: 200px; /* Define a largura máxima de cada caixa */
-    height: 200px;
-    margin: 100px; /* Adicione margens para espaçamento entre as caixas */
-}
 .containerhome {
-    display: flex; /* Use flexbox para alinhar os elementos lado a lado */
-    margin-bottom: 90%;
-    margin-top: -10%;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    display: flex;
+        justify-content: center; /* Centraliza os elementos na horizontal */
+    overflow: auto;
 }
 
+.boxhome {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1600px; /* Ajuste o valor conforme necessário */
+}
+
+.imgloja {
+    max-width: 100%; /* Imagens se ajustarão à largura máxima do contêiner */
+    height: auto;
+    margin: 10px; /* Espaçamento entre as imagens */
+}
 .fieldhome{
     width: 80%;
     background: ;
@@ -654,17 +651,28 @@ video {
     width: 15%;
     box-sizing: border-box;
 }
+
+#tabelaSite {
+    width: 100%;
+    max-width: 100%;
+    overflow: auto;
+    margin-top: 2%;
+    margin-left: 1%;
+}
+
+#tabelaSite table {
+    width: 100%;
+}
+
+#tabelaSite tr {
+    display: inline-block;
+    width: 15%;
+    box-sizing: border-box;
+}
 .produtos-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-}
-.carroussel-container {
-    display: contents;
-    position: fixed;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    z-index: 50;
 }
 .produtos {
     width: 30%; /* Ajuste a largura desejada para seus produtos */
@@ -673,6 +681,14 @@ video {
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
+.carroussel-container {
+    display: contents;
+    position: fixed;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    z-index: 50;
+}
+
 #titulocategoria{
     margin-top: 250px;
     text-align: center;
@@ -751,7 +767,30 @@ margin-top: -15px;
     display: inline-block;
     margin-right: 10px;
 }
-@media (max-width: 1025px){
+@media (max-width: 1300px){
+    #logoSite{
+        top: 1px;
+        width: 110px;
+        height: 100px;
+        align-items: center;
+        margin-left: 2%;
+    }
+    #tituloSite{
+        margin-top: -10%;
+    }
+       
+    #tabelaSite tr {
+        display: inline-block;
+        width: 30%;
+        box-sizing: border-box;
+    }
+    .produtos-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        max-width: 1000px;
+    
+    }
     .titulocarrinho{
         margin-top: 28%;
         text-align: center;
@@ -764,7 +803,9 @@ margin-top: -15px;
     margin-top: 25%;
  
 }
+
 }
+
 @media (max-width: 999px){
     #flowers{
         
@@ -1035,9 +1076,38 @@ margin-top: -15px;
     font-size: 20px;
 }
 .carroussel{
-    margin-top: 45%;
+    margin-top: 30%;
  
 }
+#titulohome{
+    margin-top: 2%;
+}
+#logoSite{
+    top: 1px;
+    width: 100px;
+    height: 90px;
+    align-items: center;
+    margin-left: 2%;
+}
+#fraseSite{
+    display: none;
+}
+.boxcarrinho{
+    margin-top: -1%;
+    margin-left: -8%;
+    
+}
+#tituloSite{
+    margin-left: -12%;
+    margin-top: -10%;
+    font-size: 25px;
+}
+  
+.containerhome{
+margin-top: 10%;
+margin-left: 15%;
+}
+
 }
 
 
@@ -1167,6 +1237,26 @@ margin-top: -15px;
             margin-left: 4%;
         }
         /*site*/
+        #logoSite{
+            top: 1px;
+            width: 80px;
+            height: 70px;
+            align-items: center;
+            margin-left: 2%;
+        }
+        #fraseSite{
+            display: none;
+        }
+        .boxcarrinho{
+            margin-top: -5%;
+            margin-left: -14%;
+            
+        }
+        #tituloSite{
+            margin-left: -12%;
+            margin-top: -10%;
+            font-size: 25px;
+        }
 .titulocarrinho{
     margin-top: 55%;
     text-align: center;
@@ -1176,11 +1266,28 @@ margin-top: -15px;
     font-size: 20px;
 }
 .carroussel{
-    margin-top: 60%;
+    margin-top: 50%;
  
 }   
+.containerhome{
+    margin-top: 10%;
+    margin-left: 10%;
 }
-  @media (max-width: 400px){
+#tabelaSite tr {
+    display: inline-block;
+    width: 40%;
+    box-sizing: border-box;
+}
+.produtos-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    max-width: 600px;
+
+}
+
+}
+  @media (max-width: 413px){
     .d-flex {
         margin-left: 10% ;
         
@@ -1321,5 +1428,57 @@ margin-top: -15px;
         .carroussel{
             margin-top: 95%;
          
+        }
+        /*site*/
+        #logoSite{
+            top: 1px;
+            width: 80px;
+            height: 70px;
+            align-items: center;
+            margin-left: 2%;
+        }
+        #fraseSite{
+            display: none;
+        }
+        .boxcarrinho{
+            margin-top: -5%;
+            margin-left: -8%;
+            
+        }
+        #tituloSite{
+            margin-left: -5%;
+            margin-top: -10%;
+            font-size: 25px;
+        }
+        .carroussel{
+            margin-top: 60%;
+        }
+        .containerhome{
+            margin-left: 12%;
+            margin-top: 10%;
+        }
+        .imgloja{
+            width: 300px;
+            height: 300px;
+            margin-top: 10%;
+            margin-left: -5%;
+        }
+        #tabelaSite tr {
+            display: inline-block;
+            width: 40%;
+            box-sizing: border-box;
+        }
+        .produtos-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            max-width: 400px;
+        
+        }
+        .produtos {
+            margin: 10px;
+            padding: 10px;
+            border: none;
+            box-sizing: border-box;
         }
   }

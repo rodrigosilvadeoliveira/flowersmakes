@@ -12,9 +12,9 @@
 
 <body>
 
-<div><img id="logoSite" src ="logo_flowers.png">
+<img id="logoSite" src ="logo_flowers.png">
 
-</div>
+
     <h1 id="tituloSite">Site Flowers Makes</u></h1>
     <h1 id="fraseSite">Realce a beleza que você tem com a Flowers Makes</u></h1>
     <div class="boxcarrinho">

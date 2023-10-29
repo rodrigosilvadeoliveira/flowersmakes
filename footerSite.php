@@ -11,9 +11,10 @@
 </head>
 
 <body>
-<footer>
-    <div class="conteudo-rodape">
-    <p>&copy; 2023 Flowers Makes. Rua: Ciquenta e um, Nº1 São Paulo/SP Cep: 08472-715. | <a href="contato.php">Contato</a></p>
+    
+<footer class="footer">
+    <div class="container">
+    <p>&copy; 2023 Flowers Makes. Rua: Ciquenta e um, Nº1 São Paulo/SP Cep: 08472-715. WhatssApp: 11 - 950238363 | <a href="contato.php">Contato</a></p>
     </div>
 </footer>
 

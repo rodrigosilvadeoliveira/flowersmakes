@@ -93,7 +93,7 @@ header('Location: cadastroProduto.php');
 
                  <div class="col-md-5">
                      <label class="nomedoCampo">Categoria: *</label><br>
-                     <select id="qtdcomprada" class="form-control" name="produto" id="produto" maxlength="" required>
+                     <select id="qtdcomprada" class="form-control" name="categoria" id="categoria" maxlength="" required>
         <option value="">Selecione Categoria</option>
         <option value="Promocoes">Promoções</option>
         <option value="Rosto">Rosto</option>
@@ -142,7 +142,7 @@ header('Location: cadastroProduto.php');
                      
                 <div class="col-md-5">
                      <label class="nomedoCampo">Categoria Site: *</label><br>
-                     <select id="qtdcomprada" class="form-control" name="siteprod" id="siteprod" maxlength="" required>
+                     <select class="form-control" name="siteprod" id="siteprod" maxlength="" required>
         <option value="">Selecione Categoria</option>
         <option value="na">Sem Categoria</option>
         <option value="Promocoes">Promoções</option>

@@ -30,24 +30,21 @@ $sheet->setCellValue('B1', 'tipodePagamento');
 $sheet->setCellValue('C1', 'valorTotal');
 $sheet->setCellValue('D1', 'datas');
 $sheet->setCellValue('E1', 'hora');
+$sheet->setCellValue('F1', 'Obs');
 $sheet->setCellValue('G1', 'Total Vendas');
-$sheet->setCellValue('H1', 'Forma de Pgto');
-$sheet->setCellValue('H2', 'dinheiro');
-$sheet->setCellValue('H3', 'debito');
-$sheet->setCellValue('H4', 'credito');
-$sheet->setCellValue('H5', 'pix');
 
-$sheet->setCellValue('J1', 'Kau 35%');
-$sheet->setCellValue('K1', 'Vania 35%');
+$sheet->setCellValue('J1', 'Kau 45%');
+$sheet->setCellValue('K1', 'Vania 45%');
 $sheet->setCellValue('L1', 'Rodrigo 10%');
-$sheet->setCellValue('M1', 'Loja 20%');
+$sheet->setCellValue('M1', 'Loja');
+$sheet->setCellValue('M2', '=P2-G2');
 $sheet->setCellValue('G2', '=SUM(C2:B999)');
-$sheet->setCellValue('J2', '=P2*35/100');
-$sheet->setCellValue('K2', '=P2*35/100');
+$sheet->setCellValue('J2', '=P2*45/100');
+$sheet->setCellValue('K2', '=P2*45/100');
 $sheet->setCellValue('L2', '=P2*10/100');
-$sheet->setCellValue('M2', '=P2*20/100');
 $sheet->setCellValue('N1', 'Caixa');
 
+$sheet->setCellValue('P1', 'Lucro');
 
 //Estilo da celula
 $styles = [
@@ -92,6 +89,7 @@ if ($result) {
     $sheet->setCellValue('C' . $row, $row_data['valorTotal']);
     $sheet->setCellValue('D' . $row, $row_data['datas']);
     $sheet->setCellValue('E' . $row, $row_data['hora']);
+    $sheet->setCellValue('F' . $row, $row_data['obs']);
     $row++;
 }
 }else {

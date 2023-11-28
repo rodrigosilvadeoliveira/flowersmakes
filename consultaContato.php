@@ -51,9 +51,17 @@ include_once('config.php');
     </tr>
   </thead>
   <tbody>
+  
 <?php
-    echo "<h1 id='BemVindo'>Catalogo de Produtos e Estoque</h1>";
+    echo "<h1 id='BemVindo'>Contatos de CLientes do Site</h1>";
+    ?>
+<div class="scroll-horizontal">
+<a id="incluirCadastro" value="Novo Cadastro" href="consultaPedido.php">Pedidos</a>
+<a id="incluirCadastro" value="Novo Cadastro" href="consultaContato.php">Msg Clientes</a>
 
+<br>
+  </div>
+<?php
 // Conexão ao banco de dados (substitua as credenciais pelo seu ambiente)
 include_once('config.php');
 // Verifique a conexão

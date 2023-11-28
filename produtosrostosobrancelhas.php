@@ -1,7 +1,16 @@
 <?php
-include_once('config.php');
+session_start();
 
-$sql = "SELECT * FROM novos WHERE siteprod = 'Carroussel' ORDER BY id DESC";
+// Conecte-se ao banco de dados (substitua com suas configurações)
+include('config.php');
+
+// Verifique se a sessão do carrinho já existe; se não, crie-a
+if (!isset($_SESSION['carrinho'])) {
+    $_SESSION['carrinho'] = array();
+
+}
+
+$sql = "SELECT * FROM novos WHERE siteprod = 'Sobrancelhas' ORDER BY id DESC";
 $result = $conexao->query($sql);
 
 // Função para adicionar um produto ao carrinho
@@ -39,7 +48,6 @@ if (isset($_POST['id'])) {
     adicionarProdutoAoCarrinho($idProduto, $conexao);
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -47,7 +55,7 @@ if (isset($_POST['id'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home Flowers</title>
+    <title>Site Flowers</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
@@ -55,60 +63,51 @@ if (isset($_POST['id'])) {
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
     <link rel="shortcut icon" href="images/favicon.png" type="image/png">
     <script src="bootstrap.min.js"></script>
+    
 </head>
 <body>
-
-        <!--
-<a href="formulario.php" id="cadastre">Cadastre-se</a>"
-//-->
 <header>
-<div class="sitecabecalho" id="sitecabecalho">
-<?php include('cabecalhoSite.php');?>
-</div>    
+    <div class="cabecalho" id="cabecalho">
+    <?php include('cabecalhoSite.php');?>
+    </div>    
+
 </header>
-<div id="tabelacarrousel" class="carroussel">
-    <div class="carroussel-container">
-        <?php
-        // Listar produtos no carrinho aqui
-
-        while ($produtoNoCarrinho = mysqli_fetch_assoc($result)) {
-            echo '<div class="produto">';
-            echo '<img class="imagenscarroussel" src="' . $produtoNoCarrinho['imagem'] . '">';
-            echo '<div class="produto-info">';
-            // Resto do código do produto
-            echo '</div>';
-            echo '</div>';
-        }
-        ?>
-    </div>
+<h1 id="titulocategoria">Produtos categoria rosto</h1>
+<div id="tabelaSite">
+<div class="produtos-container">
+        <table>
+            <tbody>   
+            <?php
+            // Listar produtos no carrinho aqui
+            
+            while ($produtoNoCarrinho = mysqli_fetch_assoc($result)) {
+                echo '<tr class="produtos">';
+                echo '<td>';
+                echo '<img class="imagens" src="' . $produtoNoCarrinho['imagem'] . '">';
+                echo '<div class="produto-info">';
+                echo '<b>' . $produtoNoCarrinho['produto'] . '</b>';
+                echo '<p>' . $produtoNoCarrinho['marca'] . ' - ' . $produtoNoCarrinho['caracteristicas'] . '</p>';
+                echo '<p>SKU ' . $produtoNoCarrinho['id'] . '</p>';
+                echo '<p>R$ ' . $produtoNoCarrinho['valordevenda'] . '</p>';
+                echo '<form action="carrinho.php" method="post">';
+                echo '<input type="hidden" name="id" value="' . $produtoNoCarrinho['id'] . '">';
+                echo '<input type="submit" class="addCarrinho" value="Adicionar ao Carrinho">';
+                echo '</form>';
+                echo '</div>';
+                echo '</td>';
+                echo '</tr>';
+            }
+            ?>
+        </tbody>
+    </table>
 </div>
-
-
-
-<h1 id="titulohome">Pagina inicial Flowers Makes</h1>
-
-<div class="containerhome">
-    <div class="boxhome">
-        <a href="produtosrosto.php"><img class="imgloja" id="nossaloja" src="img/rosto.png"></a>
-        <a href="nossaLoja.php"><img class="imgloja" id="nossaloja" src="img/nossaloja.png"></a>
-        <a href="nossaLoja.php"><img class="imgloja" id="nossaloja" src="img/maisvendidos.png"></a>
-    </div>
 </div>
-     
-      <script>
-$(document).ready(function(){
-    $('.carroussel-container').slick({
-        slidesToShow: 1, // Quantidade de slides visíveis ao mesmo tempo
-        slidesToScroll: 1, // Quantidade de slides para avançar/retroceder
-        autoplay: true, // Ativar a reprodução automática
-        autoplaySpeed: 4000, // Velocidade da reprodução automática (em milissegundos)
-    });
-});
-</script>
-
-      
+<div class="footer" id="footer">
       <?php include('footerSite.php');?>
-     
-     
+      </div>
 </body>
 </html>
+
+<?php
+$conexao->close();
+?>

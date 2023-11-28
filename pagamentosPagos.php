@@ -2,6 +2,9 @@
 <?php
 include('verificarLogin.php');
 verificarLogin();
+ini_set('display_errors', 1); // Exibir erros no navegador (para fins de desenvolvimento)
+error_reporting(E_ALL); // Relatar todos os tipos de erro (para fins de desenvolvimento)
+date_default_timezone_set('America/Sao_Paulo');
 //session_start();
 include_once('config.php');
    // print_r($_SESSION);
@@ -33,17 +36,16 @@ include_once('config.php');
     </head>
 <body>
     <br><br>
-    
 <?php
-    echo "<h1 id='BemVindo'>Lista de Pedidos Pendentes</h1>";
+    echo "<h1 id='BemVindo'>Pagamentos Pendentes</h1>";
     ?>
-<div class="scroll-horizontal">
-<a id="incluirCadastro" value="Novo Cadastro" href="consultaPedido.php">Pedidos</a>
-<a id="incluirCadastro" value="Novo Cadastro" href="consultaContato.php">Msg Clientes</a>
-
-<br>
-</div>
-<?php
+    <div class="scroll-horizontal">
+    <a id="incluirCadastro" value="Novo Cadastro" href="pagamentosPendentes.php">Pendentes</a>
+    <a id="incluirCadastro" value="Novo Cadastro" href="pagamentosPagos.php">Pagos</a>
+    
+    <br>
+      </div>
+    <?php
 // Conexão ao banco de dados (substitua as credenciais pelo seu ambiente)
 include_once('config.php');
 // Verifique a conexão
@@ -52,66 +54,31 @@ if ($conexao->connect_error) {
 }
 
 // Consulta SQL para obter pedidos pendentes com informações de clientes e produtos
-$query = "SELECT
-    c.id_clientes AS id_cliente,
-    c.nome AS nome_cliente,
-    c.telefone AS telefone_cliente,
-    c.email AS email_cliente,
-    c.tpentrega AS tp_entrega,
-    c.endereco AS endereco_cliente,
-    c.numero AS numero_cliente,
-    c.cidade AS cidade_cliente,
-    c.estado AS estado_cliente,
-    p.id_pedidos AS id_pedido,
-    p.status AS status_pedido,
-    p.data_pedido AS data_pedido,
-    p.hora_pedido AS hora_pedido,
-    pr.id_lista AS id_lista,
-    pr.id_pedido AS id_pedido_produto,
-    pr.id_produto AS id_produto,
-    pr.produto AS nome_produto,
-    pr.marca AS marca_produto,
-    pr.quantidade AS quantidade_produto,
-    pr.preco_unitario AS preco_unitario,
-    pr.linhatotal AS linhatotal_produto
-FROM
-    clientes AS c
-JOIN
-    pedidos AS p ON c.id_clientes = p.id_clientes
-JOIN
-    produto AS pr ON p.id_pedidos = pr.id_pedido
-WHERE
-    p.status = 'pendente'";
+$sql = "SELECT * FROM pagamento WHERE tipodePagamento = 'pago' ORDER BY id DESC";
 
-$resultado = $conexao->query($query);
-
-// Verifique se a consulta retornou resultados
-if ($resultado->num_rows > 0) {
+$result = $conexao->query($sql);
+if ($result->num_rows > 0) {
     
     echo "<div class='scroll-horizontal'>";
     echo "<table class='table' id='tabelaLista'>";
-    echo "<tr><th>Pedido</th><th>Status</th><th>Tp.entrega</th><th>Nome do Cliente</th><th>Telefone</th>
-    <th>Endereço</th><th>Numero</th><th>Cidade</th><th>Estado</th><th>Data do Pedido</th><th>Produto</th><th>Marca</th><th>Vl.Prod</th><th>Qtd</th><th>Vl.Total</th>
-    <th><img class='' id='' src='img/tucano.png' align='' width='30' height='30'></th></tr>";
+    echo "<tr><th>#</th><th>Valor Total</th><th>Status</th><th>Data</th><th>Hora</th>
+    <th>Detalhes</th><th><img class='' id='' src='img/tucano.png' align='' width='30' height='30'></th></tr>";
     
-    while ($row = $resultado->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
         echo "<tr>";
-        echo "<td>" . $row['id_pedido'] . "</td>";
-        echo "<td>" . $row['status_pedido'] . "</td>";
-        echo "<td>" . $row['tp_entrega'] . "</td>";
-        echo "<td>" . $row['nome_cliente'] . "</td>";
-        echo "<td>" . $row['telefone_cliente'] . "</td>";
-        echo "<td>" . $row['endereco_cliente'] . "</td>";
-        echo "<td>" . $row['numero_cliente'] . "</td>";
-        echo "<td>" . $row['cidade_cliente'] . "</td>";
-        echo "<td>" . $row['estado_cliente'] . "</td>";
-        echo "<td>" . $row['data_pedido'] . "</td>";
-        echo "<td>" . $row['nome_produto'] . "</td>";
-        echo "<td>" . $row['marca_produto'] . "</td>";
-        echo "<td>" . $row['preco_unitario'] . "</td>";
-        echo "<td>" . $row['quantidade_produto'] . "</td>";
-        echo "<td>" . $row['linhatotal_produto'] . "</td>";
-        echo "<td><button class='concluir-button' data-id='" . $row['id_pedido'] . "'>Concluir</button></td>";
+       
+        echo "<td>" .$row['id']. "</td>";
+        
+        echo "<td>" .$row['valorTotal']. "</td>";
+
+        echo "<td>" .$row['tipodePagamento']. "</td>";
+       
+        echo "<td>" .$row['datas']. "</td>";
+        
+        echo "<td>" .$row['hora']. "</td>";
+        
+        echo "<td>" .$row['obs']. "</td>";
+        
         echo "</tr>";
     }
     
@@ -229,14 +196,14 @@ adicionarNovasCategorias();
    <script>
     document.addEventListener('click', function (event) {
         if (event.target.classList.contains('concluir-button')) {
-            const idPedido = event.target.getAttribute('data-id');
+            const id = event.target.getAttribute('data-id');
 
             // Aqui, você deve enviar uma solicitação AJAX para um arquivo PHP que atualizará o status do pedido
             // Substitua 'atualizarStatusPedido.php' pelo nome do arquivo PHP que você irá criar para processar a atualização.
             // Lembre-se de passar o ID do pedido como um parâmetro na solicitação.
 
             const xhr = new XMLHttpRequest();
-            xhr.open('POST', 'atualizarStatusPedido.php', true);
+            xhr.open('POST', 'atualizarPagamentos.php', true);
             xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
             xhr.onload = function () {
                 if (xhr.status === 200) {
@@ -246,7 +213,7 @@ adicionarNovasCategorias();
                     console.error('Erro ao atualizar o status do pedido');
                 }
             };
-            xhr.send('idPedido=' + idPedido);
+            xhr.send('id=' + id);
         }
     });
 </script>

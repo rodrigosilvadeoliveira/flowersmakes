@@ -41,6 +41,7 @@ include_once('config.php');
 <a id="incluirCadastro" value="Novo Cadastro" href="cadastroProduto.php">Novo Cadastro Produto</a>
 <a id="incluirCadastro" value="Novo Cadastro" href="consultaCatalogo.php">Consultar Estoque por periodo</a>
 <a id="incluirCadastro" value="Novo Cadastro" href="consultaProdutos.php">Consultar Estoque por nome Produto</a>
+<a id="incluirCadastro" value="Novo Cadastro" href="consultaimagem.php">Consultar imagem cadastrada</a>
 <br>
 </div>
 <div class="boxformularioDatas">

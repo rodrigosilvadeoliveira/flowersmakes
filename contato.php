@@ -64,6 +64,22 @@ if (isset($_POST['id'])) {
 
 
 ?>
+<!-- Adicione este script antes do fechamento da tag </body> -->
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Seu formulário
+    var form = document.querySelector('form');
+
+    // Adiciona um listener para o evento submit do formulário
+    form.addEventListener('submit', function (event) {
+      // Previne o envio padrão do formulário
+      event.preventDefault();
+
+      // Exibe o modal de confirmação
+      $('#confirmacaoModal').modal('show');
+    });
+  });
+</script>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -128,7 +144,7 @@ if (isset($_POST['id'])) {
 
   <div class="col-2">
     <label for="telefone" class="form-label">Numero do Pedido:</label>
-    <input type="num" class="form-control" name="pedido" id="pedido" placeholder="dd numero" required>
+    <input type="num" class="form-control" name="pedido" id="pedido" placeholder="dd numero">
   </div><br>
   <div class="col-md-5">
     <label for="nome" class="form-label">*Titulo para Assunto:</label>
@@ -144,7 +160,8 @@ if (isset($_POST['id'])) {
   <br>
    </label>
    
-   <button type="submit"  class="duvida" name="duvida" value="Enviar" data-toggle="modal" data-target="#pedidoSucessoModal" data-id-pedido="<?= $id_pedido ?>">
+   <button type="submit"  class="duvida" name="duvida" value="Enviar" data-toggle="modal" data-target="#confirmacaoModal">
+   <button type="submit"  class="confirmarpedido" name="confirmar_pedido" value="Confirmar Pedido" data-toggle="modal" data-target="#pedidoSucessoModal" data-id-pedido="<?= $id_pedido ?>">
     Enviar
    </button>
 
@@ -169,6 +186,24 @@ Conj. Hab. Inacio Monteiro
 <br>
 São Paulo - SP</span>
 </div>
+<!-- Modal de confirmação -->
+<div class="modal fade" id="confirmacaoModal" tabindex="-1" aria-labelledby="confirmacaoModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="confirmacaoModalLabel">Confirmação de Envio</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Seu formulário foi enviado com sucesso! Entraremos em contato em breve.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"  action="contato.php">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="footer" id="footer">
       <?php include('footerSite.php');?>
       </div>

@@ -217,7 +217,7 @@ if ($stmt->execute()) {
         $id_produto = $produtoNoCarrinho['id'];
         $produto = $produtoNoCarrinho['produto'];
         $marca = $produtoNoCarrinho['marca'];
-        $quantidade = $_POST['quantidade_' . $id_produto]; // Substitua pela forma correta de obter a quantidade
+        $quantidade = $_POST['quantidade']; // Substitua pela forma correta de obter a quantidade
         $preco_unitario = $produtoNoCarrinho['valordevenda'];
         $linhaTotal = $quantidade * $preco_unitario; // Calcule o valor da linha total
 
@@ -256,20 +256,20 @@ echo '<script>
     $valorPadraoSelect = 1;
 
     echo "<td>
-    <select name='quantidade_" . $produtoNoCarrinho['id'] . "' class='categoria' onchange='calcularTotal(this, " . $produtoNoCarrinho['valordevenda'] . ")'>
-     <option value='1'>1</option>
+    <select name='quantidade' class='categoria' onchange='calcularTotal(this, " . $produtoNoCarrinho['valordevenda'] . ")'>
+    <option value='1'>1</option>
     <option value='2'>2</option>
-    <option value='3'>3</option>
-    <option value='4'>4</option>
-    <option value='5'>5</option>
-    <option value='6'>6</option>
-    <option value='7'>7</option>
-    <option value='8'>8</option>
-</select>
-</td>";
+   <option value='3'>3</option>
+            <option value='4'>4</option>
+            <option value='5'>5</option>
+            <option value='6'>6</option>
+            <option value='7'>7</option>
+            <option value='8'>8</option>
+        </select>
+    </td>";
 
-// Valor total inicial da linha
-$linhaTotal = $produtoNoCarrinho['valordevenda'] * $valorPadraoSelect;
+    // Valor total inicial da linha
+    $linhaTotal = $produtoNoCarrinho['valordevenda'] * $valorPadraoSelect;
     
     echo "<td><span class='total'>R$" . number_format($linhaTotal, 2) . "</span></td>";
     echo "<input type='hidden' name='preco_unitario' id='preco_unitario' value=''>";
@@ -310,8 +310,7 @@ $linhaTotal = $produtoNoCarrinho['valordevenda'] * $valorPadraoSelect;
             </div>
         </div>
     </div>
-    <tbody>
-    <tr>
+            <tr>
             <tr>
     <td colspan="2">Valor Total:</td>
     <td id="valorTotalGeralCell" colspan="3">R$ 0.00</td>
@@ -320,7 +319,9 @@ $linhaTotal = $produtoNoCarrinho['valordevenda'] * $valorPadraoSelect;
             </tr>
         </tbody>
     </table>
-    <table class="table" id="tabelaCarrinhomobile">
+
+    <!--Tabela para Mobile-->
+            <table class="table" id="tabelaCarrinhomobile">
     <thead>
         <tr>
             <th scope="col">Descrição</th>
@@ -330,8 +331,96 @@ $linhaTotal = $produtoNoCarrinho['valordevenda'] * $valorPadraoSelect;
             <th scope="col">...</th>
         </tr>
     </thead>
-    <?php
-    $valorTotal = 0;
+   
+    <form action="carrinho.php" method="post">
+        <?php
+        
+        // Verifique se o formulário foi enviado
+if (isset($_POST['confirmar_pedido'])) {
+    
+    include('config.php');
+
+    ini_set('display_errors', 1); // Exibir erros no navegador (para fins de desenvolvimento)
+error_reporting(E_ALL); // Relatar todos os tipos de erro (para fins de desenvolvimento)
+date_default_timezone_set('America/Sao_Paulo'); // Definir fuso horário para Brasil/Brasília
+
+    // Verifique se houve erro na conexão com o banco de dados
+    if ($conexao->connect_error) {
+        die("Erro na conexão com o banco de dados: " . $conexao->connect_error);
+    }
+    $nome = $_POST['nome'];
+    $sobrenome = $_POST['sobrenome'];
+    $telefone = $_POST['telefone'];
+    $email = $_POST['email'];
+    $tpentrega = $_POST['tpentrega'];
+    $endereco = $_POST['endereco'];
+    $numero = $_POST['numero'];
+    $cidade = $_POST['cidade'];
+    $estado = $_POST['estado'];
+
+    // Insira o cliente na tabela de clientes
+$sql = "INSERT INTO clientes (nome, sobrenome, telefone, email, tpentrega, endereco, numero, cidade, estado) VALUES (?, '$sobrenome', '$telefone', '$email', '$tpentrega', '$endereco', '$numero', '$cidade', '$estado')";
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("s", $nome); // "s" indica que é uma string
+$stmt->execute();
+
+// Obtenha o ID do cliente gerado automaticamente
+$id_clientes = $conexao->insert_id;
+$status = 'pendente';
+
+    // Insira o pedido na tabela de pedidos
+    $sql = "INSERT INTO pedidos (id_clientes, status, data_pedido, hora_pedido) VALUES ( ?, '$status', CURDATE(), CURTIME())";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("i", $id_clientes);
+    $stmt->execute();
+
+    // Obtenha o ID do pedido gerado automaticamente
+    $id_pedido = $conexao->insert_id;
+// Se o pedido foi confirmado com sucesso, exiba o modal
+if ($stmt->execute()) {
+    $id_pedido = $conexao->insert_id; // Defina o id_pedido
+    echo '<script>
+        var idPedido = ' . $id_pedido . ';
+        $(document).ready(function(){
+            $("#pedidoSucessoModal").modal("show");
+        });
+    </script>';
+} else {
+    // Lidere com o erro, se necessário
+}
+    
+    
+    // Inserir os produtos associados a esse pedido na tabela de produtos
+    foreach ($_SESSION['carrinho'] as $produtoNoCarrinho) {
+        $id_produto = $produtoNoCarrinho['id'];
+        $produto = $produtoNoCarrinho['produto'];
+        $marca = $produtoNoCarrinho['marca'];
+        $quantidade = $_POST['quantidade_' . $id_produto]; // Substitua pela forma correta de obter a quantidade
+        $preco_unitario = $produtoNoCarrinho['valordevenda'];
+        $linhaTotal = $quantidade * $preco_unitario; // Calcule o valor da linha total
+
+    $sql = "INSERT INTO produto (id_pedido, id_produto, produto, marca, quantidade, preco_unitario, linhatotal) VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conexao->prepare($sql);
+    $stmt->bind_param("iissddd", $id_pedido, $id_produto, $produto, $marca, $quantidade, $preco_unitario, $linhaTotal);
+    $stmt->execute();
+
+}
+    
+
+    // Após concluir a inserção do pedido no banco, você pode limpar o carrinho
+    $_SESSION['carrinho'] = array();
+
+    // Feche a conexão com o banco de dados
+    $conexao->close();
+// Após o código onde você mostra o modal com sucesso, adicione o seguinte código JavaScript para definir a variável idPedido
+echo '<script>
+    var idPedido = ' . $id_pedido . ';
+</script>';
+
+    
+} 
+            
+        $valorTotal = 0;
 
         // Listar produtos no carrinho aqui
         foreach ($_SESSION['carrinho'] as $index => $produtoNoCarrinho) {
@@ -378,20 +467,38 @@ $linhaTotal = $produtoNoCarrinho['valordevenda'] * $valorPadraoSelect;
 
                     
   ?>
-  <tr>
+    <tbody>
+    <div class="modal fade" id="pedidoSucessoModal" tabindex="-1" role="dialog" aria-labelledby="pedidoSucessoModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pedidoSucessoModalLabel">Parabéns seu pedido foi enviado</h5>
+                    <button type="button" class="close" data-bs-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                Agradecemos sua preferência. Seu pedido (ID: <span id="id_pedido"><?= $id_pedido ?></span>) foi enviado com sucesso. Caso tenha alguma dúvida, entre em contato conosco. <a href="contato.php">Contato Flowers Makes</a>
+</div>
+
+                <div class="modal-footer">
+                
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+            <tr>
             <tr>
     <td colspan="2">Valor Total:</td>
     <td id="valorTotalGeralCell" colspan="3">R$ 0.00</td>
     </tr>
     
             </tr>
-    
-</table>
-
-    <!--Tabela para Mobile-->
-            
+        </tbody>
+    </table>
     <!--<fieldset class="boxcliente" id="boxcliente">-->
-<h1 class="dadosentrega">Retirar em loja</h1>
+<h1 class="dadosentrega">Informar dados para Entrega</h1>
 <h3 class="fraseentrega">*Se optar por retirar em Loja em loja, informar endereço é opcional.</h3>
 <h3 class="fraseentrega">*O pagamento do seu pedido, pode ser realizado antecipadamento pelo pix: lojaflowersmakes@gmail.com ou a combinar no recebimento do pedido.</h3>
 
@@ -407,13 +514,7 @@ Cep: 08472-715
 Conj. Hab. Inacio Monteiro
 <br>
 São Paulo - SP</span>
-<br><br>
-<h1 class="dadosentrega">Para entrega</h1>
-<p><h3 class="fraseentrega">*O Valor do frete é de acordo com endereço para entrega, não deixe de informar numero do seu telefone entremos em contato para informar valor do frete.</h3></p>
-<p><h3 class="fraseentrega">*Fique tranquilo com sua compra, seu pedido só será combrado se aceitar valor do frete.</h3></p>
-
-<h1 class="dadosentrega">Informar dados para Entrega</h1>
-<br>
+<br><br> 
 <div class="col-md-5">
     <label for="nome" class="form-label">*Nome:</label>
     <input type="text" name="nome" id="nome" class="form-control" required>
@@ -424,7 +525,7 @@ São Paulo - SP</span>
     <input type="text" name="sobrenome" id="sobrenome" class="form-control" required>
   </div><br>
 
-  <div class="col-6">
+  <div class="col-2">
     <label for="telefone" class="form-label">*Telefone:</label>
     <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="dd numero" required>
   </div><br>
@@ -441,7 +542,7 @@ São Paulo - SP</span>
     <option value="Entregar">Para entrega</option>
     </select>
   </div><br>
-  <div class="col-md-3">
+  <div class="col-5">
     <label for="endereco" class="form-label">Endereço:</label>
     <input type="text" name="endereco" id="endereco" class="form-control" placeholder="Rua,Avenida ...">
   </div><br>

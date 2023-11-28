@@ -39,10 +39,10 @@
           <a class="nav-link" href="relatorios.php">Relatórios</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="consultaPedido.php">Pedidos</a>
+          <a class="nav-link" href="consultaPedido.php">Site</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="consultaContato.php">Msg Cliente</a>
+          <a class="nav-link" href="pagamentosPendentes.php">Pagamentos</a>
         </li>
         <!--
         <li class="nav-item dropdown">

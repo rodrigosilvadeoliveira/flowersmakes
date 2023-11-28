@@ -41,17 +41,17 @@ $sheet->setCellValue('M1', 'Total Compras');
 $sheet->setCellValue('N1', 'Total Vendas');
 $sheet->setCellValue('O1', 'Lucro');
 $sheet->setCellValue('P1', 'Caixa');
-$sheet->setCellValue('Q1', 'Kau 35%');
-$sheet->setCellValue('R1', 'Vania 35%');
+$sheet->setCellValue('Q1', 'Kau 45%');
+$sheet->setCellValue('R1', 'Vania 45%');
 $sheet->setCellValue('S1', 'Rodrigo 10%');
-$sheet->setCellValue('T1', 'Loja 20%');
+$sheet->setCellValue('T1', 'Loja');
 $sheet->setCellValue('M2', '=SUM(H2:H376)');
 $sheet->setCellValue('N2', '=SUM(F2:F376)');
 $sheet->setCellValue('O2', '=N2-M2');
-$sheet->setCellValue('Q2', '=O2*40/100');
-$sheet->setCellValue('R2', '=O2*40/100');
+$sheet->setCellValue('Q2', '=O2*45/100');
+$sheet->setCellValue('R2', '=O2*45/100');
 $sheet->setCellValue('S2', '=O2*10/100');
-$sheet->setCellValue('T2', '=O2-N2');
+$sheet->setCellValue('T2', '=N2-O2');
 
 
 //Estilo da celula

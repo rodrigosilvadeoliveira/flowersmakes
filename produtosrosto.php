@@ -4,6 +4,8 @@ session_start();
 // Conecte-se ao banco de dados (substitua com suas configurações)
 include('config.php');
 
+$sql = "SELECT * FROM novos WHERE siteprod = 'Carroussel' ORDER BY id DESC";
+$resultcarroussel = $conexao->query($sql);
 // Verifique se a sessão do carrinho já existe; se não, crie-a
 if (!isset($_SESSION['carrinho'])) {
     $_SESSION['carrinho'] = array();
@@ -72,6 +74,22 @@ if (isset($_POST['id'])) {
     </div>    
 
 </header>
+<div id="tabelacarrousel" class="carroussel">
+    <div class="carroussel-container">
+        <?php
+        // Listar produtos no carrinho aqui
+
+        while ($produtoNoCarrinho = mysqli_fetch_assoc($resultcarroussel)) {
+            echo '<div class="produto">';
+            echo '<img class="imagenscarroussel" src="' . $produtoNoCarrinho['imagem'] . '">';
+            echo '<div class="produto-info">';
+            // Resto do código do produto
+            echo '</div>';
+            echo '</div>';
+        }
+        ?>
+    </div>
+</div>
 <h1 id="titulocategoria">Produtos categoria rosto</h1>
 <div id="tabelaSite">
 <div class="produtos-container">
@@ -102,6 +120,16 @@ if (isset($_POST['id'])) {
     </table>
 </div>
 </div>
+<script>
+$(document).ready(function(){
+    $('.carroussel-container').slick({
+        slidesToShow: 1, // Quantidade de slides visíveis ao mesmo tempo
+        slidesToScroll: 1, // Quantidade de slides para avançar/retroceder
+        autoplay: true, // Ativar a reprodução automática
+        autoplaySpeed: 4000, // Velocidade da reprodução automática (em milissegundos)
+    });
+});
+</script>
 <div class="footer" id="footer">
       <?php include('footerSite.php');?>
       </div>

@@ -537,8 +537,10 @@ video {
     text-align: center;
 }
 .dadosentrega{
+    
     text-align: center;
-
+    font-family: cursive;
+    color: ;
 }
 .fraseentrega{
     text-align: center;
@@ -554,8 +556,8 @@ video {
 
 }
 .imagenscarroussel{
-    width: 90%;
-    height: 90%;
+    width: 70%;
+    height: 70%;
     margin: 10px;
     padding: 2%;
 
@@ -634,7 +636,7 @@ video {
     height: 30px;
     font-size: 14px;
 }
-#tabelaCarrinho {
+#tabelaCarrinhodesk {
     width: 100%;
     max-width: 100%;
     overflow: auto;
@@ -651,6 +653,10 @@ video {
     width: 15%;
     box-sizing: border-box;
 }
+#tabelaCarrinhomobile {
+display: none;
+}
+
 
 #tabelaSite {
     width: 100%;
@@ -695,7 +701,12 @@ video {
     font-family: cursive;
     color: ;
 }
-
+.titulocarrinho{
+    margin-top: 250px;
+    text-align: center;
+    font-family: cursive;
+    color: ;
+}
 #titulohome{
     margin-top: 10%;
     text-align: center;
@@ -766,6 +777,10 @@ margin-top: -15px;
 
     display: inline-block;
     margin-right: 10px;
+}
+
+.textoretirar{
+    font-size: 20px;
 }
 @media (max-width: 1300px){
     #logoSite{
@@ -920,6 +935,8 @@ margin-top: -15px;
         font-size: 20px;
      }
 /*site*/
+
+    
 .titulocarrinho{
     margin-top: 30%;
     text-align: center;
@@ -945,6 +962,7 @@ margin-top: -15px;
     margin-top: 30%;
  
 }
+
 }
 
 @media (max-width: 800px){
@@ -1058,6 +1076,8 @@ margin-top: -15px;
        
     }
     /*site*/
+    
+        
 .titulocarrinho{
     margin-top: 43%;
     text-align: center;
@@ -1237,6 +1257,20 @@ margin-left: 15%;
             margin-left: 4%;
         }
         /*site*/
+        #tabelaCarrinhodesk {
+            display: none;
+            
+        }
+        #tabelaCarrinhomobile {
+            display: block;
+            width: 100%;
+            max-width: 100%;
+            overflow: auto;
+            margin-top: 2%;
+            margin-left: 1%;
+            display: block;
+        }
+            
         #logoSite{
             top: 1px;
             width: 80px;
@@ -1284,6 +1318,11 @@ margin-left: 15%;
     justify-content: flex-start;
     max-width: 600px;
 
+}
+.produtos {
+   
+    border: none;
+   
 }
 
 }
@@ -1395,12 +1434,15 @@ margin-left: 15%;
         .modal-content {
             background-color: white;
             width: 95%;
-            height: 90%;
+            height: 70%;
             max-width: 600px;
             margin-top: 5%;
             margin-left: 2%;
-            padding: 20px;
+            padding: 5px;
             border-radius: 5px;
+        }
+        .modal-footer {
+            height: 25%;
         }
 
         /* Estilos para o vídeo da câmera */
@@ -1430,6 +1472,8 @@ margin-left: 15%;
          
         }
         /*site*/
+        
+            
         #logoSite{
             top: 1px;
             width: 80px;

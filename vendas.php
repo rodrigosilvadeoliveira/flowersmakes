@@ -182,10 +182,11 @@ if (isset($_POST['confirmar_compra'])) {
     $conexao = mysqli_connect($host, $usuario, $senha, $banco);
     $valorTotal = $_POST['valorTotal'];
     $tipodePagamento = $_POST['tipodePagamento'];
+    $obs = $_POST['obs'];
     $datas = date('Y-m-d'); // Data e hora atual
     $hora = date('H:i:s'); // Data e hora atual
 // Insira as informações da compra no banco de dados
-$query_pagamento = "INSERT INTO pagamento (valorTotal, tipodePagamento, datas, hora) VALUES ('$valorTotal', '$tipodePagamento', '$datas', '$hora')";
+$query_pagamento = "INSERT INTO pagamento (valorTotal, tipodePagamento, datas, hora, obs) VALUES ('$valorTotal', '$tipodePagamento', '$datas', '$hora', '$obs')";
 mysqli_query($conexao, $query_pagamento);
 
     if (!$conexao) {
@@ -349,9 +350,12 @@ echo "</tr>";
                 <option value="debito">Débito</option>
                 <option value="pix">Pix</option>
                 <option value="dinheiro">A vista</option>
+                <option value="pendente">Pendente</option>
             </select>
             <label for="tipodePagamento"><b>Valor Total:</b>
             <input type="text" name="valorTotal" value="<?php echo $valorTotal; ?>" required></label><br>
+            <label for="tipodePagamento"><b>Obs:</b>
+            <input type="text" name="obs"></label><br>
             <p>Tem certeza de que deseja confirmar a compra?</p>
             <button type="submit" name="confirmar_compra" class="btn btn-primary" style= 'margin-left:15%'>Confirmar</button>
         </form>

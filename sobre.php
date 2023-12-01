@@ -85,16 +85,23 @@ if (isset($_POST['id'])) {
 
 
 
-<h1 id="titulohome">Pagina inicial Flowers Makes</h1>
+<h1 id="titulohome">Nossa História</h1>
 
-<div class="containerhome">
-    <div class="boxhome">
-        <a href="produtosrosto.php"><img class="imgloja" id="nossaloja" src="img/rosto.png"></a>
-        <a href="sobre.php"><img class="imgloja" id="nossaloja" src="img/nossaloja.png"></a>
-        <a href="nossaLoja.php"><img class="imgloja" id="nossaloja" src="img/maisvendidos.png"></a>
-    </div>
-</div>
-     
+<h1 class="temasobre">A Flowers Makes foi fundada em 2023, as idealizadoras e fundadoras Vania e Kauany com o intuito de ajudar a ofercer produtos de beleza, com preços acessíveis, qualidades incríveis de diversas marcas.</h1>
+<h3><img class="fotoimg" id="fotoimg" src="img/kauevania.jpeg"><p style="text-align: center"> Kauany Moreira </p></h3>
+
+<h3 class="fraseentrega">"Nós como pessoas devemos viver em uma sociedade em que nos apoiamos em ajudar as pessoas na valorização da sua beleza interior e exterior." Nós fundadoras da Flowers Makes, quando resolvemos criar algo para mulheres, foi se baseando no que já passamos, por muitas vezes queríamos mudar um kit, porém o valor não era acessível, até mesmo itens individuais, mas o custo ainda era alto. Então resolvemos que a nossa empresa, irá atingir todo o público alvo e queremos facilitar para que todas possam adquirir sem nenhum constrangimento financeiro.</h3>
+
+<h3><img class="fotoimg" id="fotoimg" src="img/vania.jpeg"><p style="text-align: center"> Vania Moreira </p></h3>
+<h3 class="fraseentrega">Não queremos ser apenas uma empresa como qualquer outra, nós somos uma empresa diferenciada onde aqui você possa tomar um café e se sentir em casa, relacionamento próximo com nossos clientes. E ter um cuidado especial através do nossos atendimento, atender a necessidade do cliente é a nossa prioridade. <p> Percebemos como nosso trabalho tem impactado nas vidas das pessoas, quando recebemos mensagems e feedbacks positivos de nossos clientes, algumas pessoas tem dúvidas sobre os produtos, o que precisa comprar, como usar produtos, na Flowers Makes clientes tem toda assistência para proporcionar não só uma compra, mais sim ser bem atendida e satisfeito com nosso trabalho.</p></h3>
+<h3 class="fraseentrega">Gostaria de tomar um café, vem na Flower Makes.</h3>
+   
+
+<h1 class="dadosentrega">Em junho 2023, a Flowers Makes viu a necessidade de crescer e se tornar uma empresa moderna e mais digital.</h1>
+
+<h3><img class="fotoimg" id="fotoimg" src="img/rodrigo.jpg"><p style="text-align: center"> Rodrigo Oliveira </p></h3>
+<h3 class="fraseentrega"> Junto com as ideias inovadoras das fundadoras, comecei a fazer parte dessa história na área de tecnologia, hoje a Flowers Makes tem seu sistema de loja, catalogo e realizaçao de pedidos pela Web, também de forma digital, queremos nos aproximar de nossos clientes, personalizar nosso atendimento e levar a loja na palma da mão das pessoas, que tem dia a dia corrido e muitas das vezes não tem tempo de ir na loja fisica, proporcionar a comodidade de fazer seu pedido e receber em casa.<p>Estamos em constante desenvolvimento, cada melhoria é pensando em nossos clientes, em saber que podem contar com a Flowers Makes quando precisarem, estamos alguns clicks de distância.</h3>
+
       <script>
 $(document).ready(function(){
     $('.carroussel-container').slick({

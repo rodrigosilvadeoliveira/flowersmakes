@@ -91,7 +91,7 @@ if ($resultado->num_rows > 0) {
     echo "<div class='scroll-horizontal'>";
     echo "<table class='table' id='tabelaLista'>";
     echo "<tr><th>Pedido</th><th>Status</th><th>Tp.entrega</th><th>Nome do Cliente</th><th>Telefone</th>
-    <th>Endereço</th><th>Numero</th><th>Cidade</th><th>Estado</th><th>Data do Pedido</th><th>Produto</th><th>Marca</th><th>Vl.Prod</th><th>Qtd</th><th>Vl.Total</th>
+    <th>Endereço</th><th>Numero</th><th>Cidade</th><th>Estado</th><th>Data do Pedido</th><th>SKU</th><th>Produto</th><th>Marca</th><th>Vl.Prod</th><th>Qtd</th><th>Vl.Total</th>
     <th><img class='' id='' src='img/tucano.png' align='' width='30' height='30'></th></tr>";
     
     while ($row = $resultado->fetch_assoc()) {
@@ -106,6 +106,7 @@ if ($resultado->num_rows > 0) {
         echo "<td>" . $row['cidade_cliente'] . "</td>";
         echo "<td>" . $row['estado_cliente'] . "</td>";
         echo "<td>" . $row['data_pedido'] . "</td>";
+        echo "<td>" . $row['id_produto'] . "</td>";
         echo "<td>" . $row['nome_produto'] . "</td>";
         echo "<td>" . $row['marca_produto'] . "</td>";
         echo "<td>" . $row['preco_unitario'] . "</td>";

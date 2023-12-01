@@ -396,7 +396,7 @@ $linhaTotal = $produtoNoCarrinho['valordevenda'] * $valorPadraoSelect;
 <h3 class="fraseentrega">*O pagamento do seu pedido, pode ser realizado antecipadamento pelo pix: lojaflowersmakes@gmail.com ou a combinar no recebimento do pedido.</h3>
 
 <div class="dadoscliente">   
-<span class="textoretirar"><b>Para retirar em loja nosso endereço:</b></span>
+
 <br>
 <span> Horário: Seg á Sex (09:30 as 18:00) Sab (09:00 as 17:00)
 <br>

@@ -8,24 +8,33 @@ if(isset($_POST['submit']))
     //print('<br>');
    
     include_once('config.php');
-    
-    $nome = $_POST['nome'];
-    $usuario=$_POST['usuario'];
-    $senha = $_POST['senha'];
-    $email = $_POST['email'];
-    $telefone = $_POST['telefone'];
-    $sexo = $_POST['genero'];
-    $data_nascimento = $_POST['data_nascimento'];
-    $cidade = $_POST['cidade'];
-    $estado = $_POST['estado'];
-    $endereco = $_POST['endereco'];
 
-    $result = mysqli_query($conexao, "INSERT INTO formulariocadastro(nome,usuario,senha,email,telefone,sexo,data_nascimento,cidade,estado,endereco) 
-    VALUES ('$nome','$usuario','$senha','$email','$telefone','$sexo','$data_nascimento','$cidade','$estado','$endereco')");
+$nome = $_POST['nome'];
+$usuario = $_POST['usuario'];
+$senha = $_POST['senha']; // A senha fornecida pelo formulário
 
-header('Location: login.php');
+// Criptografa a senha antes de armazená-la no banco de dados
+$senha_hash = password_hash($senha, PASSWORD_DEFAULT);
+
+$email = $_POST['email'];
+$telefone = $_POST['telefone'];
+$sexo = $_POST['genero'];
+$data_nascimento = $_POST['data_nascimento'];
+$cidade = $_POST['cidade'];
+$estado = $_POST['estado'];
+$endereco = $_POST['endereco'];
+
+$result = mysqli_query($conexao, "INSERT INTO formulariocadastro(nome,usuario,senha,email,telefone,sexo,data_nascimento,cidade,estado,endereco) 
+VALUES ('$nome','$usuario','$senha_hash','$email','$telefone','$sexo','$data_nascimento','$cidade','$estado','$endereco')");
+
+if ($result) {
+    header('Location: login.php');
+} else {
+    // Tratar caso ocorra algum erro na inserção dos dados no banco de dados
+    echo "Erro ao cadastrar usuário. Por favor, tente novamente.";
 }
 
+}
 
 ?>
 
@@ -130,9 +139,10 @@ header('Location: login.php');
     <input type="email"  name="email" id="email" class="form-control">
   </div>
   <div class="col-md-5">
-    <label for="senha" class="form-label">Senha</label>
-    <input type="password"  name="senha" id="senha" class="form-control">
-  </div>
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" name="senha" id="senha" class="form-control" required>
+                <div id="feedback" class="invalid-feedback"></div>
+            </div>
   <div class="col-3">
     <label for="telefone" class="form-label">Telefone</label>
     <input type="tel" class="form-control" name="telefone" id="telefone" placeholder="dd numero">
@@ -204,6 +214,41 @@ header('Location: login.php');
   </div>
 </form>
 </fieldset>
+<script>
+        const senhaInput = document.getElementById('senha');
+        const feedback = document.getElementById('feedback');
+
+        senhaInput.addEventListener('keyup', function() {
+            const senha = senhaInput.value;
+            let mensagem = '';
+
+            if (senha.length < 8) {
+                mensagem = 'A senha deve ter no mínimo 8 caracteres.';
+                feedback.classList.add('invalid-feedback');
+                feedback.classList.remove('valid-feedback');
+                senhaInput.classList.add('is-invalid');
+                senhaInput.classList.remove('is-valid');
+            } else {
+                // Verifica se a senha atende aos critérios de segurança
+                const regex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+{};:,<.>]).{8,}$/;
+                if (!regex.test(senha)) {
+                    mensagem = 'A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 caractere especial.';
+                    feedback.classList.add('invalid-feedback');
+                    feedback.classList.remove('valid-feedback');
+                    senhaInput.classList.add('is-invalid');
+                    senhaInput.classList.remove('is-valid');
+                } else {
+                    mensagem = 'Senha segura!';
+                    feedback.classList.remove('invalid-feedback');
+                    feedback.classList.add('valid-feedback');
+                    senhaInput.classList.remove('is-invalid');
+                    senhaInput.classList.add('is-valid');
+                }
+            }
+
+            feedback.innerText = mensagem;
+        });
+    </script>
 
 </body>
 </html>

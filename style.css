@@ -465,12 +465,18 @@ video {
     width: 20%;
     height: 10%
 }
+.fotoimg{
+    width: 8%;
+    height: 3%;
+    margin-left: 45%;
+}
 .endloja{
     margin-left: 2%;
 }
 .mensagem{
     width: 30%;
-    height: 80%
+    height: 80%;
+    
 }
 .continuarcomprando{
     width: 20%;
@@ -543,6 +549,10 @@ video {
     color: ;
 }
 .fraseentrega{
+    text-align: center;
+    font-size: 18px;
+}
+.temasobre{
     text-align: center;
     font-size: 18px;
 }
